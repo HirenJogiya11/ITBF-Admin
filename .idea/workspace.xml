@@ -50,6 +50,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+<<<<<<< Updated upstream
+=======
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="demo" />
+      </map>
+    </option>
+>>>>>>> Stashed changes
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -162,12 +170,20 @@
       <option name="presentableId" value="Default" />
       <updated>1505307385443</updated>
       <workItem from="1505307387066" duration="222000" />
+<<<<<<< Updated upstream
       <workItem from="1505307704605" duration="342000" />
+=======
+      <workItem from="1505307704605" duration="1564000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="564000" />
+=======
+    <option name="totallyTimeSpent" value="1786000" />
+>>>>>>> Stashed changes
   </component>
   <component name="ToolWindowManager">
     <frame x="52" y="-11" width="1315" height="780" extended-state="6" />
