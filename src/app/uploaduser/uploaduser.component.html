@@ -1,3 +1,67 @@
-<p>
-  uploaduser works!
-</p>
+<div class="col-md-6">
+  <div class="card">
+    <form novalidate="" class="ng-pristine ng-invalid ng-touched">
+      <div class="card-header card-header-icon" data-background-color="rose">
+        <i class="material-icons">mail_outline</i>
+      </div>
+      <div class="card-content">
+        <h4 class="card-title">Register Forms</h4>
+
+        <div class="form-group label-floating is-empty">
+          <label class="control-label" for="">Email Address:
+            <span class="star">*</span>
+          </label>
+          <input class="form-control ng-untouched ng-pristine ng-invalid" name="email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" required="" type="email">
+          <small class="text-danger" hidden="">
+            Email is required and format should be <i>john@doe.com</i>.
+          </small>
+          <span class="material-input"></span></div>
+        <div class="form-group label-floating is-empty">
+          <label class="control-label" for="">First Name
+            <span class="star">*</span>
+          </label>
+          <input class="form-control ng-untouched ng-pristine ng-invalid" name="firstName" required="" reverse="true" type="text" >
+          <small class="text-danger" hidden="">
+            First name is required
+          </small>
+
+          <span class="material-input"></span></div>
+        <div class="form-group label-floating is-empty">
+          <label class="control-label" for="">Last Name
+            <span class="star">*</span>
+          </label>
+          <input class="form-control ng-untouched ng-pristine ng-invalid" name="lastName" required="" reverse="true" type="text" >
+          <small class="text-danger" hidden="">
+            Last name is required
+          </small>
+
+          <span class="material-input"></span></div>
+        <div class="form-group label-floating is-empty">
+          <label class="control-label" for="">Country
+            <span class="star">*</span>
+          </label>
+          <input class="form-control ng-untouched ng-pristine ng-invalid" name="country" required="" reverse="true" type="text" >
+          <small class="text-danger" hidden="">
+            First Country is required
+          </small>
+          <div class="form-group label-floating is-empty">
+            <label class="control-label" for="">Change Password
+            </label>
+            <input class="form-control ng-pristine ng-invalid ng-touched" name="changePassword" required="" reverse="false" type="password" >
+            <span class="material-input"></span></div>
+          <span class="material-input"></span></div>
+
+        <div class="category form-category">
+          <span class="star">*</span> Required fields</div>
+        <div class="form-footer text-right">
+
+          <div class="form-group">
+
+            <button class="btn btn-rose btn-fill btn-wd" type="submit" >Register</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>

@@ -1,3 +1,42 @@
-<p>
-  introduction works!
-</p>
+<div>
+
+    <!--<div _ngcontent-c1="" class="fileinput-preview fileinput-exists thumbnail"></div>-->
+    <!--<div _ngcontent-c1="">-->
+                                <!--<span _ngcontent-c1="" class="btn btn-rose btn-round btn-file">-->
+                                    <!--<span _ngcontent-c1="" class="fileinput-new">Select image</span>-->
+                                    <!--<span _ngcontent-c1="" class="fileinput-exists">Change</span>-->
+                                    <!--<input type="hidden"><input _ngcontent-c1="" name="..." type="file">-->
+                                <!--<div class="ripple-container"></div></span>-->
+        <!--<a _ngcontent-c1="" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput" href="#pablo"><i-->
+                <!--_ngcontent-c1="" class="fa fa-times"></i> Remove</a>-->
+    <!--</div>-->
+
+
+    <div class="row">
+        <div class=" col-md-12">
+            <form class="navbar-form" role="search">
+                <div class="form-group">
+                     <span file="" class="btn btn-rose btn-round btn-file">
+                                    <span file="" class="fileinput-new">Select Cover Image</span>
+                                <div class="ripple-container"></div></span>
+                        <input type="file" name="upload" id="file" accept="image/*" (change)="onChange($event)"/>
+                    </div>
+                <div *ngIf="result" class="uploaded-img">
+                    <img src="{{result}}" width="200" height="200">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class=" col-md-12">
+            <form class="navbar-form" role="search">
+                <div class="form-group">
+                      <span file1="" class="btn btn-rose btn-round btn-file">
+                                    <span file1="" class="fileinput-new">Select Audio File</span>
+                                <div class="ripple-container"></div></span><input type="file" name="upload" id="file1" accept="audio/*" (change)="onChangemp($event)"/>
+                </div>
+                <span>{{final}}</span>
+            </form>
+        </div>
+    </div>
+</div>
