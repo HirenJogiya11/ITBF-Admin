@@ -1,0 +1,78 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" (click)="close()">&times;</button>
+            <h4 class="modal-title">{{title || 'User Detail'}}</h4>
+        </div>
+        <div class="modal-body">
+            <form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
+                <div class="card card-login card-hidden">
+
+                    <div class="card-content">
+                        <div [hidden]="!isError" class="text-center">
+                            <span style="color:red"> Invalid Credentials</span>
+                        </div>
+                        <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">email</i>
+                                        </span>
+                            <div class="form-group label-floating">
+                                <label class="control-label">Email address</label>
+                                <input email name="email" [(ngModel)]="data.email"  type="email"
+                                       class="form-control">
+
+                            </div>
+                        </div>
+                        <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">account_box</i>
+                                        </span>
+                            <div class="form-group label-floating">
+                                <label class="control-label">First Name</label>
+                                <input required [(ngModel)]="data.firstName" name="firstName"
+                                       type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">account_box</i>
+                                        </span>
+                            <div class="form-group label-floating">
+                                <label class="control-label">Last Name</label>
+                                <input required [(ngModel)]="data.lastName" name="lastName"
+                                       type="text" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">location_on</i>
+                                        </span>
+                            <div class="form-group label-floating">
+                                <label class="control-label">Country</label>
+                                <input required [(ngModel)]="data.Country"  name="Country"
+                                       type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">lock</i>
+                                        </span>
+                            <div class="form-group label-floating">
+                                <label class="control-label">Change Password</label>
+                                <input required [(ngModel)]="data.changePassword"  name="changePassword"
+                                       type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer text-center">
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-rose btn-outline" [disabled]="!userForm.valid" (click)="onFormSubmit(userForm)">Add User</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

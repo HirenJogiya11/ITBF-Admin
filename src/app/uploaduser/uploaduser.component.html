@@ -1,67 +1,151 @@
-<div class="col-md-6">
-  <div class="card">
-    <form novalidate="" class="ng-pristine ng-invalid ng-touched">
-      <div class="card-header card-header-icon" data-background-color="rose">
-        <i class="material-icons">mail_outline</i>
-      </div>
-      <div class="card-content">
-        <h4 class="card-title">Register Forms</h4>
+<div class="main-content">
+  <div class="container-fluid">
 
-        <div class="form-group label-floating is-empty">
-          <label class="control-label" for="">Email Address:
-            <span class="star">*</span>
-          </label>
-          <input class="form-control ng-untouched ng-pristine ng-invalid" name="email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" required="" type="email">
-          <small class="text-danger" hidden="">
-            Email is required and format should be <i>john@doe.com</i>.
-          </small>
-          <span class="material-input"></span></div>
-        <div class="form-group label-floating is-empty">
-          <label class="control-label" for="">First Name
-            <span class="star">*</span>
-          </label>
-          <input class="form-control ng-untouched ng-pristine ng-invalid" name="firstName" required="" reverse="true" type="text" >
-          <small class="text-danger" hidden="">
-            First name is required
-          </small>
-
-          <span class="material-input"></span></div>
-        <div class="form-group label-floating is-empty">
-          <label class="control-label" for="">Last Name
-            <span class="star">*</span>
-          </label>
-          <input class="form-control ng-untouched ng-pristine ng-invalid" name="lastName" required="" reverse="true" type="text" >
-          <small class="text-danger" hidden="">
-            Last name is required
-          </small>
-
-          <span class="material-input"></span></div>
-        <div class="form-group label-floating is-empty">
-          <label class="control-label" for="">Country
-            <span class="star">*</span>
-          </label>
-          <input class="form-control ng-untouched ng-pristine ng-invalid" name="country" required="" reverse="true" type="text" >
-          <small class="text-danger" hidden="">
-            First Country is required
-          </small>
-          <div class="form-group label-floating is-empty">
-            <label class="control-label" for="">Change Password
-            </label>
-            <input class="form-control ng-pristine ng-invalid ng-touched" name="changePassword" required="" reverse="false" type="password" >
-            <span class="material-input"></span></div>
-          <span class="material-input"></span></div>
-
-        <div class="category form-category">
-          <span class="star">*</span> Required fields</div>
-        <div class="form-footer text-right">
-
-          <div class="form-group">
-
-            <button class="btn btn-rose btn-fill btn-wd" type="submit" >Register</button>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-icon" data-background-color="rose">
+            <i class="material-icons">people</i>
+          </div>
+          <a  (click)="openModal()" class="card-header card-header-icon pull-right" style="cursor: pointer" data-background-color="green">
+            <i class="material-icons">person_add</i>
+          </a>
+          <div class="card-content">
+            <h4 class="card-title">Users</h4>
+            <div class="toolbar">
+              <!--        Here you can write extra buttons/actions for the toolbar              -->
+            </div>
+            <div class="material-datatables table-responsive">
+              <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                <thead>
+                <tr>
+                  <th>{{ dataTable.headerRow[0] }}</th>
+                  <th>{{ dataTable.headerRow[1] }}</th>
+                  <th>{{ dataTable.headerRow[2] }}</th>
+                  <th>{{ dataTable.headerRow[3] }}</th>
+                  <th>{{ dataTable.headerRow[4] }}</th>
+                  <th class="disabled-sorting text-right">{{ dataTable.headerRow[5] }}</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                  <th>{{ dataTable.footerRow[0] }}</th>
+                  <th>{{ dataTable.footerRow[1] }}</th>
+                  <th>{{ dataTable.footerRow[2] }}</th>
+                  <th>{{ dataTable.footerRow[3] }}</th>
+                  <th>{{ dataTable.footerRow[4] }}</th>
+                  <th class="text-right">{{ dataTable.footerRow[5] }}</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                <tr *ngFor="let row of this.model; let i of index">
+                  <td>{{row.email}}</td>
+                  <td>{{row.firstName}}</td>
+                  <td>{{row.lastName}}</td>
+                  <td>{{row.Country}}</td>
+                  <td>{{row.changePassword}}</td>
+                  <td class="text-right">
+                    <button class="btn btn-simple btn-info btn-icon like" rel="tooltip" title="Like" data-placement="left">
+                      <i class="material-icons">favorite</i>
+                    </button>
+                    <button class="btn btn-simple btn-warning btn-icon edit" rel="tooltip" title="Edit" data-placement="left" (click)="EditData(i)">
+                      <i class="material-icons">dvr</i>
+                    </button>
+                    <button class="btn btn-simple btn-danger btn-icon remove" rel="tooltip" title="Remove" data-placement="left" (click)="deleteData(i)">
+                      <i class="material-icons">close</i>
+                    </button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
-    </form>
+    </div>
   </div>
 
+</div>
+<div class="row">
+  <button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+  <modal #myModal (onClose)="clear(userForm)">
+    <modal-header>
+      <h3>User Detail</h3>
+    </modal-header>
+    <modal-content>
+      <form #userForm="ngForm">
+        <div class="card card-login card-hidden">
+
+          <div class="card-content">
+            <div [hidden]="!isError" class="text-center">
+              <span style="color:red"> Invalid Credentials</span>
+            </div>
+            <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">account_box</i>
+                                        </span>
+              <div class="form-group label-floating">
+                <label class="control-label">Name</label>
+                <input ngModel required #userName="ngModel" name="name"
+                       type="text" class="form-control">
+              </div>
+            </div>
+            <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">email</i>
+                                        </span>
+              <div class="form-group label-floating">
+                <label class="control-label">Email address</label>
+                <input name="email" ngModel required #userName="ngModel" type="email"
+                       class="form-control">
+              </div>
+            </div>
+
+            <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">location_on</i>
+                                        </span>
+              <div class="form-group label-floating">
+                <label class="control-label">Location</label>
+                <input ngModel required #userLocation="ngModel" name="location"
+                       type="text" class="form-control">
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label class="control-label"><h3>Role</h3></label>
+              <div class="form-group label-floating">
+
+                <div class="radio">
+                  <label>
+                    <input  ngModel required #userRole="ngModel" name="role" value="Admin" type="radio"><span class="circle"></span><span class="check"></span> Admin
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input ngModel required #userRole="ngModel" name="role" value="Manager" type="radio"><span class="circle"></span><span class="check"></span> Manager
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input ngModel required #userRole="ngModel" name="role" value="Engineer" type="radio"><span class="circle"></span><span class="check"></span> Engineer
+                  </label>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="footer text-center">
+            <div class="btn-group">
+              <button type="submit" class="btn btn-rose btn-outline" (click)="onFormSubmit(userForm);myModal.close()">Add User</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </modal-content>
+    <modal-footer>
+      <button class="btn btn-primary" (click)="myModal.close()">close</button>
+    </modal-footer>
+  </modal>
 </div>

@@ -12,6 +12,8 @@ var sidebarTimer;
 
 export class SidebarComponent implements OnInit{
     public menuItems: any[];
+    public isAdmin: boolean;
+    public isTourOperator: boolean;
 
     isNotMobileMenu(){
         if($(window).width() > 991){
@@ -21,6 +23,20 @@ export class SidebarComponent implements OnInit{
     }
 
     ngOnInit() {
+        if (localStorage.getItem('role')) {
+            localStorage.getItem('role') === 'Admin' ? this.isAdmin = true : this.isAdmin = false;
+        }
+        else {
+            this.isAdmin = false;
+        }
+        if (localStorage.getItem('role')) {
+            localStorage.getItem('role') === 'TourOperator' ? this.isTourOperator = true : this.isTourOperator = false;
+        }
+        else {
+            this.isTourOperator = false;
+        }
+
+
         var isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
         if (isWindows){
            // if we are on windows OS we activate the perfectScrollbar function

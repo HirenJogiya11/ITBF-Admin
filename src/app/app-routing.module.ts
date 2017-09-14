@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
-import {DashboardComponent} from "./dashboard/dashboard.component";
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
@@ -14,14 +14,14 @@ import { UserComponent } from './user/user.component';
 import { TourtotaluserComponent } from './tourtotaluser/tourtotaluser.component';
 import { TourtotalrevenueComponent } from './tourtotalrevenue/tourtotalrevenue.component';
 import { UploaduserComponent } from './uploaduser/uploaduser.component';
+import {LoginComponent} from './login/login.component';
 
 export const AppRoutes: Routes = [
-  {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
-  },
-
+    {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full',
+    },
   {
     path: '',
     component: AdminLayoutComponent,
@@ -71,11 +71,12 @@ export const AppRoutes: Routes = [
     ]
   },
 
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    pathMatch: 'full',
-  },
+
+    {
+        path: 'login',
+        component: LoginComponent,
+        pathMatch: 'full',
+    },
   {
     path : '404',
     component : PagenotfoundComponent
