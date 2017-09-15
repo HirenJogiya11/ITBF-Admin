@@ -1,3 +1,47 @@
-<p>
-  packs works!
-</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-icon" data-background-color="rose">
+                    <i class="material-icons">assignment</i>
+                </div>
+                <div class="card-header card-header-icon pull-right" data-background-color="rose" (click)="add()">
+                    <i class="material-icons">add</i>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">Packs</h4>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Packs</th>
+                                <th>Language</th>
+                                <th>Add</th>
+                                <th>TotalAudio</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let pack of packs">
+                                <td>{{pack.packname}}</td>
+                                <td>{{pack.language}}</td>
+                                <td>
+                                    <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-success"
+                                            class="btn btn-primary" (click)="Newaudio(pack)">
+                                        <i class="material-icons">add</i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-info"
+                                            class="btn btn-danger" (click)="TotalAudio(pack)">
+                                        <i></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

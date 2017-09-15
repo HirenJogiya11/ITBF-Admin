@@ -139,25 +139,32 @@
 
 
                    <div class="collapse" id="Analytics" aria-expanded="false" style="height: 0px;">
-                    <ul class="nav">
-                      <!----><li routerlinkactive="active" class="">
-                      <a [routerLink]="[menuItems[3].path]">
-                        <span class="sidebar-mini">TD</span>
-                        <span class="sidebar-normal">TotalDownloads</span>
-                      </a>
-                    </li>
-                      <li routerlinkactive="active" class="">
-                      <a [routerLink]="[menuItems[4].path]">
-                        <span class="sidebar-mini">TR</span>
-                        <span class="sidebar-normal">TotalRevenue</span>
-                      </a>
-                    </li><li routerlinkactive="active" class="active">
-                      <a [routerLink]="[menuItems[5].path]">
-                        <span class="sidebar-mini">U</span>
-                        <span class="sidebar-normal">Users</span>
-                      </a>
-                    </li>
-                    </ul>
+                       <ul class="nav">
+                           <li routerLinkActive="active">
+                               <a  [routerLink]="[menuItems[3].path]">
+                                   <i class="{{menuItems[1].icon}}">
+                                       TD
+                                   </i>
+                                   <p>Total Downloads</p>
+                               </a>
+                           </li>
+                           <li routerLinkActive="active">
+                               <a  [routerLink]="[menuItems[4].path]">
+                                   <i class="{{menuItems[1].icon}}">
+                                       TR
+                                   </i>
+                                   <p>Total Revenue</p>
+                               </a>
+                           </li>
+                           <li routerLinkActive="active">
+                               <a  [routerLink]="[menuItems[5].path]">
+                                   <i class="{{menuItems[1].icon}}">
+                                       U
+                                   </i>
+                                   <p>Users</p>
+                               </a>
+                           </li>
+                       </ul>
                   </div>
                   </li>
                   <li routerlinkactive="active" class="active">
@@ -165,7 +172,6 @@
                       <i class="material-icons">apps</i>
                       <p>Tour Operator<b class="caret"></b></p>
                     </a>
-
 
                     <div class="collapse" id="Analytic" aria-expanded="false" style="height: 0px;">
                       <ul class="nav">
@@ -180,7 +186,8 @@
                       </ul>
                     </div>
                   </li>
-                  <li routerlinkactive="active" class="active">
+
+                    <li routerlinkactive="active" class="active">
                     <a data-toggle="collapse" href="#TourAnalytic" class="collapsed" aria-expanded="false">
                       <i class="material-icons">apps</i>
                       <p>Tour Analytics<b class="caret"></b></p>
@@ -188,19 +195,24 @@
 
 
                     <div class="collapse" id="TourAnalytic" aria-expanded="false" style="height: 0px;">
-                      <ul class="nav">
-                        <!----><li routerlinkactive="active" class="">
-                        <a  [routerLink]="[menuItems[7].path]">
-                          <span class="sidebar-mini">TU</span>
-                          <span class="sidebar-normal">TotalUser</span>
-                        </a>
-                      </li><li routerlinkactive="active" class="">
-                        <a  [routerLink]="[menuItems[8].path]">
-                          <span class="sidebar-mini">TR</span>
-                          <span class="sidebar-normal">TotalRevenue</span>
-                        </a>
-                      </li>
-                      </ul>
+                        <ul class="nav">
+                            <li routerLinkActive="active">
+                                <a  [routerLink]="[menuItems[7].path]">
+                                    <i class="{{menuItems[1].icon}}">
+                                        TU
+                                    </i>
+                                    <p>Total Users</p>
+                                </a>
+                            </li>
+                            <li routerLinkActive="active">
+                                <a  [routerLink]="[menuItems[8].path]">
+                                    <i class="{{menuItems[1].icon}}">
+                                        TR
+                                    </i>
+                                    <p>Total Revenue</p>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                   </li>
                   <!--<li routerLinkActive="active">-->
