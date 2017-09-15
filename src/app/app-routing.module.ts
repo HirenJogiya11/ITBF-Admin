@@ -15,6 +15,7 @@ import { TourtotaluserComponent } from './tourtotaluser/tourtotaluser.component'
 import { TourtotalrevenueComponent } from './tourtotalrevenue/tourtotalrevenue.component';
 import { UploaduserComponent } from './uploaduser/uploaduser.component';
 import {LoginComponent} from './login/login.component';
+import {AuthGuard} from "./services/authguard.service";
 
 export const AppRoutes: Routes = [
     {
@@ -28,15 +29,18 @@ export const AppRoutes: Routes = [
     children: [
       {
         path: 'dashboard',
+          canActivate: [AuthGuard],
         component: DashboardComponent
       },
 
       {
         path: 'introduction',
+          canActivate: [AuthGuard],
         component: IntroductionComponent
       },
       {
         path: 'packs',
+          canActivate: [AuthGuard],
         component: PacksComponent
       },
       // {
@@ -45,26 +49,32 @@ export const AppRoutes: Routes = [
       // },
       {
         path: 'totaldownload',
+          canActivate: [AuthGuard],
         component: TotaldownloadComponent
       },
       {
         path: 'totalrevenue',
+          canActivate: [AuthGuard],
         component: TotalrevenueComponent
       },
       {
         path: 'user',
+          canActivate: [AuthGuard],
         component: UserComponent
       },
       {
         path: 'uploaduser',
+          canActivate: [AuthGuard],
         component: UploaduserComponent
       },
       {
         path: 'touruser',
+          canActivate: [AuthGuard],
         component: TourtotaluserComponent
       },
       {
         path: 'tourRevenue',
+          canActivate: [AuthGuard],
         component: TourtotalrevenueComponent
       }
 
@@ -77,6 +87,7 @@ export const AppRoutes: Routes = [
         component: LoginComponent,
         pathMatch: 'full',
     },
+    { path: '**', component: LoginComponent },
   {
     path : '404',
     component : PagenotfoundComponent

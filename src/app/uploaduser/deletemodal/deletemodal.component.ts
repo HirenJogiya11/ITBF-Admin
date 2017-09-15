@@ -10,16 +10,15 @@ export interface Model {
 })
 export class DeletemodalComponent  extends DialogComponent<Model, any> implements  OnInit {
 
-
+    index: number;
     constructor(dialogService: DialogService) {
         super(dialogService);
     }
   ngOnInit() {
   }
-  delete(){
-      this.close();
+    dataDelete(){
+          this.result = {index: this.index};
+          console.log(this.result);
+          this.close();
   }
-   exit(){
-      this.close();
-}
 }

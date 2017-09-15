@@ -85,7 +85,11 @@
                                     </div>
                                 </div>
                                 <div class="footer text-center">
-                                    <button type="button" class="btn btn-rose btn-simple btn-wd btn-lg" [disabled]="!f1.valid" (click)="login(model)">Let's go</button>
+                                    <div class="btn-group">
+                                        <button type="submit" class="btn btn-rose btn-outline"
+                                                [disabled]="!f1.valid" (click)="login(model)">Sign In
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </form>

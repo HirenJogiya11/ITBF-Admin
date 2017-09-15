@@ -41,31 +41,33 @@ export class UploaduserComponent implements OnInit {
         console.log('model',this.model);
 
     }
-    deleteData(i)
-    {
-        // Delete Api
-        this.model.splice(this.model.indexOf(i), 1);
-    }
     // deleteData(i)
     // {
-    //     let pos = this.model.indexOf(i);
-    //
-    //     console.log('index', pos);
-    //     this.dialogService.addDialog(DeletemodalComponent, { index: pos}, {backdropColor: 'rgba(0, 0, 0, 0.5)'})
-    //         .subscribe((data) => {
-    //             if(data.userForm) {
-    //
-    //                 // Edit Api
-    //                 this.model[data.index] = data.userForm;
-    //             }
-    //         });
-    //
+    //     // Delete Api
+    //     console.log(this.model.indexOf(i));
+    //     this.model.splice(this.model.indexOf(i), 1);
     // }
+    deleteData(i)
+    {
+        let pos = this.model.indexOf(i);
+
+        console.log('index', pos);
+        this.dialogService.addDialog(DeletemodalComponent, { index: pos}, {backdropColor: 'rgba(0, 0, 0, 0.5)'})
+            .subscribe((data) => {
+            if(data) {
+                // Delete Api
+                console.log(this.model);
+                console.log('delete data', data.index);
+                this.model.splice(data.index, 1);
+            }
+            });
+
+    }
 
     openModal(){
         this.dialogService.addDialog(UsermodalComponent, {index: undefined, data:{}}, {backdropColor: 'rgba(0, 0, 0, 0.5)'})
             .subscribe((data)=>{
-                if(data.userForm) {
+                if(data && data.userForm) {
                     // Add Api
                     this.model.push(data.userForm);
                 }

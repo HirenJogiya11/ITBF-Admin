@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit{
         }
     };
     ngOnInit(){
+        localStorage.clear();
         this.checkFullPageBackgroundImage();
         setTimeout(function(){
             // after 1000 ms we add the class animated to the login/register card

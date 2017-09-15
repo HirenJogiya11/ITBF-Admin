@@ -35,6 +35,7 @@ import {LoginComponent} from './login/login.component';
 // service
 import {LoginService} from './services/login.service';
 import { DeletemodalComponent } from './uploaduser/deletemodal/deletemodal.component'
+import {AuthGuard} from "./services/authguard.service";
 
 
 @NgModule({
@@ -73,7 +74,7 @@ import { DeletemodalComponent } from './uploaduser/deletemodal/deletemodal.compo
       LoginComponent,
       DeletemodalComponent
   ],
-    providers:[LoginService],
+    providers:[LoginService, AuthGuard],
   bootstrap:    [ AppComponent ],
     entryComponents: [
         UsermodalComponent,

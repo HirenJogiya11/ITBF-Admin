@@ -10,7 +10,6 @@ const LOGIN_API: string ='http://192.168.200.59:3000/adminLogin';
 
 @Injectable()
 export class  LoginService {
-
   constructor(private http:Http){
 
   }
@@ -33,13 +32,8 @@ export class  LoginService {
     return this.http
       .post(`${LOGIN_API}`, admin)
       .map((response:Response)=>{
-      localStorage.setItem('User', JSON.stringify({token:response.json().token}));
+      localStorage.setItem('token', JSON.stringify(response.json().token));
       return response.json();
       });
   }
-
-
-
-
-
 }

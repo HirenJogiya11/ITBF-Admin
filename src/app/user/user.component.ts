@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DialogService} from 'ng2-bootstrap-modal';
 import {NgForm} from '@angular/forms';
 import {UsermodalComponent} from '../uploaduser/usermodal/usermodal.component';
+import {DeletemodalComponent} from '../uploaduser/deletemodal/deletemodal.component';
 
 declare interface DataTable {
     headerRow: string[];
@@ -41,12 +42,27 @@ export class UserComponent implements OnInit {
         console.log('model',this.model);
 
     }
+    // deleteData(i)
+    // {
+    //   // Delete Api
+    //     this.model.splice(this.model.indexOf(i), 1);
+    // }
     deleteData(i)
     {
-      // Delete Api
-        this.model.splice(this.model.indexOf(i), 1);
-    }
+        let pos = this.model.indexOf(i);
 
+        console.log('index', pos);
+        this.dialogService.addDialog(DeletemodalComponent, { index: pos}, {backdropColor: 'rgba(0, 0, 0, 0.5)'})
+            .subscribe((data) => {
+                if(data) {
+                    // Delete Api
+                    console.log(this.model);
+                    console.log('delete data', data.index);
+                    this.model.splice(data.index, 1);
+                }
+            });
+
+    }
 
     openModal(){
         this.dialogService.addDialog(UsermodalComponent, {index: undefined, data:{}}, {backdropColor: 'rgba(0, 0, 0, 0.5)'})
@@ -57,6 +73,7 @@ export class UserComponent implements OnInit {
                 }
             });
     }
+
     EditData(index)
     {
         let position = this.model.indexOf(index);
