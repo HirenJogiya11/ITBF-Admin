@@ -1,0 +1,71 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" (click)="close()">&times;</button>
+            <h4 class="modal-title"></h4>
+        </div>
+        <form class="form-horizontal" #audiopack="ngForm" novalidate>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-icon" data-background-color="rose">
+                                <i class="material-icons">contacts</i>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">New Pack</h4>
+                                <div class="row">
+                                    <label class="col-md-3 label-on-left">Site Name</label>
+                                    <div class="col-md-9">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input class="form-control" type="text" name="Sitename"
+                                                   [(ngModel)]="Sitename">
+                                            <span class="material-input"></span></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-md-3 label-on-left">Cover Image</label>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating is-empty">
+                                            <div>
+                                                    <span class="btn btn-rose btn-round btn-file">
+                                                    <span class="fileinput-new">Select image</span>
+                                                    <input type="file" name="image" [(ngModel)]="image" (change)="getimage($event)"/>
+                                                    </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fileinput-new thumbnail img-circle col-md-3">
+                                        <img alt="..." src="{{result}}">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-md-3 label-on-left">Uploada Audio</label>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating is-empty">
+                                            <div>
+                                                    <span class="btn btn-rose btn-round btn-file">
+                                                    <span class="fileinput-new">Select Audio</span>
+                                                    <input type="file" name="imagefile" (change)="getAudio($event)"/>
+                                                    </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fileinput-new thumbnail img-circle col-md-3">
+                                        <p>{{final}}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" (click)="OnSubmit(audiopack); close()">OK</button>
+                <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
