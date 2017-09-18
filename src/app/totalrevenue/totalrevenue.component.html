@@ -1,3 +1,88 @@
-<p>
-  totalrevenue works!
-</p>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="col-lg-3">
+      <div  class="col-sm-2">
+        <div  class="dropdown">
+          <button  class="dropdown-toggle btn btn-primary btn-round btn-block" data-toggle="dropdown" href="#pablo" aria-expanded="false">Time
+            <b  class="caret"></b>
+            <div class="ripple-container"></div></button>
+          <ul  class="dropdown-menu dropdown-menu-center">
+            <li >
+              <a  href="#pablo">Yearly</a>
+            </li>
+            <li  class="divider"></li>
+            <li >
+              <a  href="#pablo">Monthly</a>
+            </li>
+            <li  class="divider"></li>
+            <li >
+              <a  href="#pablo">Weekly</a>
+            </li>
+            <li  class="divider"></li>
+            <li >
+              <a  href="#pablo">Daily</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div  class="col-sm-3">
+        <div  class="dropdown">
+          <button  class="dropdown-toggle btn btn-primary btn-round btn-block" data-toggle="dropdown" href="#pablo" aria-expanded="false">Language
+            <b  class="caret"></b>
+            <div class="ripple-container"></div></button>
+          <ul  class="dropdown-menu dropdown-menu-right">
+            <li >
+              <a  href="#pablo">English</a>
+            </li>
+            <li  class="divider"></li>
+            <li >
+              <a  href="#pablo">French</a>
+            </li>
+            <li  class="divider"></li>
+            <li >
+              <a  href="#pablo">Russian</a>
+            </li>
+            <li  class="divider"></li>
+            <li >
+              <a  href="#pablo">Latin</a>
+            </li>
+            <li  class="divider"></li>
+            <li >
+              <a  href="#pablo">Chinese</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div  class="col-sm-3">
+        <div  class="dropdown">
+          <button  class="dropdown-toggle btn btn-primary btn-round btn-block" data-toggle="dropdown" href="#pablo" aria-expanded="false">By Tour Operator
+            <b  class="caret"></b>
+            <div class="ripple-container"></div></button>
+          <ul  class="dropdown-menu dropdown-menu-right divider" >
+            <li *ngFor="let tour of Touroperator">
+              <a  href="#pablo">{{tour}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div  class="col-sm-3">
+        <div  class="dropdown">
+          <button  class="dropdown-toggle btn btn-primary btn-round btn-block" data-toggle="dropdown" href="#pablo" aria-expanded="false">By Geography
+            <b  class="caret"></b>
+            <div class="ripple-container"></div></button>
+          <ul  class="dropdown-menu dropdown-menu-right pull-right">
+            <li *ngFor="let location of Geography">
+              <a  href="#pablo">{{location}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

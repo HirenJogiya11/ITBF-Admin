@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./totalrevenue.component.css']
 })
 export class TotalrevenueComponent implements OnInit {
-
+    Touroperator = ['a', 'b', 'c', 'd'];
+    Geography = ['Goa', 'Lonawala', 'Saputara'];
   constructor() { }
 
   ngOnInit() {

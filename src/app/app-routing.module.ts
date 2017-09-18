@@ -16,6 +16,8 @@ import { TourtotalrevenueComponent } from './tourtotalrevenue/tourtotalrevenue.c
 import { UploaduserComponent } from './uploaduser/uploaduser.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from "./services/authguard.service";
+import {AdminGuard} from "./services/adminguard.service";
+import {TourGuard} from "./services/tourguard.service";
 
 export const AppRoutes: Routes = [
     {
@@ -29,18 +31,18 @@ export const AppRoutes: Routes = [
     children: [
       {
         path: 'dashboard',
-          canActivate: [AuthGuard],
+          canActivate: [AuthGuard, AdminGuard],
         component: DashboardComponent
       },
 
       {
         path: 'introduction',
-          canActivate: [AuthGuard],
+          canActivate: [AuthGuard, TourGuard],
         component: IntroductionComponent
       },
       {
         path: 'packs',
-          canActivate: [AuthGuard],
+          canActivate: [AuthGuard, TourGuard],
         component: PacksComponent
       },
       // {
@@ -49,32 +51,32 @@ export const AppRoutes: Routes = [
       // },
       {
         path: 'totaldownload',
-          canActivate: [AuthGuard],
+          canActivate: [AuthGuard, TourGuard],
         component: TotaldownloadComponent
       },
       {
         path: 'totalrevenue',
-          canActivate: [AuthGuard],
+          canActivate: [AuthGuard, TourGuard],
         component: TotalrevenueComponent
       },
       {
         path: 'user',
-          canActivate: [AuthGuard],
+          canActivate: [AuthGuard, TourGuard],
         component: UserComponent
       },
       {
         path: 'uploaduser',
-          canActivate: [AuthGuard],
+          canActivate: [AuthGuard, AdminGuard],
         component: UploaduserComponent
       },
       {
         path: 'touruser',
-          canActivate: [AuthGuard],
+          canActivate: [AuthGuard, AdminGuard],
         component: TourtotaluserComponent
       },
       {
         path: 'tourRevenue',
-          canActivate: [AuthGuard],
+          canActivate: [AuthGuard, AdminGuard],
         component: TourtotalrevenueComponent
       }
 
