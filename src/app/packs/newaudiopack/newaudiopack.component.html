@@ -2,7 +2,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" (click)="close()">&times;</button>
-            <h4 class="modal-title"></h4>
+            <h4 class="modal-title">{{title || ''}}</h4>
         </div>
         <form class="form-horizontal" #audiopack="ngForm" novalidate>
             <div class="modal-body">
@@ -31,14 +31,15 @@
                                             <div>
                                                     <span class="btn btn-rose btn-round btn-file">
                                                     <span class="fileinput-new">Select image</span>
-                                                    <input type="file" name="image" [(ngModel)]="image" (change)="getimage($event)"/>
+                                                    <input type="file" name="image" (change)="getimage($event)"/>
                                                     </span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="fileinput-new thumbnail img-circle col-md-3">
-                                        <img alt="..." src="{{result}}">
+                                    <div *ngIf="result" class="uploaded-img col-md-3">
+                                        <img src="{{result}}" width="100" height="100">
                                     </div>
+
                                 </div>
                                 <div class="row">
                                     <label class="col-md-3 label-on-left">Uploada Audio</label>

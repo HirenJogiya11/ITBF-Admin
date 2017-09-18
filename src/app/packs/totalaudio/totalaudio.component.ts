@@ -4,7 +4,7 @@ import {DialogComponent, DialogService} from 'ng2-bootstrap-modal';
 import {PackService} from '../../service/pack.service';
 import {DeleteaudioComponent} from './deleteaudio/deleteaudio.component';
 import {ModalService} from '../../service/modal.service';
-import {EditaudioComponent} from "../editaudio/editaudio.component";
+
 declare var $: any;
 
 export interface Model {
@@ -37,9 +37,8 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
     }
 
     getsite() {
-        debugger;
         this.sites = this.packservice.getsite(this.data.packname);
-    };
+    }
 
     deleteAudio(i) {
 

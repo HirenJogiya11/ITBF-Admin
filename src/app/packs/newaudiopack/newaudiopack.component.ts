@@ -12,7 +12,7 @@ export interface Model {
 @Component({
     selector: 'app-newaudiopack',
     templateUrl: './newaudiopack.component.html',
-    styleUrls: ['./newaudiopack.component.css']
+    styleUrls: ['../../uploaduser/uploaduser.component.css']
 })
 export class NewaudiopackComponent extends DialogComponent<Model, any> implements OnInit {
 
@@ -38,6 +38,7 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
     }
 
     getimage($event): void {
+        this.image = $event.target.files[0];
         this.readThis($event.target);
     }
 
@@ -65,6 +66,7 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
     // }
 
     getAudio($event): void {
+        this.audio = $event.target.files[0];
         this.res = event.srcElement;
         this.final = this.res.files[0].name;
     }

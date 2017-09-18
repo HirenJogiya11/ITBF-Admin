@@ -19,8 +19,8 @@
                   <tr>
                     <th>Packs</th>
                     <th>Language</th>
+
                     <th></th>
-                    <th>Edit</th>
                     <th>Delete</th>
                   </tr>
                   </thead>
@@ -29,12 +29,7 @@
                     <td>{{site.site.imagefile}}</td>
                     <td>{{site.site.audiofile}}</td>
                     <td></td>
-                    <td>
-                      <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-info"
-                              class="btn btn-danger">
-                        <i class="material-icons">edit</i>
-                      </button>
-                    </td>
+
                     <td>
                       <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-info"
                               class="btn btn-danger" (click)="deleteAudio(i)">
