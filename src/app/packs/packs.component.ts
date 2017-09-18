@@ -5,7 +5,6 @@ import {Pack} from '../model/pack.interface';
 import {AddpackmodalComponent} from './addpackmodal/addpackmodal.component';
 import {NewaudiopackComponent} from './newaudiopack/newaudiopack.component';
 import {TotalaudioComponent} from './totalaudio/totalaudio.component';
-import {EditaudioComponent} from "./editaudio/editaudio.component";
 
 @Component({
     selector: 'app-packs',
@@ -13,13 +12,15 @@ import {EditaudioComponent} from "./editaudio/editaudio.component";
     styleUrls: ['./packs.component.css']
 })
 export class PacksComponent implements OnInit {
-
+    packList = [];
+    counter = 1;
     packs: Pack[];
-    // engcounter: number = 0;
-    // frenchcounter: number = 0;
-    // russiancounter: number;
-    // latincounter: number;
-    // chinesecounter: number;
+    sites: any;
+    engcounter: Number = 0;
+    frenchcounter: number = 0;
+    russiancounter: number = 0;
+    latincounter: number = 0;
+    chinesecounter: number = 0;
 
 
     constructor(private packservice: PackService,
@@ -32,25 +33,36 @@ export class PacksComponent implements OnInit {
 
     getpacks() {
         this.packs = this.packservice.getPack();
+        this.sites = this.packservice.getsites();
 
-        // this.packs.forEach((o) => {
-        //     if (o.language === 'english') {
-        //         this.engcounter += 1;
-        //     }
-        //     if (o.language === 'french') {
-        //         this.frenchcounter++;
-        //     }
-        //     if (o.language === 'russian') {
-        //         this.russiancounter++;
-        //     }
-        //     if (o.language === 'latin') {
-        //         this.latincounter++;
-        //     }
-        //     if (o.language === 'chinese') {
-        //         this.chinesecounter++;
-        //     }
-        // })
+        console.log(this.sites);
+        // this.sites.forEach((o) =>
+        for (let i = 0; i < this.packs.length; i++) {
+            for (let j = 0; j < this.sites.length; j++) {
+
+                if (this.sites[j].language === this.packs[i].language && this.sites[j].packname === this.packs[i].packname) {
+                    if (this.sites[j].packname === this.packs[i].packname) {
+                        this.packList[this.packs[i].packname] = [];
+                        this.packList[this.packs[i].packname].push(this.sites[j]);
+                        // console.log(this.packList);
+                        // this.packList.forEach((o) => {
+                        //     if (o === this.packs[i].packname) {
+                        //         debugger
+                        //         this.counter += 1;
+                        //         this.packList[o] = this.counter;
+                        //         console.log('repeat', this.packList);
+                        //     }
+                        // });
+                    }
+
+                }
+            }
+          console.log('something', this.packList[this.packs[i].packname]);
+        }
+        console.log(this.engcounter);
+        console.log(this.frenchcounter);
     }
+
 
     add() {
         this.modalService.open(AddpackmodalComponent, null)
@@ -70,10 +82,6 @@ export class PacksComponent implements OnInit {
         this.modalService.open(TotalaudioComponent, {title: '', data: pack})
             .subscribe((data) => {
             });
-    }
-
-    EditAudio() {
-        this.modalService.open(EditaudioComponent , null);
     }
 }
 

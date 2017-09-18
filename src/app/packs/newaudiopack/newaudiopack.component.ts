@@ -34,6 +34,7 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
     }
 
     ngOnInit() {
+        console.log('this data', this.data);
     }
 
     getimage($event): void {

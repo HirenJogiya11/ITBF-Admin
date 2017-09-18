@@ -35,6 +35,7 @@ import {AddpackmodalComponent} from './packs/addpackmodal/addpackmodal.component
 import { NewaudiopackComponent } from './packs/newaudiopack/newaudiopack.component';
 import { TotalaudioComponent } from './packs/totalaudio/totalaudio.component';
 import { EditaudioComponent } from './packs/editaudio/editaudio.component';
+import { DeleteaudioComponent } from './packs/totalaudio/deleteaudio/deleteaudio.component';
 
 @NgModule({
     imports: [
@@ -71,9 +72,10 @@ import { EditaudioComponent } from './packs/editaudio/editaudio.component';
         AddpackmodalComponent,
         NewaudiopackComponent,
         TotalaudioComponent,
-        EditaudioComponent
+        EditaudioComponent,
+        DeleteaudioComponent
     ],
-    entryComponents: [AddpackmodalComponent, NewaudiopackComponent , TotalaudioComponent],
+    entryComponents: [AddpackmodalComponent, NewaudiopackComponent , TotalaudioComponent , DeleteaudioComponent],
     providers: [
         PackService,
         ModalService

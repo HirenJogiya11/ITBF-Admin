@@ -25,19 +25,19 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>{{sites.site.imagefile}}</td>
-                    <td>{{sites.site.audiofile}}</td>
+                  <tr *ngFor="let site of sites; let i = index">
+                    <td>{{site.site.imagefile}}</td>
+                    <td>{{site.site.audiofile}}</td>
                     <td></td>
                     <td>
                       <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-info"
-                              class="btn btn-danger" (click)="EditAudio()">
+                              class="btn btn-danger">
                         <i class="material-icons">edit</i>
                       </button>
                     </td>
                     <td>
                       <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-info"
-                              class="btn btn-primary" (click)="TotalAudio()">
+                              class="btn btn-danger" (click)="deleteAudio(i)">
                         <i class="material-icons">clear</i>
                       </button>
                     </td>
