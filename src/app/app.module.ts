@@ -34,6 +34,8 @@ import {TotalaudioComponent} from './packs/totalaudio/totalaudio.component';
 import {EditaudioComponent} from './packs/editaudio/editaudio.component';
 import {DeleteaudioComponent} from './packs/totalaudio/deleteaudio/deleteaudio.component';
 import {DeletemodalComponent} from './uploaduser/deletemodal/deletemodal.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 // service
 import {LoginService} from './services/login.service';
 import {AuthGuard} from "./services/authguard.service";
@@ -41,6 +43,8 @@ import {AdminGuard} from "./services/adminguard.service";
 import {TourGuard} from "./services/tourguard.service";
 import {PackService} from './service/pack.service';
 import {ModalService} from './service/modal.service';
+import {TotalDownloadService} from "./services/totaldownload.service";
+import {MyFilterPipe} from "./totaldownload/myfilter.pipe";
 
 
 @NgModule({
@@ -55,7 +59,8 @@ import {ModalService} from './service/modal.service';
         ModalModule,
         BrowserAnimationsModule,
         ToastrModule.forRoot(),
-        BootstrapModalModule
+        BootstrapModalModule,
+        Ng2SearchPipeModule
 
     ],
     declarations: [
@@ -82,10 +87,18 @@ import {ModalService} from './service/modal.service';
         NewaudiopackComponent,
         TotalaudioComponent,
         EditaudioComponent,
-        DeleteaudioComponent
+        DeleteaudioComponent,
+        MyFilterPipe
+
     ],
-    providers: [PackService,
-        ModalService, LoginService, AuthGuard, AdminGuard, TourGuard],
+    providers: [
+        PackService,
+        ModalService,
+        LoginService,
+        TotalDownloadService,
+        AuthGuard,
+        AdminGuard,
+        TourGuard],
     bootstrap: [AppComponent],
     entryComponents: [
         AddpackmodalComponent,

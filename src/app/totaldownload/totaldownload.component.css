@@ -1,0 +1,7 @@
+.table > thead > tr > th {
+    font-size: 14px;
+    font-style: oblique;
+}
+.table > thead > tr > td {
+    font-size: 8px;
+}
