@@ -33,6 +33,7 @@ export class TotaldownloadComponent implements OnInit {
     }
 
     ngOnInit() {
+
         if ($('.selectpicker').length !== 0) {
             $('.selectpicker').selectpicker();
         }
@@ -50,7 +51,7 @@ export class TotaldownloadComponent implements OnInit {
                 //     this.dataTable.dataRows.push(this.wholeArray.shift());
                 // }
 
-                var that = this;
+                let that = this;
                 setTimeout(function () {
                     that.dataTableConfig();
                     // that.addNewItem();

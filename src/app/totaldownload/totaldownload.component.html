@@ -96,7 +96,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let row of dataTable.dataRows ; let i of index ">
+                <tr *ngFor="let row of dataTable.dataRows | searchfilter: 'userId' : userid ; let i of index ">
                   <td>{{row.userId}}</td>
                   <td>{{row.id}}</td>
                   <td>{{row.title}}</td>

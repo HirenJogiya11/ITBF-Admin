@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ToastrService} from "toastr-ng2";
 
 @Component({
   selector: 'app-introduction',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./introduction.component.css']
 })
 export class IntroductionComponent implements OnInit {
+    button:boolean;
     result:any;
     imageName:string = null;
     res:any;
@@ -14,7 +16,7 @@ export class IntroductionComponent implements OnInit {
     imagedata:any = [];
     audiodata:any = [];
     formdata:FormData;
-  constructor() { }
+  constructor( private toastrService: ToastrService) { }
 
   ngOnInit() {
   }
@@ -22,6 +24,7 @@ export class IntroductionComponent implements OnInit {
 
        this.imagedata = $event.target.files[0];
         this.readThis($event.target);
+
     }
 
     readThis(inputValue:any):void {
@@ -33,27 +36,36 @@ export class IntroductionComponent implements OnInit {
             // Base64 data console.log(this.result);
             this.imageName = file.name;
             // image Name  console.log(this.imageName);
+            if(this.result && this.final) {
+                this.button = true;
+            }
         };
         myReader.readAsDataURL(file);
+
     }
     onChangemp($event):void {
       this.audiodata = $event.target.files[0];
     this.res = event.srcElement;
     this.final = this.res.files[0].name;
+        if(this.result && this.final) {
+            this.button = true;
+        }
     }
 
     save() {
-      debugger
-        this.formdata = new FormData();
 
-                this.formdata.append('image file', this.imagedata, this.imagedata.name);
-                this.formdata.append('audio file', this.audiodata, this.audiodata.name);
-                console.log(this.formdata);
-        // Add file data
-        // this.audiopackservice.addaudiopack(this.formdata)
-        //     .subscribe((response: Response) => {
-        //         console.log('save');
-        //     });
-
+          this.formdata = new FormData();
+          this.formdata.append('image file', this.imagedata, this.imagedata.name);
+          this.formdata.append('audio file', this.audiodata, this.audiodata.name);
+          console.log(this.formdata);
+          // Add file data
+          // this.audiopackservice.addaudiopack(this.formdata)
+          //     .subscribe((response: Response) => {
+          //         console.log('save');
+          //     });
+        this.toastrService.success('Successfully File Uploaded ');
+        this.result=null;
+        this.final=null;
+            this.button = false;
     }
 }

@@ -45,7 +45,7 @@ export class TotalrevenueComponent implements OnInit {
                 //     this.dataTable.dataRows.push(this.wholeArray.shift());
                 // }
 
-                var that = this;
+                let that = this;
                 setTimeout(function () {
                     that.dataTableConfig();
                     // that.addNewItem();
