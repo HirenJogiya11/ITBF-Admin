@@ -1,8 +1,8 @@
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">            
-            <h4 class="modal-title">{{title || ''}}</h4>
-            <button type="button" class="close" (click)="close()">&times;</button>
+            <h4 class="modal-title"></h4>
+            <button type="button" class="close" (click)="close(); clear(addpack)">&times;</button>
         </div>
         <form class="form-horizontal" #addpack="ngForm" novalidate>
         <div class="modal-body">
@@ -35,8 +35,11 @@
                                 <div class="col-md-9">
                                         <div class="form-group label-floating is-empty">
                                             <label class="control-label"></label>
-                                            <input class="form-control" type="text" name="packname" [(ngModel)]="packname">
+                                            <input class="form-control" type="text" name="packsname" [(ngModel)]="packname" required #packsname="ngModel">
                                             <span class="material-input"></span></div>
+                                    <small *ngIf="!packsname.valid && (packsname.dirty || packsname.touched)" class="text-danger">
+                                        PackName is Require
+                                    </small>
                                     </div>
                                 </div>
 
@@ -46,21 +49,21 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" (click)="OnSubmit(addpack) ; close()">OK</button>
-            <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!addpack.valid" (click)="OnSubmit(addpack) ; close(); clear(addpack)">OK</button>
+            <button type="button" class="btn btn-default" (click)="close(); clear(addpack)">Cancel</button>
         </div>
         </form>
 
     </div>
 </div>
-<script type="text/javascript">
+<!--<script type="text/javascript">-->
 
 
 
 
-    jQuery('.bootstrap-select').toggleClass('open');
-    jQuery('.dropdown-toggle').click(function() {
-        jQuery('.bootstrap-select').toggleClass('open');
-    });
+    <!--jQuery('.bootstrap-select').toggleClass('open');-->
+    <!--jQuery('.dropdown-toggle').click(function() {-->
+        <!--jQuery('.bootstrap-select').toggleClass('open');-->
+    <!--});-->
 
-</script>
+<!--</script>-->

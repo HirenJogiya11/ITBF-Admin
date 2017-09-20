@@ -12,8 +12,8 @@ import {AuthLayoutComponent} from './layouts/auth/auth-layout.component';
 import {AppRoutes} from './app-routing.module';
 import {NavbarModule} from './shared/navbar/navbar.module';
 import {FooterModule} from './shared/footer/footer.module';
-import {ModalModule} from "ng2-modal";
-import {DashboardComponent} from "./dashboard/dashboard.component";
+import {ModalModule} from 'ng2-modal';
+import {DashboardComponent} from './dashboard/dashboard.component';
 import {ToastrModule} from 'toastr-ng2';
 import {PagenotfoundComponent} from './pagenotfound/pagenotfound.component';
 import {IntroductionComponent} from './introduction/introduction.component';
@@ -36,11 +36,12 @@ import {DeleteaudioComponent} from './packs/totalaudio/deleteaudio/deleteaudio.c
 import {DeletemodalComponent} from './uploaduser/deletemodal/deletemodal.component';
 // service
 import {LoginService} from './services/login.service';
-import {AuthGuard} from "./services/authguard.service";
-import {AdminGuard} from "./services/adminguard.service";
-import {TourGuard} from "./services/tourguard.service";
+import {AuthGuard} from './services/authguard.service';
+import {AdminGuard} from './services/adminguard.service';
+import {TourGuard} from './services/tourguard.service';
 import {PackService} from './service/pack.service';
 import {ModalService} from './service/modal.service';
+import {Ng2FileRequiredModule} from 'ng2-file-required';
 
 
 @NgModule({
@@ -55,17 +56,16 @@ import {ModalService} from './service/modal.service';
         ModalModule,
         BrowserAnimationsModule,
         ToastrModule.forRoot(),
-        BootstrapModalModule
+        BootstrapModalModule,
+        Ng2FileRequiredModule
 
     ],
     declarations: [
         AppComponent,
-
         AdminLayoutComponent,
         AuthLayoutComponent,
         DashboardComponent,
         PagenotfoundComponent,
-
         IntroductionComponent,
         PacksComponent,
         AnalyticsComponent,
@@ -82,7 +82,8 @@ import {ModalService} from './service/modal.service';
         NewaudiopackComponent,
         TotalaudioComponent,
         EditaudioComponent,
-        DeleteaudioComponent
+        DeleteaudioComponent,
+
     ],
     providers: [PackService,
         ModalService, LoginService, AuthGuard, AdminGuard, TourGuard],

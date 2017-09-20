@@ -1,41 +1,66 @@
 import {Pack} from '../model/pack.interface';
 import {Site} from '../model/site.interface';
+import {Http, Response} from "@angular/http";
+import {Injectable} from "@angular/core";
+import {Observable} from "rxjs/Observable";
 
 
+const packurl: string = 'http://localhost:3000/pack/addpack';
+const getPack: string = 'http://localhost:3000/pack/pack/';
+const addsiteurl: string = 'http://localhost:3000/pack/addsite';
+@Injectable()
 export class PackService {
 
-    private packs: Pack[] = [
-        new Pack('englishpack', 'english'),
-        new Pack('englishpack1', 'english'),
-        new Pack('frenchpack', 'french'),
-        new Pack('russianpack', 'russian'),
-        new Pack('latinpack', 'latin'),
-        new Pack('chinesepack', 'chinese')
+
+    constructor(private http: Http) {
+    }
+
+    private packs = [
+        ['englishpack', 'english'],
+        ['englishpack1', 'english'],
+        ['frenchpack', 'french'],
+        ['russianpack', 'russian'],
+        ['latinpack', 'latin'],
+        ['chinesepack', 'chinese']
     ];
 
     private sites: Site[] = [
-        new Site('englishpack', 'english', {'sitename': 'engsite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
-        new Site('englishpack1', 'english', {'sitename': 'engsite', 'imagefile': 'image52', 'audiofile': 'audio2'}),
-        new Site('frenchpack', 'french', {'sitename': 'frenchsite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
-        new Site('russianpack', 'russian', {'sitename': 'russiansite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
-        new Site('englishpack', 'english', {'sitename': 'eng1site', 'imagefile': 'image52', 'audiofile': 'audio2'}),
-        new Site('latinpack', 'latin', {'sitename': 'latinsite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
-        new Site('chinesepack', 'chinese', {'sitename': 'chinesesite', 'imagefile': 'image1', 'audiofile': 'audio1'})
+        new Site('1', {'sitename': 'engsite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
+        new Site('2', {'sitename': 'engsite', 'imagefile': 'image52', 'audiofile': 'audio2'}),
+        new Site('3', {'sitename': 'frenchsite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
+        new Site('4', {'sitename': 'russiansite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
+        new Site('5', {'sitename': 'eng1site', 'imagefile': 'image52', 'audiofile': 'audio2'}),
+        new Site('6', {'sitename': 'latinsite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
+        new Site('7', {'sitename': 'chinesesite', 'imagefile': 'image1', 'audiofile': 'audio1'})
     ];
 
 
     getPack() {
         return this.packs.slice();
+
     }
 
-    addaudiopack(pack: Pack) {
-        this.packs.push(pack);
-        this.getPack()
-        console.log('total packs', this.packs);
+    // getPack(): Observable<any> {
+    //     return this.http
+    //         .get(getPack).map((response: Response) => response.json());
+    // }
+
+
+    addaudiopack(pack) {
+        return this.http.post(addsiteurl, pack);
+
+        // this.packs.push(pack);
+        // console.log(this.packs);
+
+
     }
 
-    addnewsite(site: Site) {
-        this.sites.push(site);
+    addnewsite(site) {
+        // return this.http.post(addsiteurl, formdata).map((response: Response) => {
+        //     return response.json();
+        // });
+         this.sites.push(site);
+
     }
 
     getsites() {
@@ -43,12 +68,12 @@ export class PackService {
     }
 
     getsite(name) {
-        return this.sites.filter((obj) => obj.packname === name);
+        return this.sites.filter((obj) => obj.packid === name);
     }
 
     deleteaudio(index) {
         debugger;
-        this.sites.splice(index , 1);
-        console.log('delete site is' , this.sites);
+        this.sites.splice(index, 1);
+        console.log('delete site is', this.sites);
     }
 }
