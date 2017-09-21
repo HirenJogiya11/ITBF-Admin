@@ -33,11 +33,14 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
     }
 
     ngOnInit() {
+
         this.getsite();
+
     }
 
     getsite() {
-        this.sites = this.packservice.getsite(this.data.packname);
+        this.sites = this.packservice.getsite(this.data);
+        console.log('Total data',this.sites);
     }
 
     deleteAudio(i) {

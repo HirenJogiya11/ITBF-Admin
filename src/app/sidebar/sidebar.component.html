@@ -129,6 +129,14 @@
                       <p>Packs</p>
                     </a>
                   </li>
+                    <li routerLinkActive="active" *ngIf="!isTourOperator">
+                        <a  [routerLink]="[menuItems[5].path]">
+                            <i class="{{menuItems[1].icon}}">
+                                U
+                            </i>
+                            <p>User</p>
+                        </a>
+                    </li>
 
 
                   <li routerlinkactive="active" class="active" *ngIf="!isTourOperator">
@@ -156,7 +164,7 @@
                             </a>
                         </li>
                         <li routerLinkActive="active" *ngIf="!isTourOperator">
-                            <a  [routerLink]="[menuItems[5].path]">
+                            <a  [routerLink]="[menuItems[9].path]">
                                 <i class="{{menuItems[1].icon}}">
                                   U
                                 </i>

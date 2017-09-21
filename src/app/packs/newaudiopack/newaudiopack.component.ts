@@ -26,13 +26,14 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
     res: any;
     final: any;
 
-    result: any = [];
+    result: string;
 
     constructor(private dialogservice: DialogService, private packservice: PackService) {
         super(dialogservice);
     }
 
     ngOnInit() {
+
         console.log('this id', this.data[0]);
     }
 

@@ -1,6 +1,5 @@
 import {Component, OnInit } from '@angular/core';
 import {TotalDownloadService} from "../services/totaldownload.service";
-import {MyFilterPipe} from "./myfilter.pipe";
 
 declare interface DataTable {
     headerRow: string[];
@@ -14,13 +13,8 @@ declare var $: any;
     selector: 'app-totaldownload',
     templateUrl: './totaldownload.component.html',
     styleUrls: ['./totaldownload.component.css'],
-    // pipes: [ MyFilterPipe ],
 })
 export class TotaldownloadComponent implements OnInit {
-    dataFilter;
-    download: any = [];
-    userid;
-    changedata;
     public dataTable: DataTable;
     public loading = false;
     public table: any;
@@ -31,41 +25,28 @@ export class TotaldownloadComponent implements OnInit {
 
     constructor(private totalDownloadService: TotalDownloadService) {
     }
-
     ngOnInit() {
 
         if ($('.selectpicker').length !== 0) {
             $('.selectpicker').selectpicker();
         }
-
-
         this.dataTable = {
-            headerRow: ['User Id', 'Id', 'Title', 'completed'],
+            headerRow: ['Tour', 'Amount'],
             dataRows: []
         };
         this.totalDownloadService.totalDownload().subscribe(
             data => {
-                debugger;
+                ;
                 this.dataTable.dataRows = data;
                 // for (let i = 0; i < 30; i++) {
                 //     this.dataTable.dataRows.push(this.wholeArray.shift());
                 // }
-
                 let that = this;
                 setTimeout(function () {
                     that.dataTableConfig();
                     // that.addNewItem();
                 });
             });
-    }
-    useridChange(event){
-        this.userid = event.target.value;
-        console.log(this.userid);
-        this.dataFilter = {'userId': this.userid};
-    }
-    data(e){
-        this.changedata=e.target.value;
-        console.log(this.changedata);
     }
 
     // addNewItem() {

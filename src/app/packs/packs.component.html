@@ -11,7 +11,7 @@
                 <div class="card-content">
 
                     <h4 class="card-title">Packs</h4>
-                    <div class="material-datatables table-responsive">
+                   <div class="material-datatables table-responsive">
                         <table id="datatables" class="table table-striped table-no-bordered table-hover"
                                cellspacing="0" width="100%" style="width:100%">
                             <thead>
@@ -23,10 +23,10 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr *ngFor="let row of datatable.dataRows">
+                            <tr *ngFor="let row of datatable.dataRows;  let i = index">
                                 <td>{{row[0]}}</td>
                                 <td>{{row[1]}}</td>
-                                <td>
+                                 <td>
                                     <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-success"
                                             class="btn btn-primary" (click)="Newaudio(row)">
                                         <i class="material-icons">add</i>
@@ -34,10 +34,21 @@
                                 </td>
                                 <td>
                                     <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-info"
-                                            class="btn btn-danger" (click)="TotalAudio(row)">
-                                        <i></i>
+                                            class="btn btn-danger" (click)="TotalAudio(i)">
+                                        <i>{{i}}</i>
                                     </button>
                                 </td>
+                                <!--<div *ngFor="let c of co; let j = index">-->
+                                    <!--<ng-template #elseblock>-->
+                                        <!--0-->
+                                    <!--</ng-template>-->
+                                    <!--<td *ngIf="j === i+1">-->
+                                    <!--<button rel="tooltip" type="button" ng-reflect-class-name="btn btn-info"-->
+                                            <!--class="btn btn-danger" (click)="TotalAudio(i)">-->
+                                        <!--<i *ngIf="c; else elseblock">{{c}}</i>-->
+                                    <!--</button>-->
+                                    <!--</td>-->
+                                <!--</div>-->
                             </tr>
                             </tbody>
                         </table>

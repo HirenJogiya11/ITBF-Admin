@@ -12,7 +12,8 @@ export class IntroductionComponent implements OnInit {
     imageName:string = null;
     res:any;
     final: string;
-    audioName:string = null;
+    image:string;
+    audio:string;
     imagedata:any = [];
     audiodata:any = [];
     formdata:FormData;
@@ -23,7 +24,16 @@ export class IntroductionComponent implements OnInit {
     onChange($event):void {
 
        this.imagedata = $event.target.files[0];
-        this.readThis($event.target);
+       this.image= this.imagedata.type.toString();
+        this.image = this.image.slice(0, 5).toString();
+        if(this.image === 'image') {
+            this.readThis($event.target);
+            this.toastrService.success('Image Selected');
+        }
+        else
+        {
+            this.toastrService.error('Please, Select valid Image file');
+        }
 
     }
 
@@ -45,13 +55,30 @@ export class IntroductionComponent implements OnInit {
     }
     onChangemp($event):void {
       this.audiodata = $event.target.files[0];
-    this.res = event.srcElement;
-    this.final = this.res.files[0].name;
+        this.audio = this.audiodata.type.toString();
+        this.audio = this.audio.slice(0, 5).toString();
+        console.log(this.audio);
+        if(this.audio === 'audio') {
+            this.res = event.srcElement;
+            this.final = this.res.files[0].name;
+            this.toastrService.success('Audio Selected');
+        }
+        else
+        {
+            this.toastrService.error('Please, Select valid Audio file');
+        }
         if(this.result && this.final) {
             this.button = true;
         }
     }
-
+    daleteImage(){
+      this.result = null;
+            this.button = false;
+ }
+    daleteAudio(){
+        this.final = null;
+        this.button = false;
+    }
     save() {
 
           this.formdata = new FormData();

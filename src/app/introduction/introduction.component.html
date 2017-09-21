@@ -7,46 +7,104 @@
             </div>
             <div class="card-content">
                 <h4 class="card-title">Introduction</h4>
-                <form #introduction="ngForm" class="navbar-form" role="search" >
+                <form #introduction="ngForm" class="navbar-form" role="search">
                     <div class="row">
                         <div class=" col-md-12">
-                            <div class="form-group col-md-6">
-                     <span file="" class="btn btn-rose btn-round btn-file">
-                                    <span file="" class="fileinput-new">Select Cover Image</span>
-                                <div class="ripple-container"></div></span>
-                                <input type="file" name="upload" id="file" accept="image/*"
-                                       (change)="onChange($event)"/>
+                            <div class="col-md-5 col-md-offset-1">
+                                <div *ngIf="!result" class="fileinput-new thumbnail">
+                                    <img alt="..." src="../../assets/img/image_placeholder.jpg">
+                                </div>
+                                <div *ngIf="result" class="fileinput-new thumbnail">
+                                    <img src="{{result}}"  width="307.5" height="230.63">
+                                </div>
+                                <div *ngIf="!result" class="form-group col-md-10">
+                      <span file="" class="btn btn-rose btn-round btn-file">
+                                    <span file="" class="fileinput-new">Select Cover File</span>
+                                <div class="ripple-container"></div></span><input type="file" name="upload" id="file"
+                                                                                  accept="image/*"
+                                                                                  (change)="onChange($event)"/>
+                                </div>
+                                <div *ngIf="result">
+                                    <div class="form-group col-md-6 ">
+                      <span file1="" class="btn btn-rose btn-round btn-file">
+                                    <span file1="" class="fileinput-new">Change</span>
+                                <div class="ripple-container"></div></span><input type="file" name="upload" id="file1"
+                                                                                  accept="image/*"
+                                                                                  (change)="onChange($event)"/>
+                                    </div>
+                                    <div class="form-group col-md-4 pull-left">
+                                        <button class="btn btn-danger btn-round fileinput-exists pull-left"
+                                                (click)="daleteImage()">
+                                            <i class="fa fa-times"></i>Remove
+                                            <div class="ripple-container"></div>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                            <div *ngIf="result" class="uploaded-img col-md-3">
-                                <img src="{{result}}" width="200" height="200">
+                            <div class="col-md-5 col-md-offset-1">
+                                <div *ngIf="!final" class="fileinput-new thumbnail">
+                                    <img alt="..." src="../../assets/img/image_placeholder.jpg">
+                                </div>
+                                <div *ngIf="final" class="fileinput-new thumbnail spacer">
+                                    <br/><br/>
+                                    <span><b>File Name:<br/>{{final}}</b></span>
+                                   <br/><br/>
+                                    <audio controls>
+
+                                    </audio>
+                                </div>
+
+                                <div *ngIf="!final" class="form-group col-md-10">
+                      <span imagefile="" class="btn btn-rose btn-round btn-file">
+                                    <span imagefile="" class="fileinput-new">Select Audio File</span>
+                                <div class="ripple-container"></div></span><input type="file" name="upload" id="imagefile"
+                                                                                  accept="audio/*"
+                                                                                  (change)="onChangemp($event)"/>
+                                </div>
+                                <div *ngIf="final">
+                                    <div class="form-group col-md-6 ">
+                      <span imagefile1="" class="btn btn-rose btn-round btn-file">
+                                    <span imagefile1="" class="fileinput-new">Change</span>
+                                <div class="ripple-container"></div></span><input type="file" name="upload" id="imagefile1"
+                                                                                  accept="audio/*"
+                                                                                  (change)="onChangemp($event)"/>
+                                    </div>
+                                    <div class="form-group col-md-4 pull-left">
+                                        <button class="btn btn-danger btn-round fileinput-exists pull-left"
+                                                (click)="daleteAudio()">
+                                            <i class="fa fa-times"></i>Remove
+                                            <div class="ripple-container"></div>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <br/>
-                    <div class="row">
-                        <div class=" col-md-12">
-                            <div class="form-group col-md-6">
-                      <span file1="" class="btn btn-rose btn-round btn-file">
-                                    <span file1="" class="fileinput-new">Select Audio File</span>
-                                <div class="ripple-container"></div></span><input type="file" name="upload" id="file1"
-                                                                                  accept="audio/*"
-                                                                                  (change)="onChangemp($event)"/>
-                            </div>
-                            <br/>
-                            <div class="col-md-3">
-                                <span>{{final}}</span>
-                            </div>
+                    <!--<div class="row">-->
+                        <!--<div class=" col-md-12">-->
+                            <!--<div class="form-group col-md-6">-->
+                      <!--<span file1="" class="btn btn-rose btn-round btn-file">-->
+                                    <!--<span file1="" class="fileinput-new">Select Audio File</span>-->
+                                <!--<div class="ripple-container"></div></span><input type="file" name="upload" id="file1"-->
+                                                                                  <!--accept="audio/*"-->
+                                                                                  <!--(change)="onChangemp($event)"/>-->
+                            <!--</div>-->
+                            <!--<br/>-->
+                            <!--<div class="col-md-3">-->
+                                <!--<span>{{final}}</span>-->
+                            <!--</div>-->
 
-                        </div>
-                    </div>
+                        <!--</div>-->
+                    <!--</div>-->
                 </form>
                 <div class="row">
-                    <div class=" col-md-6" *ngIf="button">
+                    <div class=" col-md-12" *ngIf="button">
                         <button class="btn btn-primary pull-right" (click)="save()">Save
                             <div class="ripple-container"></div>
                         </button>
                     </div>
-                    <div class=" col-md-6" *ngIf="!button">
+                    <div class=" col-md-12" *ngIf="!button">
                         <button class="btn btn-primary pull-right" disabled (click)="save()">Save
                             <div class="ripple-container"></div>
                         </button>

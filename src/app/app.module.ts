@@ -44,7 +44,7 @@ import {TourGuard} from "./services/tourguard.service";
 import {PackService} from './service/pack.service';
 import {ModalService} from './service/modal.service';
 import {TotalDownloadService} from "./services/totaldownload.service";
-import {MyFilterPipe} from "./totaldownload/myfilter.pipe";
+import { AnalyticUserComponent } from './analytic-user/analytic-user.component';
 
 
 @NgModule({
@@ -86,7 +86,7 @@ import {MyFilterPipe} from "./totaldownload/myfilter.pipe";
         TotalaudioComponent,
         EditaudioComponent,
         DeleteaudioComponent,
-        MyFilterPipe
+        AnalyticUserComponent
 
     ],
     providers: [

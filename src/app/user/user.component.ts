@@ -67,7 +67,7 @@ export class UserComponent implements OnInit {
     openModal(){
         this.dialogService.addDialog(UsermodalComponent, {index: undefined, data:{}}, {backdropColor: 'rgba(0, 0, 0, 0.5)'})
             .subscribe((data)=>{
-                if(data.userForm) {
+                if(data && data.userForm) {
                   //  Add Api
                     this.model.push(data.userForm);
                 }

@@ -45,9 +45,9 @@ export class LoginComponent implements OnInit{
     }
 
     login(admin) {
-        // window.location.href = '/dashboard';
-        // localStorage.setItem("role",'Admin');
-        // localStorage.setItem("token",'argvefbvfjbvdfsjbsdbsbsdnkjbsdfbfdksblnjk');
+        window.location.href = '/dashboard';
+        localStorage.setItem("role",'Admin');
+        localStorage.setItem("token",'argvefbvfjbvdfsjbsdbsbsdnkjbsdfbfdksblnjk');
       this.loginService.login(admin).subscribe(
         response => {
             console.log(response);

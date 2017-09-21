@@ -13,16 +13,11 @@ declare var $: any;
 })
 export class TotalrevenueComponent implements OnInit {
     dataFilter;
-    download: any = [];
-    userid;
-    changedata;
     public dataTable: DataTable;
     public loading = false;
     public table: any;
     public wholeArray: any;
     public DataInterval: any;
-    Touroperator = ['a', 'b', 'c', 'd'];
-    Geography = ['Goa', 'Lonawala', 'Saputara'];
 
     constructor(private totalDownloadService: TotalDownloadService) {
     }
@@ -39,7 +34,7 @@ export class TotalrevenueComponent implements OnInit {
         };
         this.totalDownloadService.totalDownload().subscribe(
             data => {
-                debugger;
+                ;
                 this.dataTable.dataRows = data;
                 // for (let i = 0; i < 30; i++) {
                 //     this.dataTable.dataRows.push(this.wholeArray.shift());
@@ -52,16 +47,6 @@ export class TotalrevenueComponent implements OnInit {
                 });
             });
     }
-    useridChange(event){
-        this.userid = event.target.value;
-        console.log(this.userid);
-        this.dataFilter = {'userId': this.userid};
-    }
-    data(e){
-        this.changedata=e.target.value;
-        console.log(this.changedata);
-    }
-
     // addNewItem() {
     //
     //     var that = this;

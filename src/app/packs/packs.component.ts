@@ -24,8 +24,7 @@ export class PacksComponent implements OnInit {
 
     public datatable: DataTable;
     public wholeArray: any;
-    packList = [];
-    counter = 1;
+    co = [];
     table: any
     packs: any;
     sites: any;
@@ -44,6 +43,8 @@ export class PacksComponent implements OnInit {
             dataRows: []
         };
         this.getpacks();
+        this.co = this.packservice.getcountsite();
+        console.log(this.co);
     }
 
     getpacks() {
@@ -97,10 +98,9 @@ export class PacksComponent implements OnInit {
             });
     }
 
-    TotalAudio(pack) {
-        this.modalService.open(TotalaudioComponent, {title: '', data: pack})
+    TotalAudio(i) {
+        this.modalService.open(TotalaudioComponent, {title: '', data: i})
             .subscribe((data) => {
-
             });
     }
 }

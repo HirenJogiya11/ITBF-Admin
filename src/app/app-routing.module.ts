@@ -18,6 +18,7 @@ import {LoginComponent} from './login/login.component';
 import {AuthGuard} from "./services/authguard.service";
 import {AdminGuard} from "./services/adminguard.service";
 import {TourGuard} from "./services/tourguard.service";
+import {AnalyticUserComponent} from "./analytic-user/analytic-user.component";
 
 export const AppRoutes: Routes = [
     {
@@ -64,6 +65,11 @@ export const AppRoutes: Routes = [
           canActivate: [AuthGuard, TourGuard],
         component: UserComponent
       },
+        {
+            path: 'analyticUser',
+            canActivate: [AuthGuard, TourGuard],
+            component: AnalyticUserComponent
+        },
       {
         path: 'uploaduser',
           canActivate: [AuthGuard, AdminGuard],
