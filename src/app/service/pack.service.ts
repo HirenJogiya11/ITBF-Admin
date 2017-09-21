@@ -67,8 +67,8 @@ export class PackService {
         return this.sites.slice();
     }
 
-    getsite(name) {
-        return this.sites.filter((obj) => obj.packid === name);
+    getsite(i) {
+        return this.sites.filter((obj) => obj.packid === i);
     }
 
     deleteaudio(index) {

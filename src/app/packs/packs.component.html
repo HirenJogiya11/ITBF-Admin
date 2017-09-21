@@ -23,18 +23,18 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr *ngFor="let row of datatable.dataRows">
+                            <tr *ngFor="let row of datatable.dataRows; let i of index  ">
                                 <td>{{row[0]}}</td>
                                 <td>{{row[1]}}</td>
                                 <td>
                                     <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-success"
-                                            class="btn btn-primary" (click)="Newaudio(row)">
+                                            class="btn btn-primary" (click)="dummyaudio(row)">
                                         <i class="material-icons">add</i>
                                     </button>
                                 </td>
                                 <td>
                                     <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-info"
-                                            class="btn btn-danger" (click)="TotalAudio(row)">
+                                            class="btn btn-danger" (click)="TotalAudio(i)">
                                         <i></i>
                                     </button>
                                 </td>

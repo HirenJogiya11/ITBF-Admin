@@ -6,6 +6,7 @@ import {AddpackmodalComponent} from './addpackmodal/addpackmodal.component';
 import {NewaudiopackComponent} from './newaudiopack/newaudiopack.component';
 import {TotalaudioComponent} from './totalaudio/totalaudio.component';
 import {Response} from '@angular/http';
+import {DummyComponent} from '../../../../angular4demo/src/app/Shared/dummy/dummy.component';
 
 declare interface DataTable {
     headerRow: string[];
@@ -97,8 +98,18 @@ export class PacksComponent implements OnInit {
             });
     }
 
-    TotalAudio(pack) {
-        this.modalService.open(TotalaudioComponent, {title: '', data: pack})
+    dummyaudio(pack) {
+        this.modalService.open(DummyComponent, {title: '', data: pack})
+            .subscribe((data) => {
+                // this.sites = this.packservice.getsites();
+                // console.log(this.sites);
+            });
+    }
+
+
+
+    TotalAudio(i) {
+        this.modalService.open(TotalaudioComponent, {title: '', data: i})
             .subscribe((data) => {
 
             });

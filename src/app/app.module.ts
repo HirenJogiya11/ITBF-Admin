@@ -42,6 +42,8 @@ import {TourGuard} from './services/tourguard.service';
 import {PackService} from './service/pack.service';
 import {ModalService} from './service/modal.service';
 import {Ng2FileRequiredModule} from 'ng2-file-required';
+import { DummyComponent } from '../../../angular4demo/src/app/Shared/dummy/dummy.component';
+import { FileUpload } from 'ng2-fileupload';
 
 
 @NgModule({
@@ -57,7 +59,7 @@ import {Ng2FileRequiredModule} from 'ng2-file-required';
         BrowserAnimationsModule,
         ToastrModule.forRoot(),
         BootstrapModalModule,
-        Ng2FileRequiredModule
+        Ng2FileRequiredModule,
 
     ],
     declarations: [
@@ -83,6 +85,8 @@ import {Ng2FileRequiredModule} from 'ng2-file-required';
         TotalaudioComponent,
         EditaudioComponent,
         DeleteaudioComponent,
+        DummyComponent,
+        FileUpload
 
     ],
     providers: [PackService,
@@ -94,7 +98,8 @@ import {Ng2FileRequiredModule} from 'ng2-file-required';
         TotalaudioComponent,
         DeleteaudioComponent,
         UsermodalComponent,
-        DeletemodalComponent
+        DeletemodalComponent,
+        DummyComponent
     ]
 })
 export class AppModule {
