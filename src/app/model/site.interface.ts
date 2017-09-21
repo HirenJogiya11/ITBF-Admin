@@ -1,9 +1,8 @@
 export class    Site {
     constructor(
-        public packname: string,
-        public language: string,
+        public packid: string,
         public site: {
-            sitename: string,
+            sitename: String,
             imagefile: any,
             audiofile: any
         }

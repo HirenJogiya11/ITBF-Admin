@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-
 import {DialogComponent, DialogService} from 'ng2-bootstrap-modal';
 import {NgForm} from '@angular/forms';
 import {PackService} from '../../service/pack.service';
-import {Site} from "../../model/site.interface";
+import {Site} from '../../model/site.interface';
 
 export interface Model {
     title: string ;
@@ -34,18 +33,19 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
     }
 
     ngOnInit() {
-        console.log('this data', this.data);
+        console.log('this id', this.data[0]);
     }
 
     getimage($event): void {
         this.image = $event.target.files[0];
+        this.imagefile = this.image.name;
+        console.log(this.imagefile);
         this.readThis($event.target);
     }
 
     readThis(inputValue: any): void {
         const file: File = inputValue.files[0];
         const myReader: FileReader = new FileReader();
-        console.log(file);
         myReader.onloadend = (e) => {
             this.result = myReader.result;
             // Base64 data console.log(this.result);
@@ -55,37 +55,28 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
         myReader.readAsDataURL(file);
     }
 
-    // getimage(event) {
-    //     this.image = event.target.files[0];
-    //     this.imagefile = this.image;
-    //     console.log(this.image);
-    // }
-
-    // getAudio(event) {
-    //     this.audio = event.target.files[0];
-    // }
-
     getAudio($event): void {
         this.audio = $event.target.files[0];
         this.res = event.srcElement;
         this.final = this.res.files[0].name;
     }
 
-    OnSubmit(audiopack: NgForm) {
-
-        const site = new Site(
-            this.data.packname,
-            this.data.language,
-            {
-                'sitename': this.Sitename,
-                'imagefile': this.image,
-                'audiofile': this.audio,
-            }
-        );
-
+    OnSubmit() {
+        const site = {
+            packid: this.data._id,
+            site: {sitename: this.Sitename, imagefile: this.image, audiofile: this.audio}
+        };
         this.packservice.addnewsite(site);
+        // this.formdata = new FormData();
+        //
+        // this.formdata.append('packid', this.data._id);
+        // this.formdata.append('sitename', this.Sitename);
+        // this.formdata.append('imagefile', this.image);
+        // this.formdata.append('audiofile', this.audio);
 
     }
 
-
+    clear(audiopack: NgForm) {
+        audiopack.reset();
+    }
 }

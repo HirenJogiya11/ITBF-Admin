@@ -1,8 +1,8 @@
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-            <button type="button" class="close" (click)="close()">&times;</button>
-            <h4 class="modal-title">{{title || ''}}</h4>
+            <button type="button" class="close" (click)="close(); clear(audiopack)">&times;</button>
+            <h4 class="modal-title"></h4>
         </div>
         <form class="form-horizontal" #audiopack="ngForm" novalidate>
             <div class="modal-body">
@@ -19,9 +19,12 @@
                                     <div class="col-md-9">
                                         <div class="form-group label-floating is-empty">
                                             <label class="control-label"></label>
-                                            <input class="form-control" type="text" name="Sitename"
-                                                   [(ngModel)]="Sitename">
+                                            <input class="form-control" type="text" name="Sitesname"
+                                                   [(ngModel)]="Sitename" #Sitesname="ngModel" required>
                                             <span class="material-input"></span></div>
+                                        <small *ngIf="!Sitesname.valid && (Sitesname.dirty || Sitesname.touched)" class="text-danger">
+                                            Sitesname is Require
+                                        </small>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -29,9 +32,11 @@
                                     <div class="col-md-6">
                                         <div class="form-group label-floating is-empty">
                                             <div>
-                                                    <span class="btn btn-rose btn-round btn-file">
+                                                <span class="btn btn-rose btn-round btn-file">
                                                     <span class="fileinput-new">Select image</span>
-                                                    <input type="file" name="image" (change)="getimage($event)"/>
+                                                    <input type="file" name="covimage"
+                                                           accept="image/*"
+                                                           (change)="getimage($event)"/>
                                                     </span>
                                             </div>
                                         </div>
@@ -48,7 +53,8 @@
                                             <div>
                                                     <span class="btn btn-rose btn-round btn-file">
                                                     <span class="fileinput-new">Select Audio</span>
-                                                    <input type="file" name="imagefile" (change)="getAudio($event)"/>
+                                                    <input type="file" name="image" (change)="getAudio($event)"
+                                                    accept="audio/*" />
                                                     </span>
                                             </div>
                                         </div>
@@ -64,8 +70,10 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" (click)="OnSubmit(audiopack); close()">OK</button>
-                <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!audiopack.valid"
+                        (click)="OnSubmit(); close() ; clear(audiopack)">OK
+                </button>
+                <button type="button" class="btn btn-default" (click)="close(); clear(audiopack)">Cancel</button>
             </div>
         </form>
     </div>

@@ -65,12 +65,10 @@ import {MyFilterPipe} from "./totaldownload/myfilter.pipe";
     ],
     declarations: [
         AppComponent,
-
         AdminLayoutComponent,
         AuthLayoutComponent,
         DashboardComponent,
         PagenotfoundComponent,
-
         IntroductionComponent,
         PacksComponent,
         AnalyticsComponent,
