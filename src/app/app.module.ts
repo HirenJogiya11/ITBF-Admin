@@ -45,6 +45,8 @@ import {PackService} from './service/pack.service';
 import {ModalService} from './service/modal.service';
 import {TotalDownloadService} from "./services/totaldownload.service";
 import { AnalyticUserComponent } from './analytic-user/analytic-user.component';
+import {IntroductionService} from "./services/introduction.service";
+import {UserAdminService} from "./services/userAdmin.service";
 
 
 @NgModule({
@@ -96,7 +98,9 @@ import { AnalyticUserComponent } from './analytic-user/analytic-user.component';
         TotalDownloadService,
         AuthGuard,
         AdminGuard,
-        TourGuard],
+        TourGuard,
+        IntroductionService,
+        UserAdminService],
     bootstrap: [AppComponent],
     entryComponents: [
         AddpackmodalComponent,

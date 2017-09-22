@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ToastrService} from "toastr-ng2";
+import {IntroductionService} from "../services/introduction.service";
 
 @Component({
   selector: 'app-introduction',
@@ -8,6 +9,8 @@ import {ToastrService} from "toastr-ng2";
 })
 export class IntroductionComponent implements OnInit {
     button:boolean;
+    playaudio:string;
+    play:string;
     result:any;
     imageName:string = null;
     res:any;
@@ -17,9 +20,21 @@ export class IntroductionComponent implements OnInit {
     imagedata:any = [];
     audiodata:any = [];
     formdata:FormData;
-  constructor( private toastrService: ToastrService) { }
+  constructor( private toastrService: ToastrService, private introductionservice: IntroductionService) { }
 
   ngOnInit() {
+      this.introductionservice.getIntroductionData()
+          .subscribe(data => {
+
+              this.result = 'http://192.168.200.72:4200/' + data[0].image;
+              this.playaudio = 'http://192.168.200.72:4200/' + data[0].audio;
+                  this.button = true;
+               this.final = this.playaudio;
+              console.log('save', this.playaudio);
+              },
+              err => {
+                  console.log('Error', err);
+              });
   }
     onChange($event):void {
 
@@ -28,7 +43,6 @@ export class IntroductionComponent implements OnInit {
         this.image = this.image.slice(0, 5).toString();
         if(this.image === 'image') {
             this.readThis($event.target);
-            this.toastrService.success('Image Selected');
         }
         else
         {
@@ -55,13 +69,13 @@ export class IntroductionComponent implements OnInit {
     }
     onChangemp($event):void {
       this.audiodata = $event.target.files[0];
+      console.log(this.audiodata);
         this.audio = this.audiodata.type.toString();
         this.audio = this.audio.slice(0, 5).toString();
         console.log(this.audio);
         if(this.audio === 'audio') {
             this.res = event.srcElement;
             this.final = this.res.files[0].name;
-            this.toastrService.success('Audio Selected');
         }
         else
         {
@@ -82,17 +96,22 @@ export class IntroductionComponent implements OnInit {
     save() {
 
           this.formdata = new FormData();
-          this.formdata.append('image file', this.imagedata, this.imagedata.name);
-          this.formdata.append('audio file', this.audiodata, this.audiodata.name);
+          this.formdata.append('introImage', this.imagedata, this.imagedata.name);
+          this.formdata.append('introAudio', this.audiodata, this.audiodata.name);
           console.log(this.formdata);
-          // Add file data
-          // this.audiopackservice.addaudiopack(this.formdata)
-          //     .subscribe((response: Response) => {
-          //         console.log('save');
-          //     });
+          this.introductionservice.addIntroductionData(this.formdata)
+              .subscribe(data => {
+                  console.log('save', data);
+              },
+                  err => {
+                      console.log('Error', err);
+                  });
         this.toastrService.success('Successfully File Uploaded ');
-        this.result=null;
-        this.final=null;
-            this.button = false;
+        this.playaudio='';
+        this.ngOnInit();
+
+        // this.result=null;
+        // this.final=null;
+        //     this.button = false;
     }
 }

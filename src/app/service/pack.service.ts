@@ -76,7 +76,6 @@ export class PackService {
     }
 
     getcountsite() {
-        debugger;
         this.data = [];
         // return this.sites.filter((obj) => obj.packid === i.toString());
         console.log(this.sites);
@@ -98,7 +97,7 @@ export class PackService {
     }
 
     getsite(i) {
-        debugger;
+
         return this.sites.filter((obj) => obj.packid === i.toString());
         // console.log(this.sites);
         // this.sites.forEach((obj) => {
@@ -114,7 +113,7 @@ export class PackService {
 
 
     deleteaudio(index) {
-        debugger;
+
         this.sites.splice(index, 1);
         console.log('delete site is', this.sites);
     }

@@ -1,7 +1,7 @@
 <div class="main-content">
     <div class="container-fluid">
 
-        <div class="card">
+        <div class="card introduction-block">
             <div class="card-header card-header-icon" data-background-color="rose">
                 <i class="material-icons">assignment</i>
             </div>
@@ -10,14 +10,14 @@
                 <form #introduction="ngForm" class="navbar-form" role="search">
                     <div class="row">
                         <div class=" col-md-12">
-                            <div class="col-md-5 col-md-offset-1">
+                            <div class="col-md-4 col-md-offset-1">
                                 <div *ngIf="!result" class="fileinput-new thumbnail">
                                     <img alt="..." src="../../assets/img/image_placeholder.jpg">
                                 </div>
-                                <div *ngIf="result" class="fileinput-new thumbnail">
+                                <div *ngIf="result">
                                     <img src="{{result}}"  width="307.5" height="230.63">
                                 </div>
-                                <div *ngIf="!result" class="form-group col-md-10">
+                                <div *ngIf="!result" class="form-group">
                       <span file="" class="btn btn-rose btn-round btn-file">
                                     <span file="" class="fileinput-new">Select Cover File</span>
                                 <div class="ripple-container"></div></span><input type="file" name="upload" id="file"
@@ -41,20 +41,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-5 col-md-offset-1">
+                            <div class="col-md-4 col-md-offset-1">
                                 <div *ngIf="!final" class="fileinput-new thumbnail">
                                     <img alt="..." src="../../assets/img/image_placeholder.jpg">
                                 </div>
                                 <div *ngIf="final" class="fileinput-new thumbnail spacer">
-                                    <br/><br/>
-                                    <span><b>File Name:<br/>{{final}}</b></span>
-                                   <br/><br/>
-                                    <audio controls>
 
+                                    <!--<span><b>File Name:<br/>{{final}}</b></span>-->
+
+                                    <!--<audio autoplay="autoplay" controls="controls">-->
+                                        <!--<source src="../../assets/audio/01%201%20NON%20STOPOK.MP3"  type="audio/mpeg">-->
+                                        <!--Your browser does not support the audio element.-->
+                                    <!--</audio>-->
+
+                                    <audio  controls="controls">
+                                        <source src={{playaudio}}  type="audio/mpeg">
+                                        Your browser does not support the audio element.
                                     </audio>
                                 </div>
 
-                                <div *ngIf="!final" class="form-group col-md-10">
+                                <div *ngIf="!final" class="form-group">
                       <span imagefile="" class="btn btn-rose btn-round btn-file">
                                     <span imagefile="" class="fileinput-new">Select Audio File</span>
                                 <div class="ripple-container"></div></span><input type="file" name="upload" id="imagefile"
@@ -81,22 +87,6 @@
                         </div>
                     </div>
                     <br/>
-                    <!--<div class="row">-->
-                        <!--<div class=" col-md-12">-->
-                            <!--<div class="form-group col-md-6">-->
-                      <!--<span file1="" class="btn btn-rose btn-round btn-file">-->
-                                    <!--<span file1="" class="fileinput-new">Select Audio File</span>-->
-                                <!--<div class="ripple-container"></div></span><input type="file" name="upload" id="file1"-->
-                                                                                  <!--accept="audio/*"-->
-                                                                                  <!--(change)="onChangemp($event)"/>-->
-                            <!--</div>-->
-                            <!--<br/>-->
-                            <!--<div class="col-md-3">-->
-                                <!--<span>{{final}}</span>-->
-                            <!--</div>-->
-
-                        <!--</div>-->
-                    <!--</div>-->
                 </form>
                 <div class="row">
                     <div class=" col-md-12" *ngIf="button">

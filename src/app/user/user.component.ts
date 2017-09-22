@@ -3,6 +3,7 @@ import {DialogService} from 'ng2-bootstrap-modal';
 import {NgForm} from '@angular/forms';
 import {UsermodalComponent} from '../uploaduser/usermodal/usermodal.component';
 import {DeletemodalComponent} from '../uploaduser/deletemodal/deletemodal.component';
+import {UserAdminService} from "../services/userAdmin.service";
 
 declare interface DataTable {
     headerRow: string[];
@@ -21,7 +22,7 @@ export class UserComponent implements OnInit {
     public dataTable: DataTable;
     length;
 
-    constructor(private dialogService: DialogService) {
+    constructor(private dialogService: DialogService,private useradminservice: UserAdminService) {
     }
 
     ngOnInit() {
@@ -35,13 +36,6 @@ export class UserComponent implements OnInit {
         };
     }
 
-    onFormSubmit(userForm: NgForm) {
-
-        console.log('user detail', userForm);
-        this.model.push(userForm.value);
-        console.log('model',this.model);
-
-    }
     // deleteData(i)
     // {
     //   // Delete Api
@@ -69,7 +63,14 @@ export class UserComponent implements OnInit {
             .subscribe((data)=>{
                 if(data && data.userForm) {
                   //  Add Api
-                    this.model.push(data.userForm);
+                    this.useradminservice.AddUserData(data.userForm)
+                        .subscribe(data => {
+
+                                console.log('save', data);
+                            },
+                            err => {
+                                console.log('Error', err);
+                            });
                 }
             });
     }
