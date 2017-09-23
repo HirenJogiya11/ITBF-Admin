@@ -20,9 +20,9 @@ audio{
 .modal-body .card-content .row{
     margin-top: 15px;
 }
-.modal-body .form-group {
-    margin: 0;
-}
+/*.modal-body .form-group {*/
+    /*margin: 0;*/
+/*}*/
 .modal .modal-header .close {
     z-index: 9;
     position: relative;

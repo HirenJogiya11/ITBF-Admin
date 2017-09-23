@@ -45,29 +45,26 @@ export class LoginComponent implements OnInit{
     }
 
     login(admin) {
-        window.location.href = '/dashboard';
-        localStorage.setItem("role",'Admin');
-        localStorage.setItem("token",'argvefbvfjbvdfsjbsdbsbsdnkjbsdfbfdksblnjk');
-      this.loginService.login(admin).subscribe(
+        this.loginService.login(admin).subscribe(
         response => {
             console.log(response);
-            if(response.role === "Admin")
-            {
-                this.toastrService.success('welcome ' + response.role);
-                localStorage.setItem("role",'Admin');
+                if(response.user.role === "Admin")
+                {
+                    this.toastrService.success('welcome ' + response.user.role);
+                    localStorage.setItem("role",'Admin');
 
-                window.location.href = '/introduction';
-            }
-            else if(response.role === 'TourOperator')
-            {
-                this.toastrService.success('welcome ' + response.role);
-                localStorage.setItem("role",'TourOperator');
-                window.location.href = '/dashboard';
+                    window.location.href = '/introduction';
+                }
+                else if(response.user.role === 'TourOperator')
+                {
+                    this.toastrService.success('welcome ' + response.user.role);
+                    localStorage.setItem("role",'TourOperator');
+                    window.location.href = '/dashboard';
 
-            }
-            else {
-                this.isError =true;
-            }
+                }
+                else {
+                    this.isError =true;
+                }
         },
         error => {
           this.toastrService.error('You Enter Wrong username and password');

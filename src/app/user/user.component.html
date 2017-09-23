@@ -11,7 +11,7 @@
             <i class="material-icons">person_add</i>
           </a>
           <div class="card-content">
-            <h4 class="card-title">Usersdgyhn</h4>
+            <h4 class="card-title">Users</h4>
             <div class="toolbar">
               <!--        Here you can write extra buttons/actions for the toolbar              -->
             </div>
@@ -38,20 +38,20 @@
                 </tr>
                 </tfoot>
                 <tbody>
-                <tr *ngFor="let row of this.model; let i of index">
+                <tr *ngFor="let row of this.modal; let i of index">
                   <td>{{row.email}}</td>
-                  <td>{{row.firstName}}</td>
-                  <td>{{row.lastName}}</td>
-                  <td>{{row.Country}}</td>
-                  <td>{{row.changePassword}}</td>
+                  <td>{{row.firstname}}</td>
+                  <td>{{row.lastname}}</td>
+                  <td>{{row.location ? row.location.Country : ''}}</td>
+                  <td>{{row.role}}</td>
                   <td class="text-right">
                     <button class="btn btn-simple btn-info btn-icon like" rel="tooltip" title="Like" data-placement="left">
                       <i class="material-icons">favorite</i>
                     </button>
-                    <button class="btn btn-simple btn-warning btn-icon edit" rel="tooltip" title="Edit" data-placement="left" (click)="EditData(i)">
+                    <button class="btn btn-simple btn-warning btn-icon edit" rel="tooltip" title="Edit" data-placement="left" (click)="Editdata(i)">
                       <i class="material-icons">dvr</i>
                     </button>
-                    <button class="btn btn-simple btn-danger btn-icon remove" rel="tooltip" title="Remove" data-placement="left" (click)="deleteData(i)">
+                    <button class="btn btn-simple btn-danger btn-icon remove" rel="tooltip" title="Remove" data-placement="left" (click)="deleteData(row._id)">
                       <i class="material-icons">close</i>
                     </button>
                   </td>
@@ -66,88 +66,3 @@
   </div>
 
 </div>
-
-
-<!--<div class="row">-->
-  <!--<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
-
-  <!--<modal #myModal (onClose)="clear(userForm)">-->
-    <!--<modal-header>-->
-      <!--<h3>User Detail</h3>-->
-    <!--</modal-header>-->
-    <!--<modal-content>-->
-      <!--<form #userForm="ngForm">-->
-        <!--<div class="card card-login card-hidden">-->
-
-          <!--<div class="card-content">-->
-            <!--<div [hidden]="!isError" class="text-center">-->
-              <!--<span style="color:red"> Invalid Credentials</span>-->
-            <!--</div>-->
-            <!--<div class="input-group">-->
-                                        <!--<span class="input-group-addon">-->
-                                            <!--<i class="material-icons">account_box</i>-->
-                                        <!--</span>-->
-              <!--<div class="form-group label-floating">-->
-                <!--<label class="control-label">Name</label>-->
-                <!--<input ngModel required #userName="ngModel" name="name"-->
-                       <!--type="text" class="form-control">-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="input-group">-->
-                                        <!--<span class="input-group-addon">-->
-                                            <!--<i class="material-icons">email</i>-->
-                                        <!--</span>-->
-              <!--<div class="form-group label-floating">-->
-                <!--<label class="control-label">Email address</label>-->
-                <!--<input name="email" ngModel required #userName="ngModel" type="email"-->
-                       <!--class="form-control">-->
-              <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="input-group">-->
-                                        <!--<span class="input-group-addon">-->
-                                            <!--<i class="material-icons">location_on</i>-->
-                                        <!--</span>-->
-              <!--<div class="form-group label-floating">-->
-                <!--<label class="control-label">Location</label>-->
-                <!--<input ngModel required #userLocation="ngModel" name="location"-->
-                       <!--type="text" class="form-control">-->
-              <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="input-group">-->
-              <!--<label class="control-label"><h3>Role</h3></label>-->
-              <!--<div class="form-group label-floating">-->
-
-                <!--<div class="radio">-->
-                  <!--<label>-->
-                    <!--<input  ngModel required #userRole="ngModel" name="role" value="Admin" type="radio"><span class="circle"></span><span class="check"></span> Admin-->
-                  <!--</label>-->
-                <!--</div>-->
-                <!--<div class="radio">-->
-                  <!--<label>-->
-                    <!--<input ngModel required #userRole="ngModel" name="role" value="Manager" type="radio"><span class="circle"></span><span class="check"></span> Manager-->
-                  <!--</label>-->
-                <!--</div>-->
-                <!--<div class="radio">-->
-                  <!--<label>-->
-                    <!--<input ngModel required #userRole="ngModel" name="role" value="Engineer" type="radio"><span class="circle"></span><span class="check"></span> Engineer-->
-                  <!--</label>-->
-                <!--</div>-->
-
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div class="footer text-center">-->
-            <!--<div class="btn-group">-->
-              <!--<button type="submit" class="btn btn-rose btn-outline" (click)="onFormSubmit(userForm);myModal.close()">Add User</button>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</form>-->
-    <!--</modal-content>-->
-    <!--<modal-footer>-->
-      <!--<button class="btn btn-primary" (click)="myModal.close()">close</button>-->
-    <!--</modal-footer>-->
-  <!--</modal>-->
-<!--</div>-->

@@ -16,12 +16,12 @@ export class  UserAdminService {
         return this.http.post(adduserurl, userdata, {}).map((response: Response) => response.json());
     }
     GetUserData() {
-        return this.http.get(getintroductionurl,{}).map((response: Response) => response.json());
+        return this.http.get(adduserurl,{}).map((response: Response) => response.json());
     }
-    DeleteUserData() {
-        return this.http.get(getintroductionurl,{}).map((response: Response) => response.json());
+    DeleteUserData(id) {
+        return this.http.delete(adduserurl + '/' + id,{}).map((response: Response) => response.json());
     }
-    EditUserData() {
-        return this.http.get(getintroductionurl,{}).map((response: Response) => response.json());
+    EditUserData(userdata,id) {
+        return this.http.put(adduserurl + '/' + id, userdata,{}).map((response: Response) => response.json());
     }
 }

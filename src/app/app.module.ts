@@ -47,6 +47,7 @@ import {TotalDownloadService} from "./services/totaldownload.service";
 import { AnalyticUserComponent } from './analytic-user/analytic-user.component';
 import {IntroductionService} from "./services/introduction.service";
 import {UserAdminService} from "./services/userAdmin.service";
+import { AdduserComponent } from './user/adduser/adduser.component';
 
 
 @NgModule({
@@ -88,7 +89,8 @@ import {UserAdminService} from "./services/userAdmin.service";
         TotalaudioComponent,
         EditaudioComponent,
         DeleteaudioComponent,
-        AnalyticUserComponent
+        AnalyticUserComponent,
+        AdduserComponent
 
     ],
     providers: [
@@ -108,7 +110,8 @@ import {UserAdminService} from "./services/userAdmin.service";
         TotalaudioComponent,
         DeleteaudioComponent,
         UsermodalComponent,
-        DeletemodalComponent
+        DeletemodalComponent,
+        AdduserComponent
     ]
 })
 export class AppModule {

@@ -1,0 +1,9 @@
+.modal-dialog {
+    margin-top: 22px;
+}
+.table > thead > tr > th {
+    font-size: 14px;
+}
+.card .card-content {
+    margin-top: -25px;
+}
