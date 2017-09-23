@@ -31,7 +31,6 @@ import {BootstrapModalModule} from 'ng2-bootstrap-modal';
 import {AddpackmodalComponent} from './packs/addpackmodal/addpackmodal.component';
 import {NewaudiopackComponent} from './packs/newaudiopack/newaudiopack.component';
 import {TotalaudioComponent} from './packs/totalaudio/totalaudio.component';
-import {EditaudioComponent} from './packs/editaudio/editaudio.component';
 import {DeleteaudioComponent} from './packs/totalaudio/deleteaudio/deleteaudio.component';
 import {DeletemodalComponent} from './uploaduser/deletemodal/deletemodal.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -45,6 +44,13 @@ import {PackService} from './service/pack.service';
 import {ModalService} from './service/modal.service';
 import {TotalDownloadService} from "./services/totaldownload.service";
 import {MyFilterPipe} from "./totaldownload/myfilter.pipe";
+import { SiteComponent } from './site/site.component';
+import { CreatesiteComponent } from './site/createsite/createsite.component';
+import {SiteService} from "./service/site.service";
+import { EditaudioComponent } from './packs/editaudio/editaudio.component';
+import { DeletesiteComponent } from './site/deletesite/deletesite.component';
+import { DeletepacksComponent } from './packs/deletepacks/deletepacks.component';
+import { EditsiteComponent } from './site/editsite/editsite.component';
 
 
 @NgModule({
@@ -70,7 +76,6 @@ import {MyFilterPipe} from "./totaldownload/myfilter.pipe";
         AuthLayoutComponent,
         DashboardComponent,
         PagenotfoundComponent,
-
         IntroductionComponent,
         PacksComponent,
         AnalyticsComponent,
@@ -86,9 +91,14 @@ import {MyFilterPipe} from "./totaldownload/myfilter.pipe";
         AddpackmodalComponent,
         NewaudiopackComponent,
         TotalaudioComponent,
-        EditaudioComponent,
         DeleteaudioComponent,
-        MyFilterPipe
+        MyFilterPipe,
+        SiteComponent,
+        CreatesiteComponent,
+        EditaudioComponent,
+        DeletesiteComponent,
+        DeletepacksComponent,
+        EditsiteComponent
 
     ],
     providers: [
@@ -98,7 +108,8 @@ import {MyFilterPipe} from "./totaldownload/myfilter.pipe";
         TotalDownloadService,
         AuthGuard,
         AdminGuard,
-        TourGuard],
+        TourGuard,
+        SiteService],
     bootstrap: [AppComponent],
     entryComponents: [
         AddpackmodalComponent,
@@ -106,7 +117,12 @@ import {MyFilterPipe} from "./totaldownload/myfilter.pipe";
         TotalaudioComponent,
         DeleteaudioComponent,
         UsermodalComponent,
-        DeletemodalComponent
+        DeletemodalComponent,
+        CreatesiteComponent,
+        EditaudioComponent,
+        DeletesiteComponent,
+        DeletepacksComponent,
+        EditsiteComponent
     ]
 })
 export class AppModule {
