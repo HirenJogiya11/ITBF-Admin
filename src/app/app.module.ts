@@ -31,7 +31,6 @@ import {BootstrapModalModule} from 'ng2-bootstrap-modal';
 import {AddpackmodalComponent} from './packs/addpackmodal/addpackmodal.component';
 import {NewaudiopackComponent} from './packs/newaudiopack/newaudiopack.component';
 import {TotalaudioComponent} from './packs/totalaudio/totalaudio.component';
-import {EditaudioComponent} from './packs/editaudio/editaudio.component';
 import {DeleteaudioComponent} from './packs/totalaudio/deleteaudio/deleteaudio.component';
 import {DeletemodalComponent} from './uploaduser/deletemodal/deletemodal.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -48,6 +47,14 @@ import { AnalyticUserComponent } from './analytic-user/analytic-user.component';
 import {IntroductionService} from "./services/introduction.service";
 import {UserAdminService} from "./services/userAdmin.service";
 import { AdduserComponent } from './user/adduser/adduser.component';
+import {MyFilterPipe} from "./totaldownload/myfilter.pipe";
+import { SiteComponent } from './site/site.component';
+import { CreatesiteComponent } from './site/createsite/createsite.component';
+import {SiteService} from "./service/site.service";
+import { EditaudioComponent } from './packs/editaudio/editaudio.component';
+import { DeletesiteComponent } from './site/deletesite/deletesite.component';
+import { DeletepacksComponent } from './packs/deletepacks/deletepacks.component';
+import { EditsiteComponent } from './site/editsite/editsite.component';
 
 
 @NgModule({
@@ -87,8 +94,14 @@ import { AdduserComponent } from './user/adduser/adduser.component';
         AddpackmodalComponent,
         NewaudiopackComponent,
         TotalaudioComponent,
-        EditaudioComponent,
         DeleteaudioComponent,
+        MyFilterPipe,
+        SiteComponent,
+        CreatesiteComponent,
+        EditaudioComponent,
+        DeletesiteComponent,
+        DeletepacksComponent,
+        EditsiteComponent,
         AnalyticUserComponent,
         AdduserComponent
 
@@ -102,7 +115,8 @@ import { AdduserComponent } from './user/adduser/adduser.component';
         AdminGuard,
         TourGuard,
         IntroductionService,
-        UserAdminService],
+        UserAdminService,
+        SiteService],
     bootstrap: [AppComponent],
     entryComponents: [
         AddpackmodalComponent,
@@ -111,7 +125,13 @@ import { AdduserComponent } from './user/adduser/adduser.component';
         DeleteaudioComponent,
         UsermodalComponent,
         DeletemodalComponent,
-        AdduserComponent
+        AdduserComponent,
+        DeletemodalComponent,
+        CreatesiteComponent,
+        EditaudioComponent,
+        DeletesiteComponent,
+        DeletepacksComponent,
+        EditsiteComponent
     ]
 })
 export class AppModule {

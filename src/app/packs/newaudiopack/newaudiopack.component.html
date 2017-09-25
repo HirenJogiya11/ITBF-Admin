@@ -1,8 +1,8 @@
-<div class="modal-dialog">
+<div class="modal-dialog new-pack-modal">
     <div class="modal-content">
         <div class="modal-header">
-            <button type="button" class="close" (click)="close(); clear(audiopack)">&times;</button>
-            <h4 class="modal-title"></h4>
+            <button type="button" class="close" (click)="close()">&times;</button>
+            <h4 class="modal-title">{{title || ''}}</h4>
         </div>
         <form class="form-horizontal" #audiopack="ngForm" novalidate>
             <div class="modal-body">
@@ -15,67 +15,111 @@
                             <div class="card-content">
                                 <h4 class="card-title">New Pack</h4>
                                 <div class="row">
-                                    <label class="col-md-3 label-on-left">Site Name</label>
+                                    <label class="col-md-3 label-on-left">Select Site</label>
                                     <div class="col-md-9">
-                                        <div class="form-group label-floating is-empty">
-                                            <label class="control-label"></label>
-                                            <input class="form-control" type="text" name="Sitesname"
-                                                   [(ngModel)]="Sitename" #Sitesname="ngModel" required>
-                                            <span class="material-input"></span></div>
-                                        <small *ngIf="!Sitesname.valid && (Sitesname.dirty || Sitesname.touched)" class="text-danger">
-                                            Sitesname is Require
-                                        </small>
+                                        <div class="dropdown pull-left" id="select_id">
+                                            <select class="selectpicker" data-style="btn btn-primary btn-round"
+                                                    title="Select Site"
+                                                    data-size="7" name="language" [(ngModel)]="siteid">
+                                                <option *ngFor="let row of Sites" value="{{row._id}}">
+                                                    {{row.name}}
+                                                </option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <label class="col-md-3 label-on-left">Cover Image</label>
-                                    <div class="col-md-6">
-                                        <div class="form-group label-floating is-empty">
+                            </div>
+                            <div class="row">
+                                <div class="new-pack-block">
+                                    <div class="col-sm-4">
+                                        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                            <div class="fileinput-new thumbnail">
+                                                <img src="../../assets/img/image_placeholder.jpg" alt="..."
+                                                     *ngIf="!result">
+                                            </div>
+                                            <div class="fileinput-new thumbnail">
+                                                <img src="{{result}}" alt="..." *ngIf="result">
+                                            </div>
+                                            <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                             <div>
-                                                <span class="btn btn-rose btn-round btn-file">
-                                                    <span class="fileinput-new">Select image</span>
-                                                    <input type="file" name="covimage"
-                                                           accept="image/*"
-                                                           (change)="getimage($event)"/>
-                                                    </span>
+                                        <span class="btn btn-rose btn-round btn-file" *ngIf="!result">
+                                            <span class="fileinput-new">Select image</span>
+                                            <input type="file" name="uploadcoverimage" accept="image/*" (change)="getimage($event)"/>
+                                        </span>
+                                                <span class="btn btn-rose btn-round btn-file" *ngIf="result">
+                                            <span class="fileinput-new">Change</span>
+                                            <input type="file" name="changecoverimage" accept="image/*" (change)="getimage($event)"/>
+                                        </span>
+                                                <span class="btn btn-danger btn-round btn-file" *ngIf="result">
+                                            <span class="fileinput-new"> Remove </span>
+                                            <input type="button" name="removecoverimage" (click)="removeCoverImage()"/>
+                                        </span>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div *ngIf="result" class="uploaded-img col-md-3">
-                                        <img src="{{result}}" width="100" height="100">
-
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <label class="col-md-3 label-on-left">Uploada Audio</label>
-                                    <div class="col-md-6">
-                                        <div class="form-group label-floating is-empty">
+                                    <div class="col-sm-4">
+                                        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                            <div class="fileinput-new thumbnail">
+                                                <img src="../../assets/img/image_placeholder.jpg" alt="..."
+                                                     *ngIf="!result1">
+                                            </div>
+                                            <div class="fileinput-new thumbnail">
+                                                <img src="{{result1}}" alt="..." *ngIf="result1">
+                                            </div>
+                                            <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                             <div>
-                                                    <span class="btn btn-rose btn-round btn-file">
-                                                    <span class="fileinput-new">Select Audio</span>
-                                                    <input type="file" name="image" (change)="getAudio($event)"
-                                                    accept="audio/*" />
-                                                    </span>
+                                        <span class="btn btn-rose btn-round btn-file" *ngIf="!result1">
+                                            <span class="fileinput-new">Select image</span>
+                                            <input type="file" name="uploadfootstrapimage" accept="image/*" (change)="getFootstepImage($event)"/>
+                                        </span>
+                                                <span class="btn btn-rose btn-round btn-file" *ngIf="result1">
+                                            <span class="fileinput-new">Change</span>
+                                            <input type="file" name="changefootstrapimage" accept="image/*" (change)="getFootstepImage($event)"/>
+                                        </span>
+                                                <span class="btn btn-danger btn-round btn-file" *ngIf="result1">
+                                            <span class="fileinput-new"> Remove </span>
+                                            <input type="button" name="removefootstrapimage" (click)="removeFootStrapImage()"/>
+                                        </span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="fileinput-new thumbnail img-circle col-md-3">
-                                        <p>{{final}}</p>
+                                    <div class="col-sm-4">
+                                        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                            <div class="fileinput-new thumbnail" *ngIf="!audio">
+                                                <img src="../../assets/img/image_placeholder.jpg" alt="..."
+                                                     >
+                                            </div>
+                                            <div *ngIf="audio" class="new-pack-audio">
+                                                <audio src="{{audio.name}}" controls></audio>
+                                                <p>{{final}}</p>
+                                            </div>
+                                            <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                            <div>
+                                        <span class="btn btn-rose btn-round btn-file" *ngIf="!audio">
+                                            <span class="fileinput-new">Select Audio</span>
+                                            <input type="file" accept="audio/*" (change)="getAudio($event)"  />
+                                        </span>
+
+                                                <span class="btn btn-rose btn-round btn-file" *ngIf="audio">
+                                            <span class="fileinput-new">Change</span>
+                                            <input type="file" name="..." accept="audio/*" (change)="getAudio($event)"/>
+                                        </span>
+                                                <span class="btn btn-danger btn-round btn-file" *ngIf="audio">
+                                            <span class="fileinput-new"> Remove </span>
+                                            <input type="button" name="upload audio" (click)="removeAudio()"/>
+                                        </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" [disabled]="!audiopack.valid"
-                        (click)="OnSubmit(); close() ; clear(audiopack)">OK
-                </button>
-                <button type="button" class="btn btn-default" (click)="close(); clear(audiopack)">Cancel</button>
+                <button type="submit" class="btn btn-primary" (click)="save(audiopack)">Add</button>
+                <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
             </div>
         </form>
     </div>

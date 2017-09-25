@@ -137,6 +137,14 @@
                             <p>User</p>
                         </a>
                     </li>
+                    <li routerLinkActive="active" *ngIf="!isTourOperator">
+                        <a  [routerLink]="[menuItems[10].path]">
+                            <i class="{{menuItems[1].icon}}">
+                                Sites
+                            </i>
+                            <p>Sites</p>
+                        </a>
+                    </li>
 
 
                   <li routerlinkactive="active" class="active" *ngIf="!isTourOperator">

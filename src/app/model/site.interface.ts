@@ -1,10 +1,11 @@
-export class    Site {
-    constructor(
-        public packid: string,
-        public site: {
-            sitename: String,
-            imagefile: any,
-            audiofile: any
-        }
-    ) {}
+export class Site {
+    constructor(packid: string,
+                public site: {
+                    siteid: string,
+                    imagefile: any,
+                    footstepfile: any,
+                    audiofile: any,
+
+                }) {
+    }
 }

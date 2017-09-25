@@ -19,6 +19,7 @@ import {AuthGuard} from "./services/authguard.service";
 import {AdminGuard} from "./services/adminguard.service";
 import {TourGuard} from "./services/tourguard.service";
 import {AnalyticUserComponent} from "./analytic-user/analytic-user.component";
+import {SiteComponent} from "./site/site.component";
 
 export const AppRoutes: Routes = [
     {
@@ -45,6 +46,11 @@ export const AppRoutes: Routes = [
         path: 'packs',
           canActivate: [AuthGuard, TourGuard],
         component: PacksComponent
+      },
+      {
+        path: 'site',
+        canActivate: [AuthGuard, TourGuard],
+        component: SiteComponent
       },
       // {
       //   path: 'analytics',

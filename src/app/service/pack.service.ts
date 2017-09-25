@@ -3,21 +3,13 @@ import {Site} from '../model/site.interface';
 import {Http, Response} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
-import {forEach} from "@angular/router/src/utils/collection";
 
-
-const packurl: string = 'http://localhost:3000/pack/addpack';
-const getPack: string = 'http://localhost:3000/pack/pack/';
-const addsiteurl: string = 'http://localhost:3000/pack/addsite';
 @Injectable()
 export class PackService {
-
-
     constructor(private http: Http) {
     }
-  private  data = [];
-    private counter = 1;
-    private temp;
+
+
     private packs = [
         ['englishpack', 'english'],
         ['englishpack1', 'english'],
@@ -28,93 +20,52 @@ export class PackService {
     ];
 
     private sites: Site[] = [
-        new Site('1', {'sitename': 'engsite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
-        new Site('3', {'sitename': 'frenchsite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
-        new Site('4', {'sitename': 'russiansite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
-        new Site('5', {'sitename': 'eng1site', 'imagefile': 'image52', 'audiofile': 'audio2'}),
-        new Site('6', {'sitename': 'latinsite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
-        new Site('1', {'sitename': 'engsite', 'imagefile': 'image52', 'audiofile': 'audio2'}),
-        new Site('4', {'sitename': 'russiansite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
-        new Site('5', {'sitename': 'eng1site', 'imagefile': 'image52', 'audiofile': 'audio2'}),
-        new Site('6', {'sitename': 'latinsite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
-        new Site('1', {'sitename': 'engsite', 'imagefile': 'image52', 'audiofile': 'audio2'}),
-        new Site('1', {'sitename': 'engsite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
-        new Site('3', {'sitename': 'frenchsite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
-        new Site('4', {'sitename': 'russiansite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
-        new Site('4', {'sitename': 'russiansite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
-        new Site('5', {'sitename': 'eng1site', 'imagefile': 'image52', 'audiofile': 'audio2'}),
-        new Site('6', {'sitename': 'latinsite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
-        new Site('1', {'sitename': 'engsite', 'imagefile': 'image52', 'audiofile': 'audio2'}),
-        new Site('4', {'sitename': 'russiansite', 'imagefile': 'image1', 'audiofile': 'audio1'}),
+        new Site('1', {siteid: '1', imagefile: 'image1', footstepfile: 'image1', audiofile: 'audio1'}),
+        new Site('2', {siteid: '2', imagefile: 'image1', footstepfile: 'image1', audiofile: 'audio1'}),
+        new Site('3', {siteid: '3', imagefile: 'image1', footstepfile: 'image1', audiofile: 'audio1'}),
+        new Site('4', {siteid: '4', imagefile: 'image1', footstepfile: 'image1', audiofile: 'audio1'}),
+        new Site('5', {siteid: '5', imagefile: 'image1', footstepfile: 'image1', audiofile: 'audio1'}),
+        new Site('6', {siteid: '6', imagefile: 'image1', footstepfile: 'image1', audiofile: 'audio1'}),
     ];
 
+    private REGISTER: string = 'http://192.168.200.72:4200/api/pack';
+    private GET: string = 'http://192.168.200.72:4200/api/pack';
+    private NewSite: string = 'http://192.168.200.72:4200/api/pack/addSite';
+    private EditPack: string = 'http://192.168.200.72:4200/api/pack';
+    private Delete: string= 'http://192.168.200.72:4200/api/pack/';
+    private GetLanguage: string= 'http://192.168.200.72:4200/api/language';
 
-    getPack() {
-        return this.packs.slice();
+    getPack(): Observable<any> {
+        return this.http.get(this.GET).map((res: Response) => res.json());
     }
 
-    // getPack(): Observable<any> {
-    //     return this.http
-    //         .get(getPack).map((response: Response) => response.json());
+    getLanguage(): Observable<any> {
+        return this.http.get(this.GetLanguage).map((res: Response) => res.json());
+    }
+
+    addaudiopack(pack): Observable<any> {
+        return this.http.post(this.REGISTER, pack).map((res: Response) => res.json());
+    }
+
+    EditAudio(pack): Observable<any> {
+        return this.http.put(this.EditPack + '/' + pack._id , pack).map((res: Response) => res.json());
+    }
+
+
+    addnewsite(formdata) {
+        return this.http.post(this.NewSite, formdata).map((res: Response) => res.json());
+    }
+
+    // getsites() {
+    //     return this.sites.slice();
     // }
-    addaudiopack(pack) {
-        return this.http.post(addsiteurl, pack);
-        // this.packs.push(pack);
-        // console.log(this.packs);
+
+    //  getsite(name) {
+    // //     return this.sites.filter((obj) => obj.packname === name);
+    //  }
+
+    deletepack(index) {
+        return this.http.delete(this.Delete + index).map((response: Response) => response.json());
     }
 
-    addnewsite(site) {
-        // return this.http.post(addsiteurl, formdata).map((response: Response) => {
-        //     return response.json();
-        // });
-         this.sites.push(site);
-
-    }
-
-    getsites() {
-        return this.sites.slice();
-    }
-
-    getcountsite() {
-        this.data = [];
-        // return this.sites.filter((obj) => obj.packid === i.toString());
-        console.log(this.sites);
-        this.sites.forEach((obj) => {
-            this.temp = this.data[obj.packid];
-           if(this.data[obj.packid])
-           {
-               this.counter = this.temp + this.counter;
-               this.data[obj.packid] = this.counter;
-               this.counter = 1;
-           }
-           else{
-               this.data[obj.packid] = 1;
-               this.counter = 1;
-           }
-        });
-        console.log('data', this.data);
-        return this.data;
-    }
-
-    getsite(i) {
-
-        return this.sites.filter((obj) => obj.packid === i.toString());
-        // console.log(this.sites);
-        // this.sites.forEach((obj) => {
-        //    if( obj.packid=== i.toString())
-        //    {
-        //        debugger
-        //        this.data.push(this.sites[i]);
-        //    }
-        // });
-        // console.log('data',this.data);
-        // return this.data;
-    }
-
-
-    deleteaudio(index) {
-
-        this.sites.splice(index, 1);
-        console.log('delete site is', this.sites);
-    }
 }

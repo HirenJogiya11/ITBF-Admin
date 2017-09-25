@@ -4,12 +4,19 @@ import {DialogComponent, DialogService} from 'ng2-bootstrap-modal';
 import {PackService} from '../../service/pack.service';
 import {DeleteaudioComponent} from './deleteaudio/deleteaudio.component';
 import {ModalService} from '../../service/modal.service';
-
+import _ from 'lodash';
 declare var $: any;
 
 export interface Model {
-    index: number;
+    title: string;
+    Data: any;
 
+}
+
+declare interface DataTable {
+    headerRow: string[];
+    footerRow: string[];
+    dataRows: any;
 }
 
 @Component({
@@ -21,10 +28,12 @@ export interface Model {
 
 export class TotalaudioComponent extends DialogComponent<Model, any> implements OnInit {
 
+    public dataTable: DataTable;
+    public imagepath: string = 'http://192.168.200.72:4200';
     data: any;
     sites: any;
-    dsites: any;
     model: any[];
+    table: any;
 
     constructor(private dialogservice: DialogService,
                 private  packservice: PackService,
@@ -34,20 +43,46 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
 
     ngOnInit() {
 
-        this.getsite();
+        document.getElementsByTagName('body')[0].classList.add('modal-open');
+        this.dataTable = {
+            headerRow: ['Name', 'CoverImage', 'FootStrapImage', 'Audio', 'Edit', 'Delete'],
+            footerRow: ['', '', '', '', '', ''],
+            dataRows: []
+        };
 
+        this.getsite();
     }
 
     getsite() {
-        this.sites = this.packservice.getsite(this.data);
-        console.log('Total data',this.sites);
+        this.dataTable.dataRows = this.data;
+        console.log(this.dataTable.dataRows);
+        // const that = this;
+        // setTimeout(function () {
+        //     that.dataTableConfig();
+        //     // that.addNewItem();
+        // });
     }
 
-    deleteAudio(i) {
-
-        this.modalservice.open(DeleteaudioComponent, {title : '' , data: i})
-            .subscribe((data) => {
-
+    dataTableConfig() {
+        this.table = $('#datatables').DataTable({
+            'pagingType': 'full_numbers',
+            'lengthMenu': [[5, 10, 20, 25, 50, -1], [5, 10, 20, 25, 50, 'All']],
+            'searching': false,
+            'deferRender': true,
+            responsive: true,
+            language: {
+                search: '_INPUT_',
+                searchPlaceholder: 'Search records'
+            }
         });
     }
+
+    //
+    // deleteAudio(i) {
+    //
+    //     this.modalservice.open(DeleteaudioComponent, {title: '', data: i})
+    //         .subscribe((data) => {
+    //
+    //         });
+    // }
 }

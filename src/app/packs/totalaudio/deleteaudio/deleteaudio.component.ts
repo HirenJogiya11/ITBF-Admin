@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DialogComponent, DialogService} from 'ng2-bootstrap-modal';
-import {PackService} from '../../../service/pack.service';
+import {PackService} from "../../../service/pack.service";
 
 export interface Model {
     title: string ;
@@ -15,19 +15,19 @@ export class DeleteaudioComponent extends DialogComponent<Model, any> implements
 
     data: number;
 
-    constructor(private dialogservice: DialogService, private packservice: PackService) {
+    constructor(private dialogservice: DialogService , private packservice: PackService) {
         super(dialogservice);
     }
 
     ngOnInit() {
-
+        document.getElementsByTagName('body')[0].classList.add('modal-open');
     }
 
-    Delete() {
-        this.packservice.deleteaudio(this.data);
-    }
+     Delete() {
 
-    confirm() {
+     }
+
+    confirm(){
         this.close();
     }
 }
