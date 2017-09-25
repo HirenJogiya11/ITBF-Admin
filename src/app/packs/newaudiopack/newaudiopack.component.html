@@ -15,7 +15,7 @@
                             <div class="card-content">
                                 <h4 class="card-title">New Pack</h4>
                                 <div class="row">
-                                    <label class="col-md-3 label-on-left">Site Name</label>
+                                    <label class="col-md-3 label-on-left">Select Site</label>
                                     <div class="col-md-9">
                                         <div class="dropdown pull-left" id="select_id">
                                             <select class="selectpicker" data-style="btn btn-primary btn-round"
@@ -44,15 +44,15 @@
                                             <div>
                                         <span class="btn btn-rose btn-round btn-file" *ngIf="!result">
                                             <span class="fileinput-new">Select image</span>
-                                            <input type="file" (change)="getimage($event)"/>
+                                            <input type="file" name="uploadcoverimage" accept="image/*" (change)="getimage($event)"/>
                                         </span>
                                                 <span class="btn btn-rose btn-round btn-file" *ngIf="result">
                                             <span class="fileinput-new">Change</span>
-                                            <input type="file" name="..." (change)="getimage($event)"/>
+                                            <input type="file" name="changecoverimage" accept="image/*" (change)="getimage($event)"/>
                                         </span>
                                                 <span class="btn btn-danger btn-round btn-file" *ngIf="result">
                                             <span class="fileinput-new"> Remove </span>
-                                            <input type="button" name="..."/>
+                                            <input type="button" name="removecoverimage" (click)="removeCoverImage()"/>
                                         </span>
                                             </div>
                                         </div>
@@ -70,24 +70,24 @@
                                             <div>
                                         <span class="btn btn-rose btn-round btn-file" *ngIf="!result1">
                                             <span class="fileinput-new">Select image</span>
-                                            <input type="file" (change)="getFootstepImage($event)"/>
+                                            <input type="file" name="uploadfootstrapimage" accept="image/*" (change)="getFootstepImage($event)"/>
                                         </span>
                                                 <span class="btn btn-rose btn-round btn-file" *ngIf="result1">
                                             <span class="fileinput-new">Change</span>
-                                            <input type="file" name="..." (change)="getFootstepImage($event)"/>
+                                            <input type="file" name="changefootstrapimage" accept="image/*" (change)="getFootstepImage($event)"/>
                                         </span>
                                                 <span class="btn btn-danger btn-round btn-file" *ngIf="result1">
                                             <span class="fileinput-new"> Remove </span>
-                                            <input type="button" name="..."/>
+                                            <input type="button" name="removefootstrapimage" (click)="removeFootStrapImage()"/>
                                         </span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                                            <div class="fileinput-new thumbnail">
+                                            <div class="fileinput-new thumbnail" *ngIf="!audio">
                                                 <img src="../../assets/img/image_placeholder.jpg" alt="..."
-                                                     *ngIf="!audio">
+                                                     >
                                             </div>
                                             <div *ngIf="audio" class="new-pack-audio">
                                                 <audio src="{{audio.name}}" controls></audio>
@@ -97,16 +97,16 @@
                                             <div>
                                         <span class="btn btn-rose btn-round btn-file" *ngIf="!audio">
                                             <span class="fileinput-new">Select Audio</span>
-                                            <input type="file" (change)="getAudio($event)"/>
+                                            <input type="file" accept="audio/*" (change)="getAudio($event)"  />
                                         </span>
 
                                                 <span class="btn btn-rose btn-round btn-file" *ngIf="audio">
                                             <span class="fileinput-new">Change</span>
-                                            <input type="file" name="..." (change)="getAudio($event)"/>
+                                            <input type="file" name="..." accept="audio/*" (change)="getAudio($event)"/>
                                         </span>
                                                 <span class="btn btn-danger btn-round btn-file" *ngIf="audio">
                                             <span class="fileinput-new"> Remove </span>
-                                            <input type="button" name="..."/>
+                                            <input type="button" name="upload audio" (click)="removeAudio()"/>
                                         </span>
                                             </div>
                                         </div>

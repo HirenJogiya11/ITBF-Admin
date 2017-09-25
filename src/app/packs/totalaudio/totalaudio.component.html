@@ -29,7 +29,7 @@
                     </thead>
                     <tbody>
                     <tr *ngFor="let row of dataTable.dataRows;  let i = index">
-                      <td>{{i + 1}}</td>
+                      <td>{{ row.siteId ? row.siteId.name : '' }}</td>
                       <td><div class="fileinput-new thumbnail ">
                         <img src="{{imagepath}}/{{row.coverImageURL}}" alt="..." height="50" width="50">
                       </div></td>

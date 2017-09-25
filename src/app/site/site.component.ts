@@ -76,7 +76,7 @@ export class SiteComponent implements OnInit {
     add() {
         this.modalService.open(CreatesiteComponent, null)
             .subscribe((data) => {
-                if (data) {
+                if (typeof(data) === 'object') {
                     this.dataTable.dataRows.push(data);
                 }
             });

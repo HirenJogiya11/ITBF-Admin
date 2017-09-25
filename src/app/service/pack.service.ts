@@ -32,7 +32,7 @@ export class PackService {
     private GET: string = 'http://192.168.200.72:4200/api/pack';
     private NewSite: string = 'http://192.168.200.72:4200/api/pack/addSite';
     private EditPack: string = 'http://192.168.200.72:4200/api/pack';
-    private Delete: string= 'http://192.168.200.72:3000/api/pack/';
+    private Delete: string= 'http://192.168.200.72:4200/api/pack/';
     private GetLanguage: string= 'http://192.168.200.72:4200/api/language';
 
     getPack(): Observable<any> {

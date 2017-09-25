@@ -45,22 +45,23 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
 
         document.getElementsByTagName('body')[0].classList.add('modal-open');
         this.dataTable = {
-            headerRow: ['NO', 'CoverImage', 'FootStrapImage', 'Audio' , 'Edit' , 'Delete'],
-            footerRow: ['', '', '', '', '' , ''],
+            headerRow: ['Name', 'CoverImage', 'FootStrapImage', 'Audio', 'Edit', 'Delete'],
+            footerRow: ['', '', '', '', '', ''],
             dataRows: []
         };
 
         this.getsite();
     }
 
-     getsite() {
-          this.dataTable.dataRows = this.data;
-         // const that = this;
-         // setTimeout(function () {
-         //     that.dataTableConfig();
-         //     // that.addNewItem();
-         // });
-     }
+    getsite() {
+        this.dataTable.dataRows = this.data;
+        console.log(this.dataTable.dataRows);
+        // const that = this;
+        // setTimeout(function () {
+        //     that.dataTableConfig();
+        //     // that.addNewItem();
+        // });
+    }
 
     dataTableConfig() {
         this.table = $('#datatables').DataTable({
@@ -75,6 +76,7 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
             }
         });
     }
+
     //
     // deleteAudio(i) {
     //

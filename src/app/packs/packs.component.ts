@@ -5,8 +5,8 @@ import {Pack} from '../model/pack.interface';
 import {AddpackmodalComponent} from './addpackmodal/addpackmodal.component';
 import {NewaudiopackComponent} from './newaudiopack/newaudiopack.component';
 import {TotalaudioComponent} from './totalaudio/totalaudio.component';
-import {EditaudioComponent} from "./editaudio/editaudio.component";
-import {DeletepacksComponent} from "./deletepacks/deletepacks.component";
+import {EditaudioComponent} from './editaudio/editaudio.component';
+import {DeletepacksComponent} from './deletepacks/deletepacks.component';
 import _ from 'lodash';
 declare var $: any;
 
@@ -77,7 +77,7 @@ export class PacksComponent implements OnInit {
     add() {
         this.modalService.open(AddpackmodalComponent, null)
             .subscribe((data) => {
-                if (data) {
+                if (typeof(data) === 'object') {
                     this.dataTable.dataRows.push(data);
                 }
             });
@@ -86,7 +86,7 @@ export class PacksComponent implements OnInit {
     Newaudio(pack) {
         this.modalService.open(NewaudiopackComponent, {title: '', data: pack})
             .subscribe((data) => {
-                if (data) {
+                if (typeof(data) === 'object') {
                     const index = _.findIndex(this.dataTable.dataRows, ['_id', pack._id]);
                     this.dataTable.dataRows[index] = data;
                 }
@@ -106,7 +106,7 @@ export class PacksComponent implements OnInit {
         const copy = Object.assign({}, pack);
         this.modalService.open(EditaudioComponent, {title: '', data: copy})
             .subscribe((data) => {
-                if (data) {
+                if (typeof(data) === 'object') {
                     const index = _.findIndex(this.dataTable.dataRows, ['_id', pack._id]);
                     this.dataTable.dataRows[index] = data;
                 }

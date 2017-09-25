@@ -31,11 +31,11 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
     res: any;
     final: any;
     result: any;
-    footimage: any
     result1: any;
     imagetype: any;
     footsteptype: any;
     audiotype: any;
+    button: any;
 
     constructor(private dialogservice: DialogService, private packservice: PackService,
                 private toasterservice: ToastrService, private  Siteservice: SiteService) {
@@ -51,7 +51,7 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
     getSites() {
         this.Siteservice.getAllSite().subscribe((data) => {
             this.Sites = data;
-            var that = this;
+            const that = this;
             setTimeout(function () {
                 that.initialize();
             });
@@ -119,10 +119,25 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
         if (this.audiotype === 'audio') {
             //    this.read($event.target);
             this.res = event.srcElement;
-             this.final = this.res.files[0].name;
+            this.final = this.res.files[0].name;
         } else {
             this.toasterservice.error('Please, Select valid Audio file');
         }
+    }
+
+    removeAudio() {
+        this.audio = null;
+        this.button = false;
+    }
+
+    removeCoverImage() {
+        this.result = null;
+        this.button = false;
+    }
+
+    removeFootStrapImage() {
+        this.result1 = null;
+        this.button = false;
     }
 
 
@@ -147,13 +162,12 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
                 this.toasterservice.error(err.error);
             });
         /*this.result = null;
-        this.result1 = null;*/
+         this.result1 = null;*/
 
         //     this.button = false;
 
 
     }
-
 
 
     initialize() {

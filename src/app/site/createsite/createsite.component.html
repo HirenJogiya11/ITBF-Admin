@@ -42,15 +42,15 @@
                       <div>
                                         <span class="btn btn-rose btn-round btn-file" *ngIf="!result">
                                             <span class="fileinput-new">Select image</span>
-                                            <input type="file" (change)="getimage($event)"/>
+                                            <input type="file" accept="image/*" (change)="getimage($event)"/>
                                         </span>
                         <span class="btn btn-rose btn-round btn-file" *ngIf="result">
                                             <span class="fileinput-new">Change</span>
-                                            <input type="file" name="..." (change)="getimage($event)"/>
+                                            <input type="file" name="..." accept="image/*" (change)="getimage($event)"/>
                                         </span>
                         <span class="btn btn-danger btn-round btn-file" *ngIf="result">
                                             <span class="fileinput-new"> Remove </span>
-                                            <input type="button" name="..."/>
+                                            <input type="button" name="..." (click)="removeImage" />
                                         </span>
                       </div>
                     </div>

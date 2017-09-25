@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DialogComponent, DialogService} from 'ng2-bootstrap-modal';
 import {SiteService} from '../../service/site.service';
-import {ToastrService} from "toastr-ng2";
+import {ToastrService} from 'toastr-ng2';
 
 
 export interface Model {
@@ -23,6 +23,7 @@ export class CreatesiteComponent extends DialogComponent<Model, any> implements 
     result: any;
     imageName: any;
     formdata: FormData;
+    button: any;
 
     constructor(private dialogservice: DialogService,
                 private siteservice: SiteService,
@@ -66,6 +67,13 @@ export class CreatesiteComponent extends DialogComponent<Model, any> implements 
         };
         myReader.readAsDataURL(file);
     }
+
+
+    removeImage() {
+        this.result = null;
+        this.button = false;
+    }
+
 
     OnSubmit() {
         this.formdata = new FormData();
