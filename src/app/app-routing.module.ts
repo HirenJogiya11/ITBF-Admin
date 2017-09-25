@@ -21,6 +21,7 @@ import {AdminGuard} from "./services/adminguard.service";
 import {TourGuard} from "./services/tourguard.service";
 import {AnalyticUserComponent} from "./analytic-user/analytic-user.component";
 import {SiteComponent} from "./site/site.component";
+import {BulkuploadComponent} from "./bulkupload/bulkupload.component";
 
 export const AppRoutes: Routes = [
     {
@@ -37,7 +38,6 @@ export const AppRoutes: Routes = [
           canActivate: [AuthGuard, AdminGuard],
         component: DashboardComponent
       },
-
       {
         path: 'introduction',
           canActivate: [AuthGuard, TourGuard],
@@ -91,7 +91,12 @@ export const AppRoutes: Routes = [
         path: 'tourRevenue',
           canActivate: [AuthGuard, AdminGuard],
         component: TourtotalrevenueComponent
-      }
+      },
+        {
+            path: 'bulkupload',
+            canActivate: [AuthGuard, AdminGuard],
+            component:  BulkuploadComponent
+        }
 
     ]
   },

@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {DialogComponent, DialogService} from 'ng2-bootstrap-modal';
 import {NgForm} from '@angular/forms';
+import {UserAdminService} from "../../services/userAdmin.service";
+import {ToastrService} from "toastr-ng2";
 declare var $: any;
 export interface Model {
     data: any;

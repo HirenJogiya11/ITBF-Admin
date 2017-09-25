@@ -55,6 +55,7 @@ import { EditaudioComponent } from './packs/editaudio/editaudio.component';
 import { DeletesiteComponent } from './site/deletesite/deletesite.component';
 import { DeletepacksComponent } from './packs/deletepacks/deletepacks.component';
 import { EditsiteComponent } from './site/editsite/editsite.component';
+import { BulkuploadComponent } from './bulkupload/bulkupload.component';
 
 
 @NgModule({
@@ -103,7 +104,8 @@ import { EditsiteComponent } from './site/editsite/editsite.component';
         DeletepacksComponent,
         EditsiteComponent,
         AnalyticUserComponent,
-        AdduserComponent
+        AdduserComponent,
+        BulkuploadComponent
 
     ],
     providers: [

@@ -182,27 +182,35 @@
                     </ul>
                   </div>
                   </li>
-                  <li routerlinkactive="active" class="active" *ngIf="!isAdmin">
-                    <a data-toggle="collapse" href="#Analytic" class="collapsed" aria-expanded="false">
-                      <i class="material-icons">apps</i>
-                      <p>Tour Operator<b class="caret"></b></p>
-                    </a>
+                    <li routerlinkactive="active" class="active" *ngIf="!isAdmin">
+                        <a data-toggle="collapse" href="#uploadUser" class="collapsed" aria-expanded="false">
+                            <i class="material-icons">apps</i>
+                            <p>Tour Operator<b class="caret"></b></p>
+                        </a>
 
 
-                    <div class="collapse" id="Analytic" aria-expanded="false" style="height: 0px;">
-                      <ul class="nav">
-                        <li routerLinkActive="active">
-                          <a  [routerLink]="[menuItems[6].path]" *ngIf="!isAdmin">
-                            <i class="{{menuItems[1].icon}}">
-                              Upload
-                            </i>
-                            <p>Upload User</p>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li routerlinkactive="active" class="active" *ngIf="!isAdmin">
+                        <div class="collapse" id="uploadUser" aria-expanded="false" style="height: 0px;">
+                            <ul class="nav">
+                                <li routerLinkActive="active">
+                                    <a  [routerLink]="[menuItems[6].path]" *ngIf="!isAdmin">
+                                        <i class="{{menuItems[1].icon}}">
+                                            Upload
+                                        </i>
+                                        <p>Upload User</p>
+                                    </a>
+                                </li>
+                                <li routerLinkActive="active">
+                                    <a  [routerLink]="[menuItems[11].path]" *ngIf="!isAdmin">
+                                        <i class="{{menuItems[1].icon}}">
+                                            Upload
+                                        </i>
+                                        <p>Bulk Upload</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li routerlinkactive="active" class="active" *ngIf="!isAdmin">
                     <a data-toggle="collapse" href="#TourAnalytic" class="collapsed" aria-expanded="false">
                       <i class="material-icons">apps</i>
                       <p>Tour Analytics<b class="caret"></b></p>
