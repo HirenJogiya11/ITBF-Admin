@@ -1,3 +1,70 @@
-<p>
-  editaudio works!
-</p>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">{{title || ''}}</h4>
+      <button type="button" class="close" (click)="close()">&times;</button>
+    </div>
+    <form class="form-horizontal" #addpack="ngForm" novalidate>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">contacts</i>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title">Pack</h4>
+
+                <div class="row">
+                  <label class="col-md-3 label-on-left">Language</label>
+                  <div class="col-md-9">
+                    <div class="dropdown pull-left" id="select_language">
+
+                      <select class="selectpicker" data-style="btn btn-primary btn-round"
+                              data-size="7" name="language" [(ngModel)]="data.language">
+                        <!--<option value="Eng">English</option>-->
+                        <!--<option value="Eng">English</option>-->
+                        <option *ngFor="let pack of packs" value="{{pack.language}}">
+                        {{pack.language}}
+                        </option>
+                      </select>
+                    </div>
+                </div>
+                   </div>
+                <div class="row">
+                  <label class="col-md-3 label-on-left">PackName</label>
+                  <div class="col-md-9">
+                    <div class="form-group label-floating is-empty">
+                      <label class="control-label"></label>
+                      <input class="form-control" type="text" name="packname" [(ngModel)]="data.name">
+                      <span class="material-input"></span></div>
+                  </div>
+              </div>
+                <div class="row">
+                  <label class="col-md-3 label-on-left">Price</label>
+                  <div class="col-md-9">
+                    <div class="form-group label-floating is-empty">
+                      <label class="control-label"></label>
+                      <input class="form-control" type="text" name="price" [(ngModel)]="data.price">
+                      <span class="material-input"></span></div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+        </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" (click)="save()">OK</button>
+        <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!--<select>-->
+  <!--<option *ngFor="let country of countries" value= {{country.id}}>-->
+    <!--{{country.name}}-->
+  <!--</option>-->
+<!--</select>-->

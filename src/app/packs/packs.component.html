@@ -11,32 +11,59 @@
                 <div class="card-content">
 
                     <h4 class="card-title">Packs</h4>
-                    <div class="table-responsive">
-                        <table class="table">
+                    <div class="material-datatables table-responsive">
+                        <table id="datatables" class="table table-striped table-no-bordered table-hover"
+                               cellspacing="0" width="100%" style="width:100%">
                             <thead>
                             <tr>
-                                <th>Packs</th>
-                                <th>Language</th>
-                                <th>Add</th>
-                                <th>TotalAudio</th>
+                                <th>{{ dataTable.headerRow[0] }}</th>
+                                <th>{{ dataTable.headerRow[1] }}</th>
+                                <th>{{ dataTable.headerRow[2] }}</th>
+                                <th>{{ dataTable.headerRow[3] }}</th>
+                                <th>{{ dataTable.headerRow[4] }}</th>
+                                <th>{{ dataTable.headerRow[5] }}</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr *ngFor="let pack of packs">
-                                <td>{{pack.packname}}</td>
-                                <td>{{pack.language}}</td>
+                            <tr *ngFor="let row of dataTable.dataRows">
+                                <td>{{row.name}}</td>
+                                <td>{{row.language}}</td>
                                 <td>
                                     <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-success"
-                                            class="btn btn-primary" (click)="Newaudio(pack)">
+                                            class="btn btn-primary" (click)="Newaudio(row)">
                                         <i class="material-icons">add</i>
                                     </button>
                                 </td>
                                 <td>
                                     <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-info"
-                                            class="btn btn-danger" (click)="TotalAudio(pack)">
-                                        <i></i>
+                                            class="btn btn-danger" (click)="EditPack(row)">
+                                        <i class="material-icons">edit</i>
                                     </button>
                                 </td>
+
+                                <td>
+                                    <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-info"
+                                            class="btn btn-danger" (click)="DeletePack(row)">
+                                        <i class="material-icons">delete</i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-info"
+                                            class="btn btn-danger" (click)="TotalAudio(row.sites)">
+                                        <i>{{row.sites.length}}</i>
+                                    </button>
+                                </td>
+                                <!--<div *ngFor="let c of co; let j = index">-->
+                                <!--<ng-template #elseblock>-->
+                                <!--0-->
+                                <!--</ng-template>-->
+                                <!--<td *ngIf="j === i+1">-->
+                                <!--<button rel="tooltip" type="button" ng-reflect-class-name="btn btn-info"-->
+                                <!--class="btn btn-danger" (click)="TotalAudio(i)">-->
+                                <!--<i *ngIf="c; else elseblock">{{c}}</i>-->
+                                <!--</button>-->
+                                <!--</td>-->
+                                <!--</div>-->
                             </tr>
                             </tbody>
                         </table>

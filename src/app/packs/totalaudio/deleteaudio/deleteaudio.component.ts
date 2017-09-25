@@ -20,13 +20,12 @@ export class DeleteaudioComponent extends DialogComponent<Model, any> implements
     }
 
     ngOnInit() {
-
+        document.getElementsByTagName('body')[0].classList.add('modal-open');
     }
 
-    Delete() {
-         console.log('index', this.data);
-         this.packservice.deleteaudio(this.data);
-    }
+     Delete() {
+
+     }
 
     confirm(){
         this.close();

@@ -39,7 +39,6 @@ export class TotalrevenueComponent implements OnInit {
         };
         this.totalDownloadService.totalDownload().subscribe(
             data => {
-                debugger;
                 this.dataTable.dataRows = data;
                 // for (let i = 0; i < 30; i++) {
                 //     this.dataTable.dataRows.push(this.wholeArray.shift());

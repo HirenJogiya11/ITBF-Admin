@@ -7,7 +7,11 @@ export class ModalService {
     }
 
     open(component, data) {
-        return this.dialogService.addDialog(component, data, {backdropColor: 'rgba(0, 0, 0, 0.5)', closeByClickingOutside: true});
+        return this.dialogService.addDialog(component, data, {backdropColor: 'rgba(0, 0, 0, 0.5)', closeByClickingOutside: true})
+            .map((data)=>{
+                document.getElementsByTagName('body')[0].classList.remove('modal-open');
+                return data;
+            });
     }
 
 

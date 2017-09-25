@@ -5,22 +5,29 @@ import {Pack} from '../model/pack.interface';
 import {AddpackmodalComponent} from './addpackmodal/addpackmodal.component';
 import {NewaudiopackComponent} from './newaudiopack/newaudiopack.component';
 import {TotalaudioComponent} from './totalaudio/totalaudio.component';
+import {EditaudioComponent} from "./editaudio/editaudio.component";
+import {DeletepacksComponent} from "./deletepacks/deletepacks.component";
+import _ from 'lodash';
+declare var $: any;
+
+declare interface DataTable {
+    headerRow: string[];
+    footerRow: string[];
+    dataRows: any;
+}
 
 @Component({
     selector: 'app-packs',
     templateUrl: './packs.component.html',
     styleUrls: ['./packs.component.css']
 })
+
 export class PacksComponent implements OnInit {
-    packList = [];
-    counter = 1;
+    public dataTable: DataTable;
+    public wholeArray: any;
     packs: Pack[];
     sites: any;
-    engcounter: Number = 0;
-    frenchcounter: number = 0;
-    russiancounter: number = 0;
-    latincounter: number = 0;
-    chinesecounter: number = 0;
+    table: any;
 
 
     constructor(private packservice: PackService,
@@ -28,53 +35,62 @@ export class PacksComponent implements OnInit {
     }
 
     ngOnInit() {
+
+        document.getElementsByTagName('body')[0].classList.add('modal-open');
+        this.dataTable = {
+            headerRow: ['Packs', 'Language', 'Add', 'Edit', 'Delete', 'Total Sites'],
+            footerRow: ['', '', '', '', '', ''],
+            dataRows: []
+        };
         this.getpacks();
     }
 
     getpacks() {
-        this.packs = this.packservice.getPack();
-        this.sites = this.packservice.getsites();
+        this.packservice.getPack()
+            .subscribe(data => {
+                this.wholeArray = data;
+                this.dataTable.dataRows = data;
 
-        console.log(this.sites);
-        // this.sites.forEach((o) =>
-        for (let i = 0; i < this.packs.length; i++) {
-            for (let j = 0; j < this.sites.length; j++) {
-
-                if (this.sites[j].language === this.packs[i].language && this.sites[j].packname === this.packs[i].packname) {
-                    if (this.sites[j].packname === this.packs[i].packname) {
-                        this.packList[this.packs[i].packname] = [];
-                        this.packList[this.packs[i].packname].push(this.sites[j]);
-                        // console.log(this.packList);
-                        // this.packList.forEach((o) => {
-                        //     if (o === this.packs[i].packname) {
-                        //         debugger
-                        //         this.counter += 1;
-                        //         this.packList[o] = this.counter;
-                        //         console.log('repeat', this.packList);
-                        //     }
-                        // });
-                    }
-
-                }
-            }
-          console.log('something', this.packList[this.packs[i].packname]);
-        }
-        console.log(this.engcounter);
-        console.log(this.frenchcounter);
+                console.log('this packs Data', this.dataTable.dataRows)
+                const that = this;
+                setTimeout(function () {
+                    that.dataTableConfig();
+                    // that.addNewItem();
+                });
+            });
     }
 
+    dataTableConfig() {
+        this.table = $('#datatables').DataTable({
+            'pagingType': 'full_numbers',
+            'lengthMenu': [[10, 20, 25, 50, -1], [10, 20, 25, 50, 'All']],
+            'searching': false,
+            'deferRender': true,
+            responsive: true,
+            language: {
+                search: '_INPUT_',
+                searchPlaceholder: 'Search records'
+            }
+        });
+    }
 
     add() {
         this.modalService.open(AddpackmodalComponent, null)
             .subscribe((data) => {
-
+                if (data) {
+                    this.dataTable.dataRows.push(data);
+                }
             });
     }
 
     Newaudio(pack) {
         this.modalService.open(NewaudiopackComponent, {title: '', data: pack})
             .subscribe((data) => {
-                this.sites = this.packservice.getsites();
+                if (data) {
+                    const index = _.findIndex(this.dataTable.dataRows, ['_id', pack._id]);
+                    this.dataTable.dataRows[index] = data;
+                }
+                //  this.sites = this.packservice.getsites();
                 console.log(this.sites);
             });
     }
@@ -83,6 +99,27 @@ export class PacksComponent implements OnInit {
         this.modalService.open(TotalaudioComponent, {title: '', data: pack})
             .subscribe((data) => {
 
+            });
+    }
+
+    EditPack(pack) {
+        const copy = Object.assign({}, pack);
+        this.modalService.open(EditaudioComponent, {title: '', data: copy})
+            .subscribe((data) => {
+                if (data) {
+                    const index = _.findIndex(this.dataTable.dataRows, ['_id', pack._id]);
+                    this.dataTable.dataRows[index] = data;
+                }
+            });
+    }
+
+    DeletePack(pack) {
+        this.modalService.open(DeletepacksComponent, {title: '', data: pack})
+            .subscribe((data) => {
+                if (data) {
+                    const index = _.findIndex(this.dataTable.dataRows, ['_id', pack._id]);
+                    this.dataTable.dataRows.splice(index, 1);
+                }
             });
     }
 }

@@ -9,7 +9,9 @@ export const ROUTES: RouteInfo[] = [
     { path: '/user', title:'User', icon: 'material-icons'},
     { path: '/uploaduser', title:'Upload User', icon: 'material-icons'},
     { path: '/touruser', title:'Tour User', icon: 'material-icons'},
-    { path: '/tourRevenue', title:'Tour Revenue', icon: 'material-icons'}
+    { path: '/tourRevenue', title:'Tour Revenue', icon: 'material-icons'},
+    { path: '/site1', title:'Sites1', icon: 'material-icons'},
+    { path: '/site', title:'Sites', icon: 'material-icons'}
 
 
 ];
