@@ -38,8 +38,8 @@ export class PacksComponent implements OnInit {
 
         document.getElementsByTagName('body')[0].classList.add('modal-open');
         this.dataTable = {
-            headerRow: ['Packs', 'Language', 'Add', 'Edit', 'Delete', 'Total Sites'],
-            footerRow: ['', '', '', '', '', ''],
+            headerRow: ['Packs', 'Language', 'Action', 'Total Sites'],
+            footerRow: ['', '', '', ''],
             dataRows: []
         };
         this.getpacks();
