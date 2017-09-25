@@ -10,7 +10,6 @@ import {IntroductionService} from "../services/introduction.service";
 export class IntroductionComponent implements OnInit {
     button:boolean;
     playaudio:string;
-    play:string;
     result:any;
     imageName:string = null;
     res:any;
@@ -23,14 +22,17 @@ export class IntroductionComponent implements OnInit {
   constructor( private toastrService: ToastrService, private introductionservice: IntroductionService) { }
 
   ngOnInit() {
+       this.getintroduction();
+  }
+  getintroduction(){
       this.introductionservice.getIntroductionData()
           .subscribe(data => {
 
-              this.result = 'http://192.168.200.72:4200/' + data[0].image;
-              this.playaudio = 'http://192.168.200.72:4200/' + data[0].audio;
+                  this.result = 'http://192.168.200.72:4200/' + data[0].image;
+                  this.playaudio = 'http://192.168.200.72:4200/' + data[0].audio;
                   this.button = true;
-               this.final = this.playaudio;
-              console.log('save', this.playaudio);
+                  this.final = this.playaudio;
+                  console.log('save', this.playaudio);
               },
               err => {
                   console.log('Error', err);
@@ -106,12 +108,8 @@ export class IntroductionComponent implements OnInit {
                   err => {
                       console.log('Error', err);
                   });
+          this.getintroduction();
         this.toastrService.success('Successfully File Uploaded ');
-        this.playaudio='';
-        this.ngOnInit();
-
-        // this.result=null;
-        // this.final=null;
-        //     this.button = false;
+        this.playaudio = '';
     }
 }

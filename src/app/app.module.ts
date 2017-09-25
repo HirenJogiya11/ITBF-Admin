@@ -12,8 +12,8 @@ import {AuthLayoutComponent} from './layouts/auth/auth-layout.component';
 import {AppRoutes} from './app-routing.module';
 import {NavbarModule} from './shared/navbar/navbar.module';
 import {FooterModule} from './shared/footer/footer.module';
-import {ModalModule} from "ng2-modal";
-import {DashboardComponent} from "./dashboard/dashboard.component";
+import {ModalModule} from 'ng2-modal';
+import {DashboardComponent} from './dashboard/dashboard.component';
 import {ToastrModule} from 'toastr-ng2';
 import {PagenotfoundComponent} from './pagenotfound/pagenotfound.component';
 import {IntroductionComponent} from './introduction/introduction.component';
@@ -47,7 +47,7 @@ import { AnalyticUserComponent } from './analytic-user/analytic-user.component';
 import {IntroductionService} from "./services/introduction.service";
 import {UserAdminService} from "./services/userAdmin.service";
 import { AdduserComponent } from './user/adduser/adduser.component';
-import {MyFilterPipe} from "./totaldownload/myfilter.pipe";
+// import {MyFilterPipe} from "./totaldownload/myfilter.pipe";
 import { SiteComponent } from './site/site.component';
 import { CreatesiteComponent } from './site/createsite/createsite.component';
 import {SiteService} from "./service/site.service";
@@ -95,7 +95,7 @@ import { EditsiteComponent } from './site/editsite/editsite.component';
         NewaudiopackComponent,
         TotalaudioComponent,
         DeleteaudioComponent,
-        MyFilterPipe,
+        // MyFilterPipe,
         SiteComponent,
         CreatesiteComponent,
         EditaudioComponent,

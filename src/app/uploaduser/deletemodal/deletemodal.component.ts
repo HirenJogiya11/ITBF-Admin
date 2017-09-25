@@ -15,6 +15,7 @@ export class DeletemodalComponent  extends DialogComponent<Model, any> implement
         super(dialogService);
     }
   ngOnInit() {
+      document.getElementsByTagName('body')[0].classList.add('modal-open');
   }
     dataDelete(){
           this.result = {index: this.index};
