@@ -29,7 +29,7 @@ declare interface DataTable {
 export class TotalaudioComponent extends DialogComponent<Model, any> implements OnInit {
 
     public dataTable: DataTable;
-    public imagepath: string = 'http://192.168.200.72:4200';
+    public BasePath: string = 'http://192.168.200.72:4200';
     data: any;
     sites: any;
     model: any[];
@@ -45,7 +45,7 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
 
         document.getElementsByTagName('body')[0].classList.add('modal-open');
         this.dataTable = {
-            headerRow: ['Name', 'CoverImage', 'FootStrapImage', 'Audio', 'Edit', 'Delete'],
+            headerRow: ['Name', 'CoverImage', 'FootStrapImage', 'Audio', 'Action'],
             footerRow: ['', '', '', '', '', ''],
             dataRows: []
         };
@@ -78,9 +78,9 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
     }
 
     //
-    // deleteAudio(i) {
+    // deleteAudio(site) {
     //
-    //     this.modalservice.open(DeleteaudioComponent, {title: '', data: i})
+    //     this.modalservice.open(DeleteaudioComponent, {title: '', data: site})
     //         .subscribe((data) => {
     //
     //         });

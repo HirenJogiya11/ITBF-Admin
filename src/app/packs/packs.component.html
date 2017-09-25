@@ -20,8 +20,6 @@
                                 <th>{{ dataTable.headerRow[1] }}</th>
                                 <th>{{ dataTable.headerRow[2] }}</th>
                                 <th>{{ dataTable.headerRow[3] }}</th>
-                                <th>{{ dataTable.headerRow[4] }}</th>
-                                <th>{{ dataTable.headerRow[5] }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -29,41 +27,27 @@
                                 <td>{{row.name}}</td>
                                 <td>{{row.language}}</td>
                                 <td>
-                                    <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-success"
-                                            class="btn btn-primary" (click)="Newaudio(row)">
+                                    <button class="btn btn-simple btn-info btn-icon like" rel="tooltip" title="Add"
+                                            data-placement="left" (click)="Newaudio(row)">
                                         <i class="material-icons">add</i>
                                     </button>
-                                </td>
-                                <td>
-                                    <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-info"
-                                            class="btn btn-danger" (click)="EditPack(row)">
+                                    <button class="btn btn-simple btn-warning btn-icon edit" rel="tooltip" title="Edit"
+                                            data-placement="left" (click)="EditPack(row)">
                                         <i class="material-icons">edit</i>
                                     </button>
-                                </td>
-
-                                <td>
-                                    <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-info"
-                                            class="btn btn-danger" (click)="DeletePack(row)">
+                                    <button class="btn btn-simple btn-danger btn-icon remove" rel="tooltip" title="Remove"
+                                            data-placement="left" (click)="DeletePack(row)">
                                         <i class="material-icons">delete</i>
                                     </button>
                                 </td>
                                 <td>
-                                    <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-info"
-                                            class="btn btn-danger" (click)="TotalAudio(row.sites)">
+                                    <button class="btn btn-simple btn-danger btn-icon remove" rel="tooltip" title="Remove"
+                                            data-placement="left" (click)="TotalAudio(row.sites)">
+                                        <!--<i class="material-icons">delete</i>-->
                                         <i>{{row.sites.length}}</i>
                                     </button>
+
                                 </td>
-                                <!--<div *ngFor="let c of co; let j = index">-->
-                                <!--<ng-template #elseblock>-->
-                                <!--0-->
-                                <!--</ng-template>-->
-                                <!--<td *ngIf="j === i+1">-->
-                                <!--<button rel="tooltip" type="button" ng-reflect-class-name="btn btn-info"-->
-                                <!--class="btn btn-danger" (click)="TotalAudio(i)">-->
-                                <!--<i *ngIf="c; else elseblock">{{c}}</i>-->
-                                <!--</button>-->
-                                <!--</td>-->
-                                <!--</div>-->
                             </tr>
                             </tbody>
                         </table>

@@ -42,12 +42,12 @@ import {AdminGuard} from "./services/adminguard.service";
 import {TourGuard} from "./services/tourguard.service";
 import {PackService} from './service/pack.service';
 import {ModalService} from './service/modal.service';
-import {TotalDownloadService} from "./services/totaldownload.service";
+import {TotalDownloadService} from './services/totaldownload.service';
 import { AnalyticUserComponent } from './analytic-user/analytic-user.component';
-import {IntroductionService} from "./services/introduction.service";
-import {UserAdminService} from "./services/userAdmin.service";
+import {IntroductionService} from './services/introduction.service';
+import {UserAdminService} from './services/userAdmin.service';
 import { AdduserComponent } from './user/adduser/adduser.component';
-import {MyFilterPipe} from "./totaldownload/myfilter.pipe";
+//import {MyFilterPipe} from "./totaldownload/myfilter.pipe";
 import { SiteComponent } from './site/site.component';
 import { CreatesiteComponent } from './site/createsite/createsite.component';
 import {SiteService} from "./service/site.service";
@@ -95,7 +95,7 @@ import { EditsiteComponent } from './site/editsite/editsite.component';
         NewaudiopackComponent,
         TotalaudioComponent,
         DeleteaudioComponent,
-        MyFilterPipe,
+       // MyFilterPipe,
         SiteComponent,
         CreatesiteComponent,
         EditaudioComponent,

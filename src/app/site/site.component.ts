@@ -33,8 +33,8 @@ export class SiteComponent implements OnInit {
 
     ngOnInit() {
         this.dataTable = {
-            headerRow: ['SiteName', 'CoverImage'],
-            footerRow: ['', ''],
+            headerRow: ['SiteName', 'CoverImage', 'Action'],
+            footerRow: ['', '', ''],
             dataRows: []
         };
         this.getallsite();
@@ -51,27 +51,27 @@ export class SiteComponent implements OnInit {
                 for (let i = 0; i < Counter; i++) {
                     this.dataTable.dataRows.push(this.wholeArray.shift());
                 }
-                // var that = this;
-                // setTimeout(function () {
-                //     that.dataTableConfig();
-                //     // that.addNewItem();
-                // });
+                var that = this;
+                setTimeout(function () {
+                    that.dataTableConfig();
+                    // that.addNewItem();
+                });
             });
     }
 
-    // dataTableConfig() {
-    //     this.table = $('#datatables1').DataTable({
-    //         'pagingType': 'full_numbers',
-    //         'lengthMenu': [[10, 20, 25, 50, -1], [10, 20, 25, 50, 'All']],
-    //         'searching': false,
-    //         'deferRender': true,
-    //         responsive: true,
-    //         language: {
-    //             search: '_INPUT_',
-    //             searchPlaceholder: 'Search records'
-    //         }
-    //     });
-    // }
+    dataTableConfig() {
+        this.table = $('#datatables').DataTable({
+            'pagingType': 'full_numbers',
+            'lengthMenu': [[5 ,10, 20, 25, 50, -1], [5, 10, 20, 25, 50, 'All']],
+            'searching': false,
+            'deferRender': true,
+            responsive: true,
+            language: {
+                search: '_INPUT_',
+                searchPlaceholder: 'Search records'
+            }
+        });
+    }
 
     add() {
         this.modalService.open(CreatesiteComponent, null)

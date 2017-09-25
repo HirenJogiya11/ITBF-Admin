@@ -38,9 +38,10 @@
                                 <div class="col-md-9">
                                         <div class="form-group label-floating is-empty">
                                             <label class="control-label"></label>
-                                            <input class="form-control" type="text" name="packname" [(ngModel)]="name">
+                                            <input class="form-control" type="text" name="packname" [(ngModel)]="name"
+                                                   #packname="ngModel" required>
                                             <span class="material-input"></span></div>
-                                    <small *ngIf="!packsname.valid && (packsname.dirty || packsname.touched)" class="text-danger">
+                                    <small *ngIf="!packname.invalid && ( packname.dirty || packname.touched )" class="text-danger">
                                         PackName is Require
                                     </small>
                                     </div>
@@ -50,8 +51,13 @@
                                 <div class="col-md-9">
                                     <div class="form-group label-floating is-empty">
                                         <label class="control-label"></label>
-                                        <input class="form-control" type="text" name="Price" [(ngModel)]="Price">
+                                        <input class="form-control" type="text" name="price" [(ngModel)]="Price"
+                                               #price="ngModel" required>
                                         <span class="material-input"></span></div>
+                                    <small *ngIf="!price.invalid && ( price.dirty || price.touched )" class="text-danger">
+                                        Price is Require</small>
+                                    <small *ngIf="!price.invalid && price.dirty" class="text-danger">
+                                        Price Must be Enter into NUmber </small>
                                 </div>
                             </div>
 

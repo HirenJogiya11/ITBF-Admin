@@ -21,33 +21,37 @@
                     <tr>
                       <th>{{ dataTable.headerRow[0] }}</th>
                       <th>{{ dataTable.headerRow[1] }}</th>
-                      <th>{{ dataTable.headerRow[2] }}</th>
+                      <!--<th>{{ dataTable.headerRow[2] }}</th>-->
                       <th>{{ dataTable.headerRow[3] }}</th>
                       <th>{{ dataTable.headerRow[4] }}</th>
-                      <th>{{ dataTable.headerRow[5] }}</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr *ngFor="let row of dataTable.dataRows;  let i = index">
                       <td>{{ row.siteId ? row.siteId.name : '' }}</td>
                       <td><div class="fileinput-new thumbnail ">
-                        <img src="{{imagepath}}/{{row.coverImageURL}}" alt="..." height="50" width="50">
+                        <img src="{{BasePath}}/{{row.coverImageURL}}" alt="..." height="50" width="50">
                       </div></td>
-                      <td><div class="fileinput-new thumbnail ">
-                        <img src="{{imagepath}}/{{row.footstepImageURL}}" alt="..." height="50" width="50">
-                      </div></td>
-                      <td><div>
-                        <audio src="{{imagepath}}/{{row.audioURL}}" alt="..." controls></audio>
-                      </div></td>
+                      <!--<td><div class="fileinput-new thumbnail ">-->
+                        <!--<img src="{{BasePath}}/{{row.footstepImageURL}}" alt="...">-->
+                      <!--</div></td>-->
                       <td>
-                        <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-success"
-                                class="btn btn-primary">
+                      <audio  controls="controls">
+                      <source src="{{BasePath}}/{{row.audioURL}}"  type="audio/mpeg">
+                      Your browser does not support the audio element.
+                      </audio>
+                      </td>
+                      <!--<td><div>-->
+                        <!--<audio src="{{BasePath}}/{{row.audioURL}}" alt="..." controls>{{ row.siteId ? row.siteId.name : ''}}'Audio'</audio>-->
+                      <!--</div></td>-->
+
+                      <td>
+                        <button class="btn btn-simple btn-warning btn-icon edit" rel="tooltip" title="Edit"
+                                >
                           <i class="material-icons">edit</i>
                         </button>
-                      </td>
-                      <td>
-                        <button rel="tooltip" type="button" ng-reflect-class-name="btn btn-info"
-                                class="btn btn-danger">
+                        <button class="btn btn-simple btn-danger btn-icon remove" rel="tooltip" title="Remove"
+                                >
                           <i class="material-icons">delete</i>
                         </button>
                       </td>
