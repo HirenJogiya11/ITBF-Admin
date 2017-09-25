@@ -31,12 +31,13 @@ export class UserComponent implements OnInit {
     }
 
     ngOnInit() {
+        document.getElementsByTagName('body')[0].classList.add('modal-open');
      this.getUsers();
     }
     getUsers(){
         this.useradminservice.GetUserData()
             .subscribe(data => {
-                debugger;
+
                     this.modal = data;
                     let that = this;
                     setTimeout(function () {
@@ -49,8 +50,8 @@ export class UserComponent implements OnInit {
                     console.log('Error', err);
                 });
         this.dataTable = {
-            headerRow: ['Email', 'First Name', 'Last Name', 'Country', 'Role'],
-            footerRow: ['', '', '', '', '', ''],
+            headerRow: ['Email', 'First Name', 'Last Name', 'Country', 'Role' , 'Action'],
+            footerRow: ['', '', '', '', '', '', ''],
 
             dataRows: [
                 this.modal
@@ -73,35 +74,44 @@ export class UserComponent implements OnInit {
 
     }
 
-    deleteData(i) {
-        this.useradminservice.DeleteUserData(i)
-            .subscribe(data => {
-                    this.getUsers();
-                    console.log('save', data);
-                },
-                err => {
-                    console.log('Error', err);
-                });
-        // // Delete Api
-        // this.model.splice(this.model.indexOf(i), 1);
-    }
-
-    // deleteData(i)
-    // {
-    //     let pos = this.modal.indexOf(i);
-    //
-    //     console.log('index', pos);
-    //     this.dialogService.addDialog(DeletemodalComponent, { index: pos}, {backdropColor: 'rgba(0, 0, 0, 0.5)'})
-    //         .subscribe((data) => {
-    //             if(data) {
-    //                 // Delete Api
-    //                 console.log(this.modal);
-    //                 console.log('delete data', data.index);
-    //                 this.modal.splice(data.index, 1);
-    //             }
-    //         });
-    //
+    // deleteData(i) {
+    //     this.useradminservice.DeleteUserData(i)
+    //         .subscribe(data => {
+    //                 this.getUsers();
+    //                 console.log('save', data);
+    //             },
+    //             err => {
+    //                 console.log('Error', err);
+    //             });
+    //     // // Delete Api
+    //     // this.model.splice(this.model.indexOf(i), 1);
     // }
+
+    deleteData(i)
+    {
+        let id = i._id;
+        let pos = this.modal.indexOf(i);
+
+        console.log('index', pos);
+      //  debugger
+        this.dialogService.addDialog(DeletemodalComponent, { index: id}, {backdropColor: 'rgba(0, 0, 0, 0.5)'})
+            .subscribe((data) => {
+                if(data) {
+                    this.useradminservice.DeleteUserData(data.index)
+                        .subscribe(deletedata => {
+                                this.getUsers();
+                                console.log('save', deletedata);
+                            },
+                            err => {
+                                console.log('Error', err);
+                            });
+                    // console.log(this.modal);
+                    // console.log('delete data', data.index);
+                    // this.modal.splice(data.index, 1);
+                }
+            });
+
+    }
 
     openModal() {
         this.dialogService.addDialog(AdduserComponent, {
@@ -109,7 +119,7 @@ export class UserComponent implements OnInit {
             data: {}
         }, {backdropColor: 'rgba(0, 0, 0, 0.5)'})
             .subscribe((data) => {
-            debugger
+
                 if (data && data.userForm) {
                     data = {
                         firstname: data.userForm.firstName,
@@ -135,7 +145,7 @@ export class UserComponent implements OnInit {
     }
 
     Editdata(index) {
-        debugger;
+     //   debugger;
         let id = index._id;
         let position = this.modal.indexOf(index);
         let i = this.modal[position];
@@ -147,7 +157,17 @@ export class UserComponent implements OnInit {
             data:(copy)}, {backdropColor: 'rgba(0, 0, 0, 0.5)'})
             .subscribe((data) => {
                 if(data.userForm) {
-                    debugger
+                    data = {
+                        firstname: data.userForm.firstName,
+                        lastname: data.userForm.lastName,
+                        email: data.userForm.email,
+                        password: data.userForm.changePassword,
+                        location: {
+                            Country: data.userForm.Country,
+                        },
+                        role: data.userForm.role
+                    };
+                  //  debugger
                     this.useradminservice.EditUserData(data, id)
                         .subscribe(editdata => {
                                 this.getUsers();

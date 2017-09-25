@@ -32,8 +32,9 @@ export class PackService {
     private GET: string = 'http://192.168.200.72:4200/api/pack';
     private NewSite: string = 'http://192.168.200.72:4200/api/pack/addSite';
     private EditPack: string = 'http://192.168.200.72:4200/api/pack';
-    private Delete: string= 'http://192.168.200.72:4200/api/pack/';
-    private GetLanguage: string= 'http://192.168.200.72:4200/api/language';
+    private Delete: string = 'http://192.168.200.72:4200/api/pack/';
+    private GetLanguage: string = 'http://192.168.200.72:4200/api/language';
+    private EditSite: string = 'http://localhost:3000/api/pack/updateSite'
 
     getPack(): Observable<any> {
         return this.http.get(this.GET).map((res: Response) => res.json());
@@ -48,12 +49,17 @@ export class PackService {
     }
 
     EditAudio(pack): Observable<any> {
-        return this.http.put(this.EditPack + '/' + pack._id , pack).map((res: Response) => res.json());
+        return this.http.put(this.EditPack + '/' + pack._id, pack).map((res: Response) => res.json());
     }
 
 
     addnewsite(formdata) {
         return this.http.post(this.NewSite, formdata).map((res: Response) => res.json());
+    }
+
+    editSite(formdata) {
+      //  debugger;
+        return this.http.put(this.EditSite, formdata).map((res: Response) => res.json());
     }
 
     // getsites() {

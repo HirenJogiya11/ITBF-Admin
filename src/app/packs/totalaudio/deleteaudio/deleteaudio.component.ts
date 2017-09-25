@@ -13,7 +13,7 @@ export interface Model {
 })
 export class DeleteaudioComponent extends DialogComponent<Model, any> implements OnInit {
 
-    data: number;
+    data: any;
 
     constructor(private dialogservice: DialogService , private packservice: PackService) {
         super(dialogservice);
@@ -24,7 +24,8 @@ export class DeleteaudioComponent extends DialogComponent<Model, any> implements
     }
 
      Delete() {
-
+          //  console.log('delete id' , this.data._id);
+     //    console.log('delete id' , this.data.siteId._id);
      }
 
     confirm(){

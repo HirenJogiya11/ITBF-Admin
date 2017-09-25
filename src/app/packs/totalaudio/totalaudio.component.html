@@ -21,7 +21,7 @@
                     <tr>
                       <th>{{ dataTable.headerRow[0] }}</th>
                       <th>{{ dataTable.headerRow[1] }}</th>
-                      <!--<th>{{ dataTable.headerRow[2] }}</th>-->
+                      <th>{{ dataTable.headerRow[2] }}</th>
                       <th>{{ dataTable.headerRow[3] }}</th>
                       <th>{{ dataTable.headerRow[4] }}</th>
                     </tr>
@@ -32,9 +32,9 @@
                       <td><div class="fileinput-new thumbnail ">
                         <img src="{{BasePath}}/{{row.coverImageURL}}" alt="..." height="50" width="50">
                       </div></td>
-                      <!--<td><div class="fileinput-new thumbnail ">-->
-                        <!--<img src="{{BasePath}}/{{row.footstepImageURL}}" alt="...">-->
-                      <!--</div></td>-->
+                      <td><div class="fileinput-new thumbnail ">
+                        <img src="{{BasePath}}/{{row.footstepImageURL}}" alt="...">
+                      </div></td>
                       <td>
                       <audio  controls="controls">
                       <source src="{{BasePath}}/{{row.audioURL}}"  type="audio/mpeg">
@@ -47,11 +47,11 @@
 
                       <td>
                         <button class="btn btn-simple btn-warning btn-icon edit" rel="tooltip" title="Edit"
-                                >
+                               (click)="EditTotalSite(row)">
                           <i class="material-icons">edit</i>
                         </button>
                         <button class="btn btn-simple btn-danger btn-icon remove" rel="tooltip" title="Remove"
-                                >
+                               (click)="deleteAudio(row)">
                           <i class="material-icons">delete</i>
                         </button>
                       </td>

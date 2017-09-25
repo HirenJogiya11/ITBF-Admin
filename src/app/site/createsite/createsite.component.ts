@@ -24,6 +24,7 @@ export class CreatesiteComponent extends DialogComponent<Model, any> implements 
     imageName: any;
     formdata: FormData;
     button: any;
+    image: any;
 
     constructor(private dialogservice: DialogService,
                 private siteservice: SiteService,
@@ -52,7 +53,13 @@ export class CreatesiteComponent extends DialogComponent<Model, any> implements 
 
     getimage($event): void {
         this.coverimage = $event.target.files[0];
-        this.readThis($event.target);
+        this.image = this.coverimage.type.toString();
+        this.image = this.image.slice(0, 5).toString();
+        if (this.image === 'image') {
+            this.readThis($event.target);
+        } else {
+            this.toastrService.error('Please, Select valid Image file');
+        }
     }
 
     readThis(inputValue: any): void {

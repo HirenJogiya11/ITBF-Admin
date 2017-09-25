@@ -5,6 +5,7 @@ import {PackService} from '../../service/pack.service';
 import {DeleteaudioComponent} from './deleteaudio/deleteaudio.component';
 import {ModalService} from '../../service/modal.service';
 import _ from 'lodash';
+import {EdittotalsiteComponent} from "./edittotalsite/edittotalsite.component";
 declare var $: any;
 
 export interface Model {
@@ -31,6 +32,7 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
     public dataTable: DataTable;
     public BasePath: string = 'http://192.168.200.72:4200';
     data: any;
+    packid: any
     sites: any;
     model: any[];
     table: any;
@@ -51,6 +53,7 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
         };
 
         this.getsite();
+        console.log('this packis' , this.packid);
     }
 
     getsite() {
@@ -77,12 +80,18 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
         });
     }
 
+    EditTotalSite(site) {
+        this.modalservice.open(EdittotalsiteComponent , {title: '' , data: site , packid: this.packid}).
+            subscribe((data) => {
+
+        });
+    }
     //
-    // deleteAudio(site) {
-    //
-    //     this.modalservice.open(DeleteaudioComponent, {title: '', data: site})
-    //         .subscribe((data) => {
-    //
-    //         });
-    // }
+    deleteAudio(site) {
+
+        this.modalservice.open(DeleteaudioComponent, {title: '', data: site})
+            .subscribe((data) => {
+
+            });
+    }
 }

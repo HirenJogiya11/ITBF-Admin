@@ -45,14 +45,11 @@
                   <td>{{row.location ? row.location.Country : ''}}</td>
                   <td>{{row.role}}</td>
                   <td class="text-right">
-                    <button class="btn btn-simple btn-info btn-icon like" rel="tooltip" title="Like" data-placement="left">
-                      <i class="material-icons">favorite</i>
-                    </button>
                     <button class="btn btn-simple btn-warning btn-icon edit" rel="tooltip" title="Edit" data-placement="left" (click)="Editdata(i)">
-                      <i class="material-icons">dvr</i>
-                    </button>
-                    <button class="btn btn-simple btn-danger btn-icon remove" rel="tooltip" title="Remove" data-placement="left" (click)="deleteData(row._id)">
-                      <i class="material-icons">close</i>
+                      <i class="material-icons">edit</i>
+                    </button>&nbsp;&nbsp;
+                    <button class="btn btn-simple btn-danger btn-icon remove" rel="tooltip" title="Remove" data-placement="left" (click)="deleteData(i)">
+                      <i class="material-icons">delete</i>
                     </button>
                   </td>
                 </tr>

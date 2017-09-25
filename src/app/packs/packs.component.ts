@@ -95,8 +95,8 @@ export class PacksComponent implements OnInit {
             });
     }
 
-    TotalAudio(pack) {
-        this.modalService.open(TotalaudioComponent, {title: '', data: pack})
+    TotalAudio(pack , packid) {
+        this.modalService.open(TotalaudioComponent, {title: '', data: pack , packid: packid})
             .subscribe((data) => {
 
             });
