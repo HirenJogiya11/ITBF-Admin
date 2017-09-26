@@ -75,7 +75,7 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
         const copy = Object.assign({}, site);
         this.modalservice.open(DeleteaudioComponent, {title: '', data: copy, packid: this.packid})
             .subscribe((data) => {
-                if (typeof(data) === 'object') {
+                if (data) {
                     const index = _.findIndex(this.dataTable.dataRows, ['_id', site._id]);
                     this.dataTable.dataRows.splice(index, 1);
                 }
