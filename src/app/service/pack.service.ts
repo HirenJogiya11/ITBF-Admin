@@ -34,7 +34,7 @@ export class PackService {
     private EditPack: string = 'http://192.168.200.72:4200/api/pack';
     private Delete: string = 'http://192.168.200.72:4200/api/pack/';
     private GetLanguage: string = 'http://192.168.200.72:4200/api/language';
-    private EditSite: string = 'http://localhost:3000/api/pack/updateSite'
+    private EditSite: string = 'http://localhost:4200/api/pack/updateSite';
 
     getPack(): Observable<any> {
         return this.http.get(this.GET).map((res: Response) => res.json());
@@ -58,20 +58,17 @@ export class PackService {
     }
 
     editSite(formdata) {
-      //  debugger;
         return this.http.put(this.EditSite, formdata).map((res: Response) => res.json());
     }
 
-    // getsites() {
-    //     return this.sites.slice();
-    // }
-
-    //  getsite(name) {
-    // //     return this.sites.filter((obj) => obj.packname === name);
-    //  }
-
-    deletepack(index) {
-        return this.http.delete(this.Delete + index).map((response: Response) => response.json());
+    deletepack(id) {
+        return this.http.delete(this.Delete + id).map((response: Response) => response.json());
     }
+
+    deletesite(packid, siteid) {
+        debugger;
+        return this.http.delete(this.Delete + packid + '/' + siteid).map((response: Response) => response.json());
+    }
+
 
 }

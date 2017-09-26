@@ -14,7 +14,7 @@ export interface Model {
 })
 export class DeletesiteComponent extends DialogComponent<Model, any> implements OnInit {
 
-    constructor(private dialogservice: DialogService, private siteservice: SiteService) {
+    constructor(private dialogservice: DialogService, private Siteservice: SiteService) {
         super(dialogservice);
     }
 
@@ -25,7 +25,7 @@ export class DeletesiteComponent extends DialogComponent<Model, any> implements 
     }
 
     Delete() {
-        this.siteservice.deletesite(this.data._id).subscribe((res: Response) => {
+        this.Siteservice.deletesite(this.data._id).subscribe((res: Response) => {
                 console.log('save', res);
                 this.result = res;
                 this.close();

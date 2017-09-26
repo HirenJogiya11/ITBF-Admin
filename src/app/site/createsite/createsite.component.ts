@@ -27,7 +27,7 @@ export class CreatesiteComponent extends DialogComponent<Model, any> implements 
     image: any;
 
     constructor(private dialogservice: DialogService,
-                private siteservice: SiteService,
+                private Siteservice: SiteService,
                 private toastrService: ToastrService) {
         super(dialogservice);
     }
@@ -86,7 +86,7 @@ export class CreatesiteComponent extends DialogComponent<Model, any> implements 
         this.formdata = new FormData();
         this.formdata.append('name', this.Sitename);
         this.formdata.append('image', this.coverimage, this.coverimage.name)
-        this.siteservice.AddNewSite(this.formdata)
+        this.Siteservice.AddNewSite(this.formdata)
             .subscribe(data => {
                     console.log('save', data);
                     this.toastrService.success('Your Site has been Create Successfully');

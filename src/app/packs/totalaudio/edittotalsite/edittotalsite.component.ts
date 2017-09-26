@@ -1,67 +1,51 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-
+import {Component, OnInit} from '@angular/core';
 import {DialogComponent, DialogService} from 'ng2-bootstrap-modal';
-import {NgForm} from '@angular/forms';
-import {PackService} from '../../service/pack.service';
-import {Site} from '../../model/site.interface';
 import {ToastrService} from "toastr-ng2";
-import {SiteService} from "../../service/site.service";
+import {NgForm} from "@angular/forms";
+import {PackService} from "../../../service/pack.service";
 
-declare var $: any;
 export interface Model {
-    title: string ;
+    title: string;
     data: any ;
 }
-@Component({
-    selector: 'app-newaudiopack',
-    templateUrl: './newaudiopack.component.html',
-    styleUrls: ['../../uploaduser/uploaduser.component.css']
-})
-export class NewaudiopackComponent extends DialogComponent<Model, any> implements OnInit, OnDestroy {
 
-    siteid: any;
-    Sites: any;
-    title: string;
+
+@Component({
+    selector: 'app-edittotalsite',
+    templateUrl: './edittotalsite.component.html',
+    styleUrls: ['./edittotalsite.component.css']
+})
+export class EdittotalsiteComponent extends DialogComponent<Model, any> implements OnInit {
+
     data: any;
-    image: any;
-    footstepimage: any;
-    audio: any;
-    formdata: FormData;
-    imageName: string = '';
-    res: any;
-    final: any;
+    packid: any
     result: any;
     result1: any;
     imagetype: any;
     footsteptype: any;
+    imageName: any;
     audiotype: any;
-    button: any;
+    res: any;
+    final: any;
+    button: boolean;
+    public imagepath: string = 'http://192.168.200.72:4200';
+    formdata: FormData;
 
-    constructor(private dialogservice: DialogService, private packservice: PackService,
-                private toastrService: ToastrService, private  Siteservice: SiteService) {
+    constructor(private dialogservice: DialogService,
+                private toastrService: ToastrService,
+                private packservice: PackService) {
         super(dialogservice);
     }
 
     ngOnInit() {
-        document.getElementsByTagName('body')[0].classList.add('modal-open');
-        this.getSites();
+        console.log('site data', this.data);
     }
 
-
-    getSites() {
-        this.Siteservice.getAllSite().subscribe((data) => {
-            this.Sites = data;
-            const that = this;
-            setTimeout(function () {
-                that.initialize();
-            });
-        });
-    }
 
     getimage($event): void {
 
-        this.image = $event.target.files[0];
-        this.imagetype = this.image.type.toString();
+        this.data.coverImageURL = $event.target.files[0];
+        this.imagetype = this.data.coverImageURL.type.toString();
         this.imagetype = this.imagetype.slice(0, 5).toString();
         if (this.imagetype === 'image') {
             this.readThis($event.target);
@@ -73,8 +57,8 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
 
 
     getFootstepImage($event): void {
-        this.footstepimage = $event.target.files[0];
-        this.footsteptype = this.footstepimage.type.toString();
+        this.data.footstepImageURL = $event.target.files[0];
+        this.footsteptype = this.data.footstepImageURL.type.toString();
         this.footsteptype = this.footsteptype.slice(0, 5).toString();
         if (this.footsteptype === 'image') {
             this.readThis1($event.target);
@@ -103,17 +87,17 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
         console.log(file);
         myReader.onloadend = (e) => {
             this.result1 = myReader.result;
-            // Base64 data console.log(this.result);
+
             this.imageName = file.name;
-            // image Name  console.log(this.imageName);
+
         };
         myReader.readAsDataURL(file);
     }
 
 
     getAudio($event): void {
-        this.audio = $event.target.files[0];
-        this.audiotype = this.audio.type.toString();
+        this.data.audioURL = $event.target.files[0];
+        this.audiotype = this.data.audioURL.type.toString();
         this.audiotype = this.audiotype.slice(0, 5).toString();
         //     console.log(this.audio);
         if (this.audiotype === 'audio') {
@@ -126,7 +110,7 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
     }
 
     removeAudio() {
-        this.audio = null;
+        this.data.audioURL = null;
         this.button = false;
     }
 
@@ -140,19 +124,21 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
         this.button = false;
     }
 
-
-    save(audiopack: NgForm) {
+    save(editSiteform: NgForm) {
         //
+        debugger;
+
         this.formdata = new FormData();
-        this.formdata.append('packId', this.data._id);
-        this.formdata.append('siteId', this.siteid);
-        this.formdata.append('coverImage', this.image);
-        this.formdata.append('footStrapImage', this.footstepimage);
-        this.formdata.append('audioUrl', this.audio);
+        this.formdata.append('packId', this.packid);
+        this.formdata.append('sites_id', this.data._id);
+        this.formdata.append('siteId', this.data.siteId._id);
+        this.formdata.append('coverImage', this.data.coverImageURL);
+        this.formdata.append('footStrapImage', this.data.footstepImageURL);
+        this.formdata.append('audioUrl', this.data.audioURL);
         //     console.log(this.formdata);
-        this.packservice.addnewsite(this.formdata).subscribe(data => {
+        this.packservice.editSite(this.formdata).subscribe(data => {
                 console.log('save', data);
-                this.toastrService.success('Successfully File Uploaded ');
+                this.toastrService.success('Successfully Update Your File  ');
                 this.result = data;
                 this.close();
             },
@@ -161,34 +147,7 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
                 const err = JSON.parse(error._body);
                 this.toastrService.error(err.error);
             });
-        /*this.result = null;
-         this.result1 = null;*/
-
-        //     this.button = false;
-
 
     }
 
-
-    initialize() {
-        if ($('.selectpicker').length) {
-            $('.selectpicker').selectpicker();
-        }
-
-        //  Dropdown Toggle
-        $('#select_id .dropdown-toggle').click(function (event) {
-            event.stopPropagation();
-            $('.bootstrap-select').toggleClass('open');
-        });
-        $('.modal-content').click(function () {
-            $('.bootstrap-select').removeClass('open');
-        });
-    }
 }
-
-
-
-
-
-
-

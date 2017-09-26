@@ -38,7 +38,6 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
     table: any;
 
     constructor(private dialogservice: DialogService,
-                private  packservice: PackService,
                 private modalservice: ModalService) {
         super(dialogservice);
     }
@@ -58,40 +57,27 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
 
     getsite() {
         this.dataTable.dataRows = this.data;
-        console.log(this.dataTable.dataRows);
-        // const that = this;
-        // setTimeout(function () {
-        //     that.dataTableConfig();
-        //     // that.addNewItem();
-        // });
-    }
-
-    dataTableConfig() {
-        this.table = $('#datatables').DataTable({
-            'pagingType': 'full_numbers',
-            'lengthMenu': [[5, 10, 20, 25, 50, -1], [5, 10, 20, 25, 50, 'All']],
-            'searching': false,
-            'deferRender': true,
-            responsive: true,
-            language: {
-                search: '_INPUT_',
-                searchPlaceholder: 'Search records'
-            }
-        });
     }
 
     EditTotalSite(site) {
-        this.modalservice.open(EdittotalsiteComponent , {title: '' , data: site , packid: this.packid}).
+        const copy = Object.assign({}, site);
+        this.modalservice.open(EdittotalsiteComponent , {title: '' , data: copy , packid: this.packid}).
             subscribe((data) => {
-
+            if (typeof(data) === 'object') {
+                const index = _.findIndex(this.dataTable.dataRows, ['_id', site._id]);
+                this.dataTable.dataRows[index] = data;
+            }
         });
     }
     //
-    deleteAudio(site) {
-
-        this.modalservice.open(DeleteaudioComponent, {title: '', data: site})
+    deleteTotalSite(site) {
+        const copy = Object.assign({}, site);
+        this.modalservice.open(DeleteaudioComponent, {title: '', data: copy, packid: this.packid})
             .subscribe((data) => {
-
+                if (typeof(data) === 'object') {
+                    const index = _.findIndex(this.dataTable.dataRows, ['_id', site._id]);
+                    this.dataTable.dataRows.splice(index, 1);
+                }
             });
     }
 }

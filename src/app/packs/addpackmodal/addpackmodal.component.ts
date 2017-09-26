@@ -22,7 +22,9 @@ export class AddpackmodalComponent extends DialogComponent<Model, any> implement
     languages: any;
     Price: string;
 
-    constructor(private dialogservice: DialogService, private packservice: PackService, private toastrService: ToastrService) {
+    constructor(private dialogservice: DialogService,
+                private packservice: PackService,
+                private toastrService: ToastrService) {
         super(dialogservice);
     }
 

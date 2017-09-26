@@ -90,15 +90,12 @@ export class PacksComponent implements OnInit {
                     const index = _.findIndex(this.dataTable.dataRows, ['_id', pack._id]);
                     this.dataTable.dataRows[index] = data;
                 }
-                //  this.sites = this.packservice.getsites();
-                console.log(this.sites);
             });
     }
 
     TotalAudio(pack , packid) {
         this.modalService.open(TotalaudioComponent, {title: '', data: pack , packid: packid})
             .subscribe((data) => {
-
             });
     }
 

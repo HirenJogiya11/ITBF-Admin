@@ -21,12 +21,11 @@ export class EditaudioComponent extends DialogComponent<Model, any> implements O
 
     data: any;
     packs: any;
-    Backuppack;
-    // language = this.data.language;
-    // price = this.data.price;
-    // name = this.data.name;
+    Backuppack: any;
 
-    constructor(private dialogservice: DialogService, private packservice: PackService, private toastrService: ToastrService) {
+    constructor(private dialogservice: DialogService,
+                private packservice: PackService,
+                private toastrService: ToastrService) {
         super(dialogservice);
     }
 
@@ -39,7 +38,7 @@ export class EditaudioComponent extends DialogComponent<Model, any> implements O
     getpack() {
         this.packservice.getPack().subscribe((data) => {
                 this.packs = data;
-                var that = this;
+                const that = this;
                 setTimeout(function () {
                     that.initialize();
                 });
@@ -67,16 +66,16 @@ export class EditaudioComponent extends DialogComponent<Model, any> implements O
 
 
     save() {
-        let newData = {
+        const NewData = {
             _id : this.data._id,
         };
         const self = this;
-        Object.keys(this.data).forEach((key) =>{
-            if(self.data[key] !== self.Backuppack[key]){
-                newData[key] = self.data[key];
+        Object.keys(this.data).forEach((key) => {
+            if (self.data[key] !== self.Backuppack[key]) {
+                NewData[key] = self.data[key];
             }
         });
-        this.packservice.EditAudio(newData).subscribe(data => {
+        this.packservice.EditAudio(NewData).subscribe(data => {
                 console.log('save', data);
                 this.toastrService.success('Your Data has been updated Successfully');
                 this.result = data;
@@ -89,4 +88,5 @@ export class EditaudioComponent extends DialogComponent<Model, any> implements O
             });
 
     }
+
 }
