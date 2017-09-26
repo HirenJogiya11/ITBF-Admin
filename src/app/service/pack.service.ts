@@ -32,8 +32,10 @@ export class PackService {
     private GET: string = 'http://192.168.200.72:4200/api/pack';
     private NewSite: string = 'http://192.168.200.72:4200/api/pack/addSite';
     private EditPack: string = 'http://192.168.200.72:4200/api/pack';
-    private Delete: string= 'http://192.168.200.72:4200/api/pack/';
-    private GetLanguage: string= 'http://192.168.200.72:4200/api/language';
+    private Delete: string = 'http://192.168.200.72:4200/api/pack/';
+    private GetLanguage: string = 'http://192.168.200.72:4200/api/language';
+    private EditSite: string = 'http://192.168.200.72:4200/api/pack/updateSite';
+    private DeleteSite: string = 'http://192.168.200.72:4200/api/pack/deleteSite/'
 
     getPack(): Observable<any> {
         return this.http.get(this.GET).map((res: Response) => res.json());
@@ -48,7 +50,7 @@ export class PackService {
     }
 
     EditAudio(pack): Observable<any> {
-        return this.http.put(this.EditPack + '/' + pack._id , pack).map((res: Response) => res.json());
+        return this.http.put(this.EditPack + '/' + pack._id, pack).map((res: Response) => res.json());
     }
 
 
@@ -56,16 +58,17 @@ export class PackService {
         return this.http.post(this.NewSite, formdata).map((res: Response) => res.json());
     }
 
-    // getsites() {
-    //     return this.sites.slice();
-    // }
-
-    //  getsite(name) {
-    // //     return this.sites.filter((obj) => obj.packname === name);
-    //  }
-
-    deletepack(index) {
-        return this.http.delete(this.Delete + index).map((response: Response) => response.json());
+    editSite(formdata) {
+        return this.http.put(this.EditSite, formdata).map((res: Response) => res.json());
     }
+
+    deletepack(id) {
+        return this.http.delete(this.Delete + id).map((response: Response) => response.json());
+    }
+
+    deletesite(packid, siteid) {
+        return this.http.delete(this.DeleteSite + packid + '/' + siteid).map((response: Response) => response.json());
+    }
+
 
 }

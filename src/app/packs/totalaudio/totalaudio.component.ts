@@ -5,6 +5,7 @@ import {PackService} from '../../service/pack.service';
 import {DeleteaudioComponent} from './deleteaudio/deleteaudio.component';
 import {ModalService} from '../../service/modal.service';
 import _ from 'lodash';
+import {EdittotalsiteComponent} from "./edittotalsite/edittotalsite.component";
 declare var $: any;
 
 export interface Model {
@@ -31,12 +32,12 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
     public dataTable: DataTable;
     public BasePath: string = 'http://192.168.200.72:4200';
     data: any;
+    packid: any
     sites: any;
     model: any[];
     table: any;
 
     constructor(private dialogservice: DialogService,
-                private  packservice: PackService,
                 private modalservice: ModalService) {
         super(dialogservice);
     }
@@ -55,34 +56,29 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
 
     getsite() {
         this.dataTable.dataRows = this.data;
-        console.log(this.dataTable.dataRows);
-        // const that = this;
-        // setTimeout(function () {
-        //     that.dataTableConfig();
-        //     // that.addNewItem();
-        // });
     }
 
-    dataTableConfig() {
-        this.table = $('#datatables').DataTable({
-            'pagingType': 'full_numbers',
-            'lengthMenu': [[5, 10, 20, 25, 50, -1], [5, 10, 20, 25, 50, 'All']],
-            'searching': false,
-            'deferRender': true,
-            responsive: true,
-            language: {
-                search: '_INPUT_',
-                searchPlaceholder: 'Search records'
+    EditTotalSite(site) {
+
+        const copy = Object.assign({}, site);
+        this.modalservice.open(EdittotalsiteComponent , {title: '' , data: copy , packid: this.packid}).
+            subscribe((data) => {
+            // console.log( 'return data' , data);
+            if (typeof(data) === 'object') {
+                const index = _.findIndex(this.dataTable.dataRows, ['_id', site._id]);
+                this.dataTable.dataRows[index] = data;
             }
         });
     }
-
     //
-    // deleteAudio(site) {
-    //
-    //     this.modalservice.open(DeleteaudioComponent, {title: '', data: site})
-    //         .subscribe((data) => {
-    //
-    //         });
-    // }
+    deleteTotalSite(site) {
+        const copy = Object.assign({}, site);
+        this.modalservice.open(DeleteaudioComponent, {title: '', data: copy, packid: this.packid})
+            .subscribe((data) => {
+                if (data) {
+                    const index = _.findIndex(this.dataTable.dataRows, ['_id', site._id]);
+                    this.dataTable.dataRows.splice(index, 1);
+                }
+            });
+    }
 }

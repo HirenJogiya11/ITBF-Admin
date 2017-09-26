@@ -22,7 +22,9 @@ export class AddpackmodalComponent extends DialogComponent<Model, any> implement
     languages: any;
     Price: string;
 
-    constructor(private dialogservice: DialogService, private packservice: PackService, private toastrService: ToastrService) {
+    constructor(private dialogservice: DialogService,
+                private packservice: PackService,
+                private toastrService: ToastrService) {
         super(dialogservice);
     }
 
@@ -40,7 +42,7 @@ export class AddpackmodalComponent extends DialogComponent<Model, any> implement
                 });
             },
             error => {
-                console.log('save', error);
+                //console.log('save', error);
             });
     }
 
@@ -61,7 +63,7 @@ export class AddpackmodalComponent extends DialogComponent<Model, any> implement
     }
 
     languagechange(event) {
-        this.name = event.target.value + 'pack';
+        this.name = event.target.value + ' pack';
     }
 
     OnSubmit(addpack: NgForm) {
@@ -71,13 +73,13 @@ export class AddpackmodalComponent extends DialogComponent<Model, any> implement
             price: this.Price
         };
         this.packservice.addaudiopack(newpack).subscribe(data => {
-                console.log('save', data);
+               // console.log('save', data);
                 this.toastrService.success('Your Data has been Added Successfully');
                 this.result = data;
                 this.close();
             },
             error => {
-                console.log('error', error);
+              //  console.log('error', error);
                 const err = JSON.parse(error._body);
                 this.toastrService.error(err.error);
             });

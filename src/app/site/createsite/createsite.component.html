@@ -15,16 +15,20 @@
               <div class="card-content">
                 <h4 class="card-title">New Site</h4>
                 <div class="row">
-                  <label class="col-md-3">Site Name</label>
+                  <label class="col-md-3">Site Name
+                    <span class="star">*</span>
+                  </label>
                   <div class="col-md-9">
                     <div class="form-group label-floating is-empty">
-                      <!--<label class="control-label"></label>-->
-                      <input class="form-control" type="text" name="Sitename"
-                             [(ngModel)]="Sitename">
+                      <input class="form-control" type="text" name="sitename"
+                             [(ngModel)]="Sitename" #sitename="ngModel" required>
                       <span class="material-input"></span></div>
+                    <small *ngIf="sitename.invalid && ( sitename.dirty || sitename.touched )" class="text-danger">
+                      Sitename is Require
+                    </small>
                   </div>
                   </div>
-                  <div class="row">
+                <div class="row">
                     <div class="col-md-offset-3 col-sm-4">
                       <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                         <div class="fileinput-new thumbnail">
@@ -50,16 +54,22 @@
                                         </span>
                         <span class="btn btn-danger btn-round btn-file" *ngIf="result">
                                             <span class="fileinput-new"> Remove </span>
-                                            <input type="button" name="..." (click)="removeImage" />
+                                            <input type="button" name="..." (click)="removeImage()" />
                                         </span>
                       </div>
                     </div>
                   </div>
+                <div class="row">
+                  <div class="category form-category">
+                                        <span><b>Note :</b><i
+                                                class="star">* &nbsp;</i> is Define Required fields </span></div>
+                </div>
+
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" (click)="OnSubmit()">OK</button>
+            <button type="submit" [disabled]="!createsite.valid" class="btn btn-primary" (click)="OnSubmit()">OK</button>
             <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
           </div>
         </div>

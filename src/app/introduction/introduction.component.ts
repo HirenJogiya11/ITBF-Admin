@@ -32,7 +32,7 @@ export class IntroductionComponent implements OnInit {
                   this.playaudio = 'http://192.168.200.72:4200/' + data[0].audio;
                   this.button = true;
                   this.final = this.playaudio;
-                  console.log('save', this.playaudio);
+                  //console.log('save', this.playaudio);
               },
               err => {
                   console.log('Error', err);
@@ -74,7 +74,7 @@ export class IntroductionComponent implements OnInit {
       console.log(this.audiodata);
         this.audio = this.audiodata.type.toString();
         this.audio = this.audio.slice(0, 5).toString();
-        console.log(this.audio);
+       // console.log(this.audio);
         if(this.audio === 'audio') {
             this.res = event.srcElement;
             this.final = this.res.files[0].name;
@@ -100,13 +100,13 @@ export class IntroductionComponent implements OnInit {
           this.formdata = new FormData();
           this.formdata.append('introImage', this.imagedata, this.imagedata.name);
           this.formdata.append('introAudio', this.audiodata, this.audiodata.name);
-          console.log(this.formdata);
+        //  console.log(this.formdata);
           this.introductionservice.addIntroductionData(this.formdata)
               .subscribe(data => {
-                  console.log('save', data);
+                 // console.log('save', data);
               },
                   err => {
-                      console.log('Error', err);
+                  //    console.log('Error', err);
                   });
           this.getintroduction();
         this.toastrService.success('Successfully File Uploaded ');

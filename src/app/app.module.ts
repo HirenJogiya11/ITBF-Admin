@@ -12,8 +12,8 @@ import {AuthLayoutComponent} from './layouts/auth/auth-layout.component';
 import {AppRoutes} from './app-routing.module';
 import {NavbarModule} from './shared/navbar/navbar.module';
 import {FooterModule} from './shared/footer/footer.module';
-import {ModalModule} from "ng2-modal";
-import {DashboardComponent} from "./dashboard/dashboard.component";
+import {ModalModule} from 'ng2-modal';
+import {DashboardComponent} from './dashboard/dashboard.component';
 import {ToastrModule} from 'toastr-ng2';
 import {PagenotfoundComponent} from './pagenotfound/pagenotfound.component';
 import {IntroductionComponent} from './introduction/introduction.component';
@@ -32,7 +32,7 @@ import {AddpackmodalComponent} from './packs/addpackmodal/addpackmodal.component
 import {NewaudiopackComponent} from './packs/newaudiopack/newaudiopack.component';
 import {TotalaudioComponent} from './packs/totalaudio/totalaudio.component';
 import {DeleteaudioComponent} from './packs/totalaudio/deleteaudio/deleteaudio.component';
-import {DeletemodalComponent} from './uploaduser/deletemodal/deletemodal.component';
+import {DeletemodalComponent} from './user/deletemodal/deletemodal.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 // service
@@ -42,10 +42,10 @@ import {AdminGuard} from "./services/adminguard.service";
 import {TourGuard} from "./services/tourguard.service";
 import {PackService} from './service/pack.service';
 import {ModalService} from './service/modal.service';
-import {TotalDownloadService} from "./services/totaldownload.service";
+import {TotalDownloadService} from './services/totaldownload.service';
 import { AnalyticUserComponent } from './analytic-user/analytic-user.component';
-import {IntroductionService} from "./services/introduction.service";
-import {UserAdminService} from "./services/userAdmin.service";
+import {IntroductionService} from './services/introduction.service';
+import {UserAdminService} from './services/userAdmin.service';
 import { AdduserComponent } from './user/adduser/adduser.component';
 // import {MyFilterPipe} from "./totaldownload/myfilter.pipe";
 import { SiteComponent } from './site/site.component';
@@ -55,6 +55,7 @@ import { EditaudioComponent } from './packs/editaudio/editaudio.component';
 import { DeletesiteComponent } from './site/deletesite/deletesite.component';
 import { DeletepacksComponent } from './packs/deletepacks/deletepacks.component';
 import { EditsiteComponent } from './site/editsite/editsite.component';
+import {EdittotalsiteComponent} from "./packs/totalaudio/edittotalsite/edittotalsite.component";
 import { BulkuploadComponent } from './bulkupload/bulkupload.component';
 import { LanguageComponent } from './language/language.component';
 import { CreatelanguageComponent } from './language/createlanguage/createlanguage.component';
@@ -114,7 +115,8 @@ import {LanguageService} from "./services/language.service";
         LanguageComponent,
         CreatelanguageComponent,
         EditlanguageComponent,
-        DeletelanguageComponent
+        DeletelanguageComponent,
+        EdittotalsiteComponent
 
     ],
     providers: [
@@ -146,7 +148,9 @@ import {LanguageService} from "./services/language.service";
         EditsiteComponent,
         CreatelanguageComponent,
         EditlanguageComponent,
-        DeletelanguageComponent
+        DeletelanguageComponent,
+        EditsiteComponent,
+        EdittotalsiteComponent
     ]
 })
 export class AppModule {

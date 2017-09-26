@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DialogService} from 'ng2-bootstrap-modal';
 import {NgForm} from '@angular/forms';
 import {UsermodalComponent} from './usermodal/usermodal.component';
-import {DeletemodalComponent} from "./deletemodal/deletemodal.component"
+import {DeletemodalComponent} from "../user/deletemodal/deletemodal.component"
 
 declare interface DataTable {
     headerRow: string[];
@@ -16,7 +16,7 @@ declare interface DataTable {
   styleUrls: ['./uploaduser.component.css']
 })
 export class UploaduserComponent implements OnInit {
-    model: any = [];
+    modal: any = [];
     public dataTable: DataTable;
     length;
 
@@ -29,7 +29,7 @@ export class UploaduserComponent implements OnInit {
             footerRow: ['', '', '', '', ''],
 
             dataRows: [
-                this.model
+                this.modal
             ]
         };
     }
@@ -37,46 +37,46 @@ export class UploaduserComponent implements OnInit {
     onFormSubmit(userForm: NgForm) {
 
         console.log('user detail', userForm);
-        this.model.push(userForm.value);
-        console.log('model',this.model);
+        this.modal.push(userForm.value);
+        console.log('modal', this.modal);
 
     }
     // deleteData(i)
     // {
     //     // Delete Api
-    //     console.log(this.model.indexOf(i));
-    //     this.model.splice(this.model.indexOf(i), 1);
+    //     console.log(this.modal.indexOf(i));
+    //     this.modal.splice(this.modal.indexOf(i), 1);
     // }
-    deleteData(i)
-    {
-        let pos = this.model.indexOf(i);
-
-        console.log('index', pos);
-        this.dialogService.addDialog(DeletemodalComponent, { index: pos}, {backdropColor: 'rgba(0, 0, 0, 0.5)'})
-            .subscribe((data) => {
-            if(data) {
-                // Delete Api
-                console.log(this.model);
-                console.log('delete data', data.index);
-                this.model.splice(data.index, 1);
-            }
-            });
-
-    }
+    // deleteData(i)
+    // {
+    //     let pos = this.modal.indexOf(i);
+    //
+    //     console.log('index', pos);
+    //     this.dialogService.addDialog(DeletemodalComponent, { index: pos}, {backdropColor: 'rgba(0, 0, 0, 0.5)'})
+    //         .subscribe((data) => {
+    //         if(data) {
+    //             // Delete Api
+    //             console.log(this.modal);
+    //             console.log('delete data', data.index);
+    //             this.modal.splice(data.index, 1);
+    //         }
+    //         });
+    //
+    // }
 
     openModal(){
         this.dialogService.addDialog(UsermodalComponent, {index: undefined, data:{}}, {backdropColor: 'rgba(0, 0, 0, 0.5)'})
             .subscribe((data)=>{
                 if(data && data.userForm) {
                     // Add Api
-                    this.model.push(data.userForm);
+                    this.modal.push(data.userForm);
                 }
             });
     }
     EditData(index)
     {
-        let position = this.model.indexOf(index);
-        let i = this.model[position];
+        let position = this.modal.indexOf(index);
+        let i = this.modal[position];
 
         console.log('index', position);
         console.log('data', i);
@@ -87,7 +87,7 @@ export class UploaduserComponent implements OnInit {
                 if(data.userForm) {
 
                     // Edit Api
-                    this.model[data.index] = data.userForm;
+                    this.modal[data.index] = data.userForm;
                 }
             });
 

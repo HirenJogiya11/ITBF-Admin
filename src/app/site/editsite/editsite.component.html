@@ -4,7 +4,7 @@
       <button type="button" class="close" (click)="close()">&times;</button>
       <h4 class="modal-title">{{title || ''}}</h4>
     </div>
-    <form class="form-horizontal" #createsite="ngForm" novalidate>
+    <form class="form-horizontal" #editsite="ngForm" novalidate>
       <div class="modal-body">
         <div class="row">
           <div class="col-md-12">
@@ -13,15 +13,20 @@
                 <i class="material-icons">contacts</i>
               </div>
               <div class="card-content">
-                <h4 class="card-title">New Pack</h4>
+                <h4 class="card-title">Edit Site</h4>
                 <div class="row">
-                  <label class="col-md-3">Site Name</label>
+                  <label class="col-md-3">Site Name
+                    <span class="star">*</span>
+                  </label>
                   <div class="col-md-9">
                     <div class="form-group label-floating is-empty">
                       <!--<label class="control-label"></label>-->
                       <input class="form-control" type="text" name="Sitename"
-                             [(ngModel)]="data.name">
+                             [(ngModel)]="data.name" #Sitename="ngModel" required>
                       <span class="material-input"></span></div>
+                    <small *ngIf="Sitename.invalid && ( Sitename.dirty || Sitename.touched )" class="text-danger">
+                      Sitename is Require
+                    </small>
                   </div>
                 </div>
                 <div class="row">
@@ -55,11 +60,16 @@
                     </div>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="category form-category">
+                                        <span><b>Note :</b><i
+                                                class="star">* &nbsp;</i> is Define Required fields </span></div>
+                </div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" (click)="save()">OK</button>
+            <button type="submit" [disabled]="!editsite.valid" class="btn btn-primary" (click)="save()">OK</button>
             <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
           </div>
         </div>

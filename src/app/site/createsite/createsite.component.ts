@@ -24,9 +24,10 @@ export class CreatesiteComponent extends DialogComponent<Model, any> implements 
     imageName: any;
     formdata: FormData;
     button: any;
+    image: any;
 
     constructor(private dialogservice: DialogService,
-                private siteservice: SiteService,
+                private Siteservice: SiteService,
                 private toastrService: ToastrService) {
         super(dialogservice);
     }
@@ -52,13 +53,19 @@ export class CreatesiteComponent extends DialogComponent<Model, any> implements 
 
     getimage($event): void {
         this.coverimage = $event.target.files[0];
-        this.readThis($event.target);
+        this.image = this.coverimage.type.toString();
+        this.image = this.image.slice(0, 5).toString();
+        if (this.image === 'image') {
+            this.readThis($event.target);
+        } else {
+            this.toastrService.error('Please, Select valid Image file');
+        }
     }
 
     readThis(inputValue: any): void {
         const file: File = inputValue.files[0];
         const myReader: FileReader = new FileReader();
-        console.log(file);
+        // console.log(file);
         myReader.onloadend = (e) => {
             this.result = myReader.result;
             // Base64 data console.log(this.result);
@@ -78,18 +85,19 @@ export class CreatesiteComponent extends DialogComponent<Model, any> implements 
     OnSubmit() {
         this.formdata = new FormData();
         this.formdata.append('name', this.Sitename);
-        this.formdata.append('image', this.coverimage, this.coverimage.name)
-        this.siteservice.AddNewSite(this.formdata)
+        this.formdata.append('image', this.coverimage, this.coverimage.name);
+        this.Siteservice.AddNewSite(this.formdata)
             .subscribe(data => {
-                    console.log('save', data);
+                    //  console.log('save', data);
                     this.toastrService.success('Your Site has been Create Successfully');
                     this.result = data;
                     this.close();
                 },
                 error => {
-                    console.log('error', error);
+                    //      console.log('error', error);
                     const err = JSON.parse(error._body);
                     this.toastrService.error(err.error);
                 });
     }
+
 }

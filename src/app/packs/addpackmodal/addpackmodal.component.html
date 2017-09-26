@@ -1,32 +1,32 @@
 <div class="modal-dialog">
     <div class="modal-content">
-        <div class="modal-header">            
+        <div class="modal-header">
             <h4 class="modal-title"></h4>
-            <button type="button" class="close" (click)="close(); clear(addpack)">&times;</button>
+            <button type="button" class="close" (click)="close()">&times;</button>
         </div>
         <form class="form-horizontal" #addpack="ngForm" novalidate>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header card-header-icon" data-background-color="rose">
-                            <i class="material-icons">contacts</i>
-                        </div>
-                        <div class="card-content">
-                            <h4 class="card-title">Pack</h4>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-icon" data-background-color="rose">
+                                <i class="material-icons">contacts</i>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">New Pack</h4>
 
                                 <div class="row">
-                                    <label class="col-md-3 label-on-left">Language</label>
+                                    <label class="col-md-3 label-on-left">Language
+                                    </label>
+
                                     <div class="col-md-9">
                                         <div class="dropdown pull-left" id="select_language">
-                                            <select class="selectpicker" data-style="btn btn-primary btn-round" title="Select Language"
-                                                    data-size="7" name="language" [(ngModel)]="language" (change)="languagechange($event)">
-                                                <!--<option value="English">English</option>
-                                                <option value="French">French</option>
-                                                <option value="Russian">Russian</option>
-                                                <option value="Latin">Latin</option>
-                                                <option value="Chinese">Chinese</option>-->
-                                                <option *ngFor="let language of languages" value="{{language.language}}">
+                                            <select class="selectpicker" data-style="btn btn-primary btn-round"
+                                                    title="Select Language"
+                                                    data-size="7" name="language" [(ngModel)]="language"
+                                                    (change)="languagechange($event)">
+                                                <option *ngFor="let language of languages"
+                                                        value="{{language.language}}">
                                                     {{language.language}}
                                                 </option>
                                             </select>
@@ -34,43 +34,59 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label class="col-md-3 label-on-left">PackName</label>
-                                <div class="col-md-9">
+                                    <label class="col-md-3 label-on-left">PackName
+                                        <span class="star">*</span>
+                                    </label>
+                                    <div class="col-md-9">
                                         <div class="form-group label-floating is-empty">
                                             <label class="control-label"></label>
                                             <input class="form-control" type="text" name="packname" [(ngModel)]="name"
                                                    #packname="ngModel" required>
                                             <span class="material-input"></span></div>
-                                    <small *ngIf="!packname.invalid && ( packname.dirty || packname.touched )" class="text-danger">
-                                        PackName is Require
-                                    </small>
+                                        <small *ngIf="packname.invalid && ( packname.dirty || packname.touched )"
+                                               class="text-danger">
+                                            PackName is Require
+                                        </small>
                                     </div>
                                 </div>
-                            <div class="row">
-                                <label class="col-md-3 label-on-left">Price</label>
-                                <div class="col-md-9">
-                                    <div class="form-group label-floating is-empty">
-                                        <label class="control-label"></label>
-                                        <input class="form-control" type="text" name="price" [(ngModel)]="Price"
-                                               #price="ngModel" required>
-                                        <span class="material-input"></span></div>
-                                    <small *ngIf="!price.invalid && ( price.dirty || price.touched )" class="text-danger">
-                                        Price is Require</small>
-                                    <small *ngIf="!price.invalid && price.dirty" class="text-danger">
-                                        Price Must be Enter into NUmber </small>
+                                <div class="row">
+                                    <label class="col-md-3 label-on-left">Price
+                                        <span class="star">*</span>
+                                    </label>
+                                    <div class="col-md-9">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input class="form-control" type="text" name="price" [(ngModel)]="Price"
+                                                   #price="ngModel" required pattern="[0-9]*">
+                                            <span class="material-input"></span></div>
+                                        <small *ngIf="price.hasError('required') && price.invalid && ( price.dirty || price.touched )"
+                                               class="text-danger">
+                                            Price is Require
+                                        </small>
+                                        <small *ngIf="price.hasError('pattern') && price.invalid && ( price.dirty || price.touched )"
+                                               class="text-danger">
+                                            Price Must be Enter into NUmber
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="category form-category">
+                                        <span><b>Note :</b><i
+                                                class="star">* &nbsp;</i> is Define Required fields </span></div>
                                 </div>
                             </div>
+
 
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" (click)="OnSubmit(addpack)">Add</button>
-            <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
-        </div>
-        </form>
-
+    <div class="modal-footer">
+        <button type="submit" [disabled]="!addpack.valid" class="btn btn-primary" (click)="OnSubmit(addpack)">Add
+        </button>
+        <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
     </div>
+    </form>
+
+</div>
 </div>

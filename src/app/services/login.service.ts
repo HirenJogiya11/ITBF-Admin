@@ -5,7 +5,6 @@ import 'rxjs/Rx';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
-
 const LOGIN_API: string ='http://192.168.200.72:4200/login';
 
 @Injectable()

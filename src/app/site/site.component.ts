@@ -28,7 +28,8 @@ export class SiteComponent implements OnInit {
     public sites: NewSite[];
     public imagepath: string = 'http://192.168.200.72:4200';
 
-    constructor(private modalService: ModalService, private Siteservice: SiteService) {
+    constructor(private modalService: ModalService,
+                private Siteservice: SiteService) {
     }
 
     ngOnInit() {
@@ -47,11 +48,11 @@ export class SiteComponent implements OnInit {
                 this.wholeArray = data;
                 const Counter = this.wholeArray.length;
 
-                console.log(this.wholeArray);
+
                 for (let i = 0; i < Counter; i++) {
                     this.dataTable.dataRows.push(this.wholeArray.shift());
                 }
-                var that = this;
+                const that = this;
                 setTimeout(function () {
                     that.dataTableConfig();
                     // that.addNewItem();
@@ -62,7 +63,7 @@ export class SiteComponent implements OnInit {
     dataTableConfig() {
         this.table = $('#datatables').DataTable({
             'pagingType': 'full_numbers',
-            'lengthMenu': [[5 ,10, 20, 25, 50, -1], [5, 10, 20, 25, 50, 'All']],
+            'lengthMenu': [[5, 10, 20, 25, 50, -1], [5, 10, 20, 25, 50, 'All']],
             'searching': false,
             'deferRender': true,
             responsive: true,
@@ -83,7 +84,7 @@ export class SiteComponent implements OnInit {
     }
 
     EditSite(site) {
-        let copy = Object.assign({}, site);
+        const copy = Object.assign({}, site);
         this.modalService.open(EditsiteComponent, {title: '', data: copy})
             .subscribe((data) => {
                 if (typeof(data) === 'object') {
@@ -94,12 +95,11 @@ export class SiteComponent implements OnInit {
     }
 
     deleteSite(site) {
-
         this.modalService.open(DeletesiteComponent, {title: '', data: site})
             .subscribe((data) => {
                 if (data) {
                     const index = _.findIndex(this.dataTable.dataRows, ['_id', site._id]);
-                    this.dataTable.dataRows.splice(index,1);
+                    this.dataTable.dataRows.splice(index, 1);
                 }
             });
     }

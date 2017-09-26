@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {DialogService} from 'ng2-bootstrap-modal';
 import {NgForm} from '@angular/forms';
-import {DeletemodalComponent} from '../uploaduser/deletemodal/deletemodal.component';
+
 import {AdduserComponent} from "./adduser/adduser.component";
 import {UserAdminService} from "../services/userAdmin.service";
 import {UserModal} from "./usermodal";
 import _ from 'lodash';
+import {DeletemodalComponent} from "./deletemodal/deletemodal.component";
 
 declare var $: any;
 
@@ -99,10 +100,7 @@ export class UserComponent implements OnInit {
                 if(data) {
                     this.useradminservice.DeleteUserData(data.index)
                         .subscribe(deletedata => {
-                                if (data) {
-                                    const index = _.findIndex(this.dataTable.dataRows, ['_id', data._id]);
-                                    this.dataTable.dataRows.splice(index,1);
-                                }
+                                this.getUsers();
                                 console.log('save', deletedata);
                             },
                             err => {
@@ -136,10 +134,7 @@ export class UserComponent implements OnInit {
                     };
                     this.useradminservice.AddUserData(data)
                         .subscribe(data => {
-                                if (typeof(data) === 'object') {
-                                    const index = _.findIndex(this.dataTable.dataRows, ['_id', data._id]);
-                                    this.dataTable.dataRows[index] = data;
-                                }
+                                this.getUsers();
                                 console.log('save', data);
                             },
                             err => {
@@ -172,12 +167,10 @@ export class UserComponent implements OnInit {
                         },
                         role: data.userForm.role
                     };
+                    debugger
                     this.useradminservice.EditUserData(data, id)
                         .subscribe(editdata => {
-                                if (typeof(data) === 'object') {
-                                    const index = _.findIndex(this.dataTable.dataRows, ['_id', data._id]);
-                                    this.dataTable.dataRows[index] = data;
-                                }
+                                this.getUsers();
                                 console.log('editdata', editdata);
                             },
                             err => {

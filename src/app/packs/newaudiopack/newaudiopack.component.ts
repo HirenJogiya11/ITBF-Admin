@@ -38,7 +38,7 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
     button: any;
 
     constructor(private dialogservice: DialogService, private packservice: PackService,
-                private toasterservice: ToastrService, private  Siteservice: SiteService) {
+                private toastrService: ToastrService, private  Siteservice: SiteService) {
         super(dialogservice);
     }
 
@@ -67,7 +67,7 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
             this.readThis($event.target);
         }
         else {
-            this.toasterservice.error('Please, Select valid Image file');
+            this.toastrService.error('Please, Select valid Image file');
         }
     }
 
@@ -80,14 +80,14 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
             this.readThis1($event.target);
         }
         else {
-            this.toasterservice.error('Please, Select valid Image file');
+            this.toastrService.error('Please, Select valid Image file');
         }
     }
 
     readThis(inputValue: any): void {
         const file: File = inputValue.files[0];
         const myReader: FileReader = new FileReader();
-        console.log(file);
+      //  console.log(file);
         myReader.onloadend = (e) => {
             this.result = myReader.result;
             // Base64 data console.log(this.result);
@@ -100,7 +100,7 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
     readThis1(inputValue: any): void {
         const file: File = inputValue.files[0];
         const myReader: FileReader = new FileReader();
-        console.log(file);
+       // console.log(file);
         myReader.onloadend = (e) => {
             this.result1 = myReader.result;
             // Base64 data console.log(this.result);
@@ -121,7 +121,7 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
             this.res = event.srcElement;
             this.final = this.res.files[0].name;
         } else {
-            this.toasterservice.error('Please, Select valid Audio file');
+            this.toastrService.error('Please, Select valid Audio file');
         }
     }
 
@@ -151,15 +151,15 @@ export class NewaudiopackComponent extends DialogComponent<Model, any> implement
         this.formdata.append('audioUrl', this.audio);
         //     console.log(this.formdata);
         this.packservice.addnewsite(this.formdata).subscribe(data => {
-                console.log('save', data);
-                this.toasterservice.success('Successfully File Uploaded ');
+               // console.log('save', data);
+                this.toastrService.success('Successfully File Uploaded ');
                 this.result = data;
                 this.close();
             },
             error => {
-                console.log('error', error);
+               // console.log('error', error);
                 const err = JSON.parse(error._body);
-                this.toasterservice.error(err.error);
+                this.toastrService.error(err.error);
             });
         /*this.result = null;
          this.result1 = null;*/
