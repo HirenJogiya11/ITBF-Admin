@@ -8,7 +8,6 @@ declare var $: any;
   styleUrls: ['./bulkupload.component.css']
 })
 export class BulkuploadComponent implements OnInit {
-    id = 'fad8f5f64fdb5fb56fb2bf2db';
     button:boolean;
     result:any;
     res: any;
@@ -22,7 +21,6 @@ export class BulkuploadComponent implements OnInit {
 
     }
     onChange($event):void {
-         debugger
         this.csvFile = $event.target.files[0];
         this.csvType = this.csvFile.type.toString();
         if(this.csvType === 'text/csv') {
@@ -43,13 +41,10 @@ export class BulkuploadComponent implements OnInit {
     }
 
     save() {
-        debugger
+         const id = localStorage.getItem('id');
         this.formdata = new FormData();
-        this.formdata.append('introImage', this.csvFile, this.filename);
-       let filedata = {
-            id : this.id,
-            csv: this.formdata
-        }
+        this.formdata.append('csv', this.csvFile, this.filename);
+        this.formdata.append('id', id);
         this.introductionservice.addCsvFile(this.formdata)
             .subscribe(data => {
                     console.log('save', data);

@@ -23,7 +23,6 @@ export class AdduserComponent extends DialogComponent<Model, any> implements Aft
         if ($('.selectpicker').length !== 0) {
             $('.selectpicker').selectpicker();
         }
-        debugger;
         //data Mapped
         this.userForm = this.data;
         if(this.data.location)

@@ -5,6 +5,7 @@ import {DeletemodalComponent} from '../uploaduser/deletemodal/deletemodal.compon
 import {AdduserComponent} from "./adduser/adduser.component";
 import {UserAdminService} from "../services/userAdmin.service";
 import {UserModal} from "./usermodal";
+import _ from 'lodash';
 
 declare var $: any;
 
@@ -93,13 +94,15 @@ export class UserComponent implements OnInit {
         let pos = this.modal.indexOf(i);
 
         console.log('index', pos);
-        debugger
         this.dialogService.addDialog(DeletemodalComponent, { index: id}, {backdropColor: 'rgba(0, 0, 0, 0.5)'})
             .subscribe((data) => {
                 if(data) {
                     this.useradminservice.DeleteUserData(data.index)
                         .subscribe(deletedata => {
-                                this.getUsers();
+                                if (data) {
+                                    const index = _.findIndex(this.dataTable.dataRows, ['_id', data._id]);
+                                    this.dataTable.dataRows.splice(index,1);
+                                }
                                 console.log('save', deletedata);
                             },
                             err => {
@@ -133,7 +136,10 @@ export class UserComponent implements OnInit {
                     };
                     this.useradminservice.AddUserData(data)
                         .subscribe(data => {
-                                this.getUsers();
+                                if (typeof(data) === 'object') {
+                                    const index = _.findIndex(this.dataTable.dataRows, ['_id', data._id]);
+                                    this.dataTable.dataRows[index] = data;
+                                }
                                 console.log('save', data);
                             },
                             err => {
@@ -145,7 +151,6 @@ export class UserComponent implements OnInit {
     }
 
     Editdata(index) {
-        debugger;
         let id = index._id;
         let position = this.modal.indexOf(index);
         let i = this.modal[position];
@@ -167,10 +172,12 @@ export class UserComponent implements OnInit {
                         },
                         role: data.userForm.role
                     };
-                    debugger
                     this.useradminservice.EditUserData(data, id)
                         .subscribe(editdata => {
-                                this.getUsers();
+                                if (typeof(data) === 'object') {
+                                    const index = _.findIndex(this.dataTable.dataRows, ['_id', data._id]);
+                                    this.dataTable.dataRows[index] = data;
+                                }
                                 console.log('editdata', editdata);
                             },
                             err => {

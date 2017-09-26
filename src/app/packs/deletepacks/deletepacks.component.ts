@@ -29,7 +29,6 @@ export class DeletepacksComponent extends DialogComponent<Model, any> implements
 
 
     Delete() {
-        debugger;
         this.packservice.deletepack(this.data._id).subscribe((data) => {
                 console.log('save', data);
                 this.toastrService.success('Your Data has been Deleted Successfully');

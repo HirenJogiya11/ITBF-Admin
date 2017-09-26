@@ -12,5 +12,6 @@ export const ROUTES: RouteInfo[] = [
     { path: '/tourRevenue', title:'Tour Revenue', icon: 'material-icons'},
     { path: '/analyticUser', title:'Users', icon: 'material-icons'},
     { path: '/site', title:'Sites', icon: 'material-icons'},
-    { path: '/bulkupload', title:'Bulk Upload', icon: 'material-icons'}
+    { path: '/bulkupload', title:'Bulk Upload', icon: 'material-icons'},
+    { path: '/language', title:'Language', icon: 'material-icons'}
 ];

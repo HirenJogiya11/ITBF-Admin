@@ -132,7 +132,7 @@
                     <li routerLinkActive="active" *ngIf="!isTourOperator">
                         <a  [routerLink]="[menuItems[5].path]">
                             <i class="{{menuItems[1].icon}}">
-                                U
+                                User
                             </i>
                             <p>User</p>
                         </a>
@@ -145,8 +145,14 @@
                             <p>Sites</p>
                         </a>
                     </li>
-
-
+                    <li routerLinkActive="active" *ngIf="!isTourOperator">
+                        <a  [routerLink]="[menuItems[12].path]">
+                            <i class="{{menuItems[1].icon}}">
+                                Language
+                            </i>
+                            <p>Language</p>
+                        </a>
+                    </li>
                   <li routerlinkactive="active" class="active" *ngIf="!isTourOperator">
                    <a data-toggle="collapse" href="#Analytics" class="collapsed" aria-expanded="false">
                     <i class="material-icons">apps</i>

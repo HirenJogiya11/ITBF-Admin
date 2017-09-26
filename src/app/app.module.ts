@@ -56,6 +56,11 @@ import { DeletesiteComponent } from './site/deletesite/deletesite.component';
 import { DeletepacksComponent } from './packs/deletepacks/deletepacks.component';
 import { EditsiteComponent } from './site/editsite/editsite.component';
 import { BulkuploadComponent } from './bulkupload/bulkupload.component';
+import { LanguageComponent } from './language/language.component';
+import { CreatelanguageComponent } from './language/createlanguage/createlanguage.component';
+import { EditlanguageComponent } from './language/editlanguage/editlanguage.component';
+import { DeletelanguageComponent } from './language/deletelanguage/deletelanguage.component';
+import {LanguageService} from "./services/language.service";
 
 
 @NgModule({
@@ -105,7 +110,11 @@ import { BulkuploadComponent } from './bulkupload/bulkupload.component';
         EditsiteComponent,
         AnalyticUserComponent,
         AdduserComponent,
-        BulkuploadComponent
+        BulkuploadComponent,
+        LanguageComponent,
+        CreatelanguageComponent,
+        EditlanguageComponent,
+        DeletelanguageComponent
 
     ],
     providers: [
@@ -118,7 +127,8 @@ import { BulkuploadComponent } from './bulkupload/bulkupload.component';
         TourGuard,
         IntroductionService,
         UserAdminService,
-        SiteService],
+        SiteService,
+        LanguageService],
     bootstrap: [AppComponent],
     entryComponents: [
         AddpackmodalComponent,
@@ -133,7 +143,10 @@ import { BulkuploadComponent } from './bulkupload/bulkupload.component';
         EditaudioComponent,
         DeletesiteComponent,
         DeletepacksComponent,
-        EditsiteComponent
+        EditsiteComponent,
+        CreatelanguageComponent,
+        EditlanguageComponent,
+        DeletelanguageComponent
     ]
 })
 export class AppModule {
