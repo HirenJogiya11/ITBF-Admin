@@ -52,7 +52,6 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
         };
 
         this.getsite();
-        console.log('this packis' , this.packid);
     }
 
     getsite() {
@@ -60,9 +59,11 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
     }
 
     EditTotalSite(site) {
+
         const copy = Object.assign({}, site);
         this.modalservice.open(EdittotalsiteComponent , {title: '' , data: copy , packid: this.packid}).
             subscribe((data) => {
+            // console.log( 'return data' , data);
             if (typeof(data) === 'object') {
                 const index = _.findIndex(this.dataTable.dataRows, ['_id', site._id]);
                 this.dataTable.dataRows[index] = data;

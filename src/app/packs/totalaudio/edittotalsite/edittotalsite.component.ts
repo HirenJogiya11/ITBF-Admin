@@ -125,9 +125,7 @@ export class EdittotalsiteComponent extends DialogComponent<Model, any> implemen
     }
 
     save(editSiteform: NgForm) {
-        //
         debugger;
-
         this.formdata = new FormData();
         this.formdata.append('packId', this.packid);
         this.formdata.append('sites_id', this.data._id);
@@ -137,13 +135,13 @@ export class EdittotalsiteComponent extends DialogComponent<Model, any> implemen
         this.formdata.append('audioUrl', this.data.audioURL);
         //     console.log(this.formdata);
         this.packservice.editSite(this.formdata).subscribe(data => {
-                console.log('save', data);
+               // console.log('save', data);
                 this.toastrService.success('Successfully Update Your File  ');
                 this.result = data;
                 this.close();
             },
             error => {
-                console.log('error', error);
+               // console.log('error', error);
                 const err = JSON.parse(error._body);
                 this.toastrService.error(err.error);
             });

@@ -65,7 +65,7 @@ export class CreatesiteComponent extends DialogComponent<Model, any> implements 
     readThis(inputValue: any): void {
         const file: File = inputValue.files[0];
         const myReader: FileReader = new FileReader();
-        console.log(file);
+        // console.log(file);
         myReader.onloadend = (e) => {
             this.result = myReader.result;
             // Base64 data console.log(this.result);
@@ -85,18 +85,19 @@ export class CreatesiteComponent extends DialogComponent<Model, any> implements 
     OnSubmit() {
         this.formdata = new FormData();
         this.formdata.append('name', this.Sitename);
-        this.formdata.append('image', this.coverimage, this.coverimage.name)
+        this.formdata.append('image', this.coverimage, this.coverimage.name);
         this.Siteservice.AddNewSite(this.formdata)
             .subscribe(data => {
-                    console.log('save', data);
+                    //  console.log('save', data);
                     this.toastrService.success('Your Site has been Create Successfully');
                     this.result = data;
                     this.close();
                 },
                 error => {
-                    console.log('error', error);
+                    //      console.log('error', error);
                     const err = JSON.parse(error._body);
                     this.toastrService.error(err.error);
                 });
     }
+
 }

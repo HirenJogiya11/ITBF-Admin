@@ -44,7 +44,7 @@ export class EditaudioComponent extends DialogComponent<Model, any> implements O
                 });
             },
             error => {
-                console.log('save', error);
+               // console.log('save', error);
             });
     }
 
@@ -76,13 +76,13 @@ export class EditaudioComponent extends DialogComponent<Model, any> implements O
             }
         });
         this.packservice.EditAudio(NewData).subscribe(data => {
-                console.log('save', data);
+              //  console.log('save', data);
                 this.toastrService.success('Your Data has been updated Successfully');
                 this.result = data;
                 this.close();
             },
             error => {
-                console.log('error', error);
+               // console.log('error', error);
                 const err = JSON.parse(error._body);
                 this.toastrService.error(err.error);
             });

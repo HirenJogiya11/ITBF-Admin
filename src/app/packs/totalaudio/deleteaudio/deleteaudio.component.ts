@@ -29,20 +29,17 @@ export class DeleteaudioComponent extends DialogComponent<Model, any> implements
     Delete() {
         this.packservice.deletesite(this.packid, this.data._id)
             .subscribe(data => {
-                    console.log('save', data);
-                    this.toastrService.success('Successfully Update Your File  ');
+                   // console.log('save', data);
+                    this.toastrService.success('Delete Your File Successfully');
                     this.result = data;
                     this.close();
                 },
                 error => {
-                    console.log('error', error);
+                 //   console.log('error', error);
                     const err = JSON.parse(error._body);
                     this.toastrService.error(err.error);
                 });
 
     }
 
-    confirm() {
-        this.close();
-    }
 }

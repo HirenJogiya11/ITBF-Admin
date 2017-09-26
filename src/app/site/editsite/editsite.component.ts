@@ -70,7 +70,7 @@ export class EditsiteComponent extends DialogComponent<Model, any> implements On
         this.Siteservice.editsite(this.formdata , this.data._id)
             .subscribe(data => {
                     console.log('save', data);
-                    this.toastrService.success('Your Site has been Create Successfully');
+                    this.toastrService.success( 'Your Site has been Create Successfully' );
                     this.result = data;
                     this.close();
                 },

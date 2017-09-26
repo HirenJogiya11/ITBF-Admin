@@ -34,7 +34,7 @@ export class PackService {
     private EditPack: string = 'http://192.168.200.72:4200/api/pack';
     private Delete: string = 'http://192.168.200.72:4200/api/pack/';
     private GetLanguage: string = 'http://192.168.200.72:4200/api/language';
-    private EditSite: string = 'http://localhost:4200/api/pack/updateSite';
+    private EditSite: string = 'http://192.168.200.72:4200/api/pack/updateSite';
 
     getPack(): Observable<any> {
         return this.http.get(this.GET).map((res: Response) => res.json());

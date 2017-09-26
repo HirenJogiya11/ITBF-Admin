@@ -26,12 +26,12 @@ export class DeletesiteComponent extends DialogComponent<Model, any> implements 
 
     Delete() {
         this.Siteservice.deletesite(this.data._id).subscribe((res: Response) => {
-                console.log('save', res);
+             //   console.log('save', res);
                 this.result = res;
                 this.close();
             },
             error => {
-                console.log('save', error);
+              //  console.log('save', error);
             });
 
     }
