@@ -7,6 +7,7 @@ import {NewSite} from "../model/newsite.interface";
 import {DeletesiteComponent} from "./deletesite/deletesite.component";
 import {EditsiteComponent} from "./editsite/editsite.component";
 import _ from 'lodash';
+import {environment} from "../../environments/environment";
 declare var $: any;
 
 declare interface DataTable {
@@ -26,7 +27,7 @@ export class SiteComponent implements OnInit {
     public wholeArray: any;
     public table: any;
     public sites: NewSite[];
-    public imagepath: string = 'http://192.168.200.72:4200';
+    public imagepath: string = `${environment.baseURL}`;
 
     constructor(private modalService: ModalService,
                 private Siteservice: SiteService) {
@@ -63,7 +64,7 @@ export class SiteComponent implements OnInit {
     dataTableConfig() {
         this.table = $('#datatables').DataTable({
             'pagingType': 'full_numbers',
-            'lengthMenu': [[5, 10, 20, 25, 50, -1], [5, 10, 20, 25, 50, 'All']],
+            'lengthMenu': [[10, 20, 25, 50, -1], [10, 20, 25, 50, 'All']],
             'searching': false,
             'deferRender': true,
             responsive: true,

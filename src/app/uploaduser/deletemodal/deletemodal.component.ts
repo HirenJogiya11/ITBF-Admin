@@ -20,7 +20,7 @@ export class DeletemodalComponent  extends DialogComponent<Model, any> implement
   }
     dataDelete(){
           this.result = {index: this.index};
-          console.log(this.result);
+          //console.log(this.result);
           this.close();
   }
 }

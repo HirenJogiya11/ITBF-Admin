@@ -39,7 +39,7 @@ export class LanguageComponent implements OnInit {
     }
 
     getallLanguage() {
-       debugger;
+
         this.languageService.GetLanguage()
             .subscribe(data => {
                 this.wholeArray = data;
@@ -82,7 +82,7 @@ export class LanguageComponent implements OnInit {
 
     EditLanguage(language) {
         let copy = Object.assign({}, language);
-        debugger;
+
         this.modalService.open(EditlanguageComponent, {title: '', data: copy})
             .subscribe((data) => {
                 if (typeof(data) === 'object') {

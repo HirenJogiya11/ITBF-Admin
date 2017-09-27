@@ -47,10 +47,10 @@ export class BulkuploadComponent implements OnInit {
         this.formdata.append('id', id);
         this.introductionservice.addCsvFile(this.formdata)
             .subscribe(data => {
-                    console.log('save', data);
+                  //  console.log('save', data);
                 },
                 err => {
-                    console.log('Error', err);
+                  //  console.log('Error', err);
                 });
         this.toastrService.success('Successfully File Uploaded ');
         this.filename = null;

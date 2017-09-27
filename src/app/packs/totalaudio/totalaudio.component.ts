@@ -6,6 +6,7 @@ import {DeleteaudioComponent} from './deleteaudio/deleteaudio.component';
 import {ModalService} from '../../service/modal.service';
 import _ from 'lodash';
 import {EdittotalsiteComponent} from "./edittotalsite/edittotalsite.component";
+import {environment} from "../../../environments/environment";
 declare var $: any;
 
 export interface Model {
@@ -30,7 +31,7 @@ declare interface DataTable {
 export class TotalaudioComponent extends DialogComponent<Model, any> implements OnInit {
 
     public dataTable: DataTable;
-    public BasePath: string = 'http://192.168.200.72:4200';
+    public BasePath: string = `${environment.baseURL}`;
     data: any;
     packid: any
     sites: any;
@@ -56,25 +57,32 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
 
     getsite() {
         this.dataTable.dataRows = this.data;
+       // console.log('Total Sites'  , this.dataTable.dataRows);
     }
 
     EditTotalSite(site) {
-
         const copy = Object.assign({}, site);
-        this.modalservice.open(EdittotalsiteComponent , {title: '' , data: copy , packid: this.packid}).
-            subscribe((data) => {
-            // console.log( 'return data' , data);
+        this.modalservice.open(EdittotalsiteComponent, {
+            title: '',
+            data: copy,
+            packid: this.packid
+        }).subscribe((data) => {
+            document.getElementsByTagName('body')[0].classList.add('modal-open');
+           // console.log('return data', data);
             if (typeof(data) === 'object') {
                 const index = _.findIndex(this.dataTable.dataRows, ['_id', site._id]);
                 this.dataTable.dataRows[index] = data;
             }
         });
     }
+
     //
     deleteTotalSite(site) {
+
         const copy = Object.assign({}, site);
         this.modalservice.open(DeleteaudioComponent, {title: '', data: copy, packid: this.packid})
             .subscribe((data) => {
+                document.getElementsByTagName('body')[0].classList.add('modal-open');
                 if (data) {
                     const index = _.findIndex(this.dataTable.dataRows, ['_id', site._id]);
                     this.dataTable.dataRows.splice(index, 1);

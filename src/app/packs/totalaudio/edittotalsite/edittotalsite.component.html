@@ -26,7 +26,7 @@
                                *ngIf="result">
                         </div>
                         <div class="fileinput-new thumbnail">
-                          <img src="{{imagepath}}/{{data.coverImageURL}}" alt="..." *ngIf="data && !result">
+                          <img src="{{BasePath}}/{{data.coverImageURL}}" alt="..." *ngIf="data && !result">
                         </div>
                       <div class="fileinput-preview fileinput-exists thumbnail"></div>
                       <div>
@@ -54,7 +54,7 @@
                                *ngIf="result1">
                         </div>
                         <div class="fileinput-new thumbnail">
-                          <img src="{{imagepath}}/{{data.footstepImageURL}}" alt="..." *ngIf="data && !result1">
+                          <img src="{{BasePath}}/{{data.footstepImageURL}}" alt="..." *ngIf="data && !result1">
                         </div>
                       <div class="fileinput-preview fileinput-exists thumbnail"></div>
                       <div>
@@ -81,7 +81,7 @@
                         >
                       </div>
                       <div *ngIf="data.audioURL" class="new-pack-audio">
-                        <audio src={{data.audioURL}} controls></audio>
+                        <audio src="{{BasePath}}/{{data.audioURL}}" controls></audio>
                         <p>{{final}}</p>
                       </div>
                       <div class="fileinput-preview fileinput-exists thumbnail"></div>

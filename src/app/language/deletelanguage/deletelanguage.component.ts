@@ -26,12 +26,12 @@ export class DeletelanguageComponent extends DialogComponent<Model, any> impleme
 
     Delete() {
         this.languageservice.DeleteLanguage(this.data._id).subscribe((res: Response) => {
-                console.log('save', res);
+               // console.log('save', res);
                 this.result = res;
                 this.close();
             },
             error => {
-                console.log('save', error);
+               // console.log('save', error);
             });
 
     }

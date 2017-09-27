@@ -33,13 +33,13 @@ export class CreatelanguageComponent  extends DialogComponent<Model, any> implem
 
         this.languageService.AddLanguage(data)
             .subscribe(data => {
-                    console.log('save', data);
+                   // console.log('save', data);
                     this.toastrService.success('Language has been Create Successfully');
                     this.result = data;
                     this.close();
                 },
                 error => {
-                    console.log('error', error);
+                   // console.log('error', error);
                     const err = JSON.parse(error._body);
                     this.toastrService.error(err.error);
                 });

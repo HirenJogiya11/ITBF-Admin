@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit{
 
                     window.location.href = '/introduction';
                 }
-                else if(response.user.role === 'TourOperator')
+                else if (response.user.role === 'TourOperator')
                 {
                     if(response.user._id)
                     {

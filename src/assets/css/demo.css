@@ -5,8 +5,11 @@
     display: block;
 }
 audio{
-    width: 100%;
+    max-width: 100%;
     box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+.total-sites .btn{
+    padding: 0;
 }
 .new-pack-audio{
     min-height: 160px;
@@ -20,9 +23,13 @@ audio{
 .modal-body .card-content .row{
     margin-top: 15px;
 }
-/*.modal-body .form-group {*/
-    /*margin: 0;*/
-/*}*/
+.block-input-customize .form-group {
+    margin: 0;
+}
+.block-input-customize label.col-md-3.label-on-left {
+    padding-top: 10px;
+    text-align: right;
+}
 .modal .modal-header .close {
     z-index: 9;
     position: relative;

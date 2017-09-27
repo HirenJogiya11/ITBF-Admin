@@ -11,7 +11,7 @@ export class  UserAdminService {
 
     }
     AddUserData(userdata) {
-        console.log('service', userdata);
+       // console.log('service', userdata);
         return this.http.post(`${environment.baseURL}${environment.userAdmin}`, userdata, {}).map((response: Response) => response.json());
     }
     GetUserData() {

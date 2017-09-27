@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DialogComponent, DialogService} from "ng2-bootstrap-modal";
 import {SiteService} from "../../service/site.service";
+import {ToastrService} from "toastr-ng2";
 
 export interface Model {
     title: string ;
@@ -14,7 +15,9 @@ export interface Model {
 })
 export class DeletesiteComponent extends DialogComponent<Model, any> implements OnInit {
 
-    constructor(private dialogservice: DialogService, private Siteservice: SiteService) {
+    constructor(private dialogservice: DialogService,
+                private Siteservice: SiteService,
+                private toastrService: ToastrService) {
         super(dialogservice);
     }
 
@@ -25,15 +28,17 @@ export class DeletesiteComponent extends DialogComponent<Model, any> implements 
     }
 
     Delete() {
-        this.Siteservice.deletesite(this.data._id).subscribe((res: Response) => {
-             //   console.log('save', res);
-                this.result = res;
+        this.Siteservice.deletesite(this.data._id).subscribe((data) => {
+                //   console.log('save', res);
+                this.toastrService.success('Your Site has been Delete Successfully');
+                this.result = data;
                 this.close();
             },
             error => {
-              //  console.log('save', error);
+                //  console.log('save', error);
+                const err = JSON.parse(error._body);
+                this.toastrService.error(err.error);
             });
-
     }
 
 }

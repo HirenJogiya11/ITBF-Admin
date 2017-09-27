@@ -26,7 +26,7 @@ export class EditlanguageComponent extends DialogComponent<Model, any> implement
 
     ngOnInit() {
         document.getElementsByTagName('body')[0].classList.add('modal-open');
-        console.log('edit ', this.data);
+       // console.log('edit ', this.data);
     }
 
     onFormSubmit(formData) {
@@ -35,16 +35,15 @@ export class EditlanguageComponent extends DialogComponent<Model, any> implement
             displayName: formData.displayName
 
         };
-        debugger;
         this.languageservice.EditLanguage(list, this.data._id)
             .subscribe(data => {
-                    console.log('save', data);
+                  //  console.log('save', data);
                     this.toastrService.success('Your Site has been Create Successfully');
                     this.result = data;
                     this.close();
                 },
                 error => {
-                    console.log('error', error);
+                  //  console.log('error', error);
                     const err = JSON.parse(error._body);
                     this.toastrService.error(err.error);
                 });

@@ -1,18 +1,14 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/node',
-1 verbose cli   '/usr/lib/node_modules/npm/bin/npm-cli.js',
-1 verbose cli   'run',
-1 verbose cli   'start',
-1 verbose cli   '--scripts-prepend-node-path=auto' ]
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'start' ]
 2 info using npm@3.10.10
-3 info using node@v6.11.3
+3 info using node@v6.11.2
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
 5 info lifecycle MD-PRO@0.0.0~prestart: MD-PRO@0.0.0
 6 silly lifecycle MD-PRO@0.0.0~prestart: no script for prestart, continuing
 7 info lifecycle MD-PRO@0.0.0~start: MD-PRO@0.0.0
 8 verbose lifecycle MD-PRO@0.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle MD-PRO@0.0.0~start: PATH: /usr/lib/node_modules/npm/bin/node-gyp-bin:/home/lcom52/ITBF-Admin/node_modules/.bin:/home/lcom52/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/lcom52/.rvm/bin
-10 verbose lifecycle MD-PRO@0.0.0~start: CWD: /home/lcom52/ITBF-Admin
+9 verbose lifecycle MD-PRO@0.0.0~start: PATH: /usr/lib/node_modules/npm/bin/node-gyp-bin:/home/lcom73/Documents/ITBF-Admin/node_modules/.bin:/home/lcom73/.rvm/gems/ruby-2.4.0/bin:/home/lcom73/.rvm/gems/ruby-2.4.0@global/bin:/home/lcom73/.rvm/rubies/ruby-2.4.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/lcom73/.rvm/bin:/home/lcom73/.rvm/bin:/home/lcom73/.rvm/bin:/home/lcom73/.rvm/bin
+10 verbose lifecycle MD-PRO@0.0.0~start: CWD: /home/lcom73/Documents/ITBF-Admin
 11 silly lifecycle MD-PRO@0.0.0~start: Args: [ '-c', 'ng serve' ]
 12 silly lifecycle MD-PRO@0.0.0~start: Returned: code: 1  signal: null
 13 info lifecycle MD-PRO@0.0.0~start: Failed to exec start script
@@ -24,13 +20,13 @@
 14 verbose stack     at ChildProcess.<anonymous> (/usr/lib/node_modules/npm/lib/utils/spawn.js:40:14)
 14 verbose stack     at emitTwo (events.js:106:13)
 14 verbose stack     at ChildProcess.emit (events.js:191:7)
-14 verbose stack     at maybeClose (internal/child_process.js:920:16)
-14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:230:5)
+14 verbose stack     at maybeClose (internal/child_process.js:891:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
 15 verbose pkgid MD-PRO@0.0.0
-16 verbose cwd /home/lcom52/ITBF-Admin
-17 error Linux 3.13.0-110-generic
-18 error argv "/usr/bin/node" "/usr/lib/node_modules/npm/bin/npm-cli.js" "run" "start" "--scripts-prepend-node-path=auto"
-19 error node v6.11.3
+16 verbose cwd /home/lcom73/Documents/ITBF-Admin
+17 error Linux 3.13.0-128-generic
+18 error argv "/usr/bin/nodejs" "/usr/bin/npm" "start"
+19 error node v6.11.2
 20 error npm  v3.10.10
 21 error code ELIFECYCLE
 22 error MD-PRO@0.0.0 start: `ng serve`

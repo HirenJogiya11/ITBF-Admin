@@ -5,13 +5,15 @@ import {ToastrService} from 'toastr-ng2';
 
 export interface Model {
     title: string ;
-    data: number ;
+    data: any ;
 }
+
 @Component({
     selector: 'app-deleteaudio',
     templateUrl: './deleteaudio.component.html',
     styleUrls: ['./deleteaudio.component.css']
 })
+
 export class DeleteaudioComponent extends DialogComponent<Model, any> implements OnInit {
 
     data: any;
@@ -28,18 +30,18 @@ export class DeleteaudioComponent extends DialogComponent<Model, any> implements
 
     Delete() {
         this.packservice.deletesite(this.packid, this.data._id)
+
             .subscribe(data => {
-                   // console.log('save', data);
+                 //   console.log('save', data);
                     this.toastrService.success('Delete Your File Successfully');
-                    this.result = data;
+                    this.result = data.data;
                     this.close();
                 },
                 error => {
-                 //   console.log('error', error);
+                    //   console.log('error', error);
                     const err = JSON.parse(error._body);
                     this.toastrService.error(err.error);
                 });
 
     }
-
 }

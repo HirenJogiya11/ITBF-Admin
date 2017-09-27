@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DialogComponent, DialogService} from 'ng2-bootstrap-modal';
-import {ToastrService} from "toastr-ng2";
-import {NgForm} from "@angular/forms";
-import {PackService} from "../../../service/pack.service";
+import {ToastrService} from 'toastr-ng2';
+import {NgForm} from '@angular/forms';
+import {PackService} from '../../../service/pack.service';
+import {environment} from "../../../../environments/environment";
+
 
 export interface Model {
     title: string;
@@ -15,7 +17,7 @@ export interface Model {
     templateUrl: './edittotalsite.component.html',
     styleUrls: ['./edittotalsite.component.css']
 })
-export class EdittotalsiteComponent extends DialogComponent<Model, any> implements OnInit {
+export class EdittotalsiteComponent extends DialogComponent<Model, any> implements OnInit, OnDestroy {
 
     data: any;
     packid: any
@@ -28,7 +30,7 @@ export class EdittotalsiteComponent extends DialogComponent<Model, any> implemen
     res: any;
     final: any;
     button: boolean;
-    public imagepath: string = 'http://192.168.200.72:4200';
+    public BasePath: string = `${environment.baseURL}`;
     formdata: FormData;
 
     constructor(private dialogservice: DialogService,
@@ -38,7 +40,7 @@ export class EdittotalsiteComponent extends DialogComponent<Model, any> implemen
     }
 
     ngOnInit() {
-        console.log('site data', this.data);
+        document.getElementsByTagName('body')[0].classList.add('modal-open');
     }
 
 
@@ -71,7 +73,7 @@ export class EdittotalsiteComponent extends DialogComponent<Model, any> implemen
     readThis(inputValue: any): void {
         const file: File = inputValue.files[0];
         const myReader: FileReader = new FileReader();
-        console.log(file);
+        //console.log(file);
         myReader.onloadend = (e) => {
             this.result = myReader.result;
             // Base64 data console.log(this.result);
@@ -84,7 +86,7 @@ export class EdittotalsiteComponent extends DialogComponent<Model, any> implemen
     readThis1(inputValue: any): void {
         const file: File = inputValue.files[0];
         const myReader: FileReader = new FileReader();
-        console.log(file);
+      //  console.log(file);
         myReader.onloadend = (e) => {
             this.result1 = myReader.result;
 
@@ -125,7 +127,6 @@ export class EdittotalsiteComponent extends DialogComponent<Model, any> implemen
     }
 
     save(editSiteform: NgForm) {
-        debugger;
         this.formdata = new FormData();
         this.formdata.append('packId', this.packid);
         this.formdata.append('sites_id', this.data._id);
@@ -135,13 +136,13 @@ export class EdittotalsiteComponent extends DialogComponent<Model, any> implemen
         this.formdata.append('audioUrl', this.data.audioURL);
         //     console.log(this.formdata);
         this.packservice.editSite(this.formdata).subscribe(data => {
-               // console.log('save', data);
+              //  console.log('save', data);
                 this.toastrService.success('Successfully Update Your File  ');
-                this.result = data;
+                this.result = data.data;
                 this.close();
             },
             error => {
-               // console.log('error', error);
+              //  console.log('error', error);
                 const err = JSON.parse(error._body);
                 this.toastrService.error(err.error);
             });

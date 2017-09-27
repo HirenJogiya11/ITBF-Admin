@@ -3,25 +3,19 @@ import {InjectionError} from "@angular/core/src/di/reflective_errors";
 import {Injectable} from "@angular/core";
 import {Http, Response} from "@angular/http";
 import {Observable} from "rxjs/Observable";
+import {environment} from "../../environments/environment";
 
 
 @Injectable()
 export class SiteService {
 
-    private AddSite: string = 'http://192.168.200.72:4200/api/sites';
-    private GET: string = 'http://192.168.200.72:4200/api/sites';
-    private Delete: string = 'http://192.168.200.72:4200/api/sites/';
+    private AddSite: string = `${environment.baseURL}${environment.site}`;
+    private GET: string = `${environment.baseURL}${environment.site}`;
+    private Delete: string =  `${environment.baseURL}${environment.site}` + '/';
 
     constructor(private http: Http) {
     }
 
-    private Site: NewSite[] = [
-        ['1', 'englishpack1', '../assets/img/angular2-logo.png'],
-        ['2', 'frenchpack', '../assets/img/bg-pricing.png'],
-        ['3', 'russianpack', 'russian'],
-        ['4', 'latinpack', 'latin'],
-        ['5', 'chinesepack', 'chinese']
-    ];
 
     getAllSite(): Observable<any> {
         return this.http.get(this.GET).map((res: Response) => res.json());

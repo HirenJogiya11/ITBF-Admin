@@ -67,15 +67,18 @@
                   <span class="input-group-addon">
                                             <i class="material-icons"></i>
                                         </span>
-                <div class="col-md-offset-2 col-md-8 ">
-                    <div class="btn-group btn-block">
-                        <select required [(ngModel)]="data.role" name="role"  class="selectpicker" data-style="select-with-transition"  title="Role" data-size="7">
-                            <option value="Admin">Admin </option>
-                            <option value="TourOperator">TourOperator</option>
-                            <option value="User">User</option>
-                        </select>
-                    </div>
-                </div>
+                  <div class="col-md-offset-2 col-md-8">
+                      <div class="dropdown" id="select_role">
+                          <select class="selectpicker" data-style="select-with-transition"
+                                  required [(ngModel)]="data.role"
+                                  title="Role"
+                                  data-size="7" name="role">
+                              <option value="Admin">Admin</option>
+                              <option value="TourOperator">TourOperator</option>
+                              <option value="User">User</option>
+                          </select>
+                      </div>
+                  </div>
             </div>
           </div>
           <div class="footer text-center">

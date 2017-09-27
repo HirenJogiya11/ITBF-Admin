@@ -38,7 +38,7 @@ export class PacksComponent implements OnInit {
 
         document.getElementsByTagName('body')[0].classList.add('modal-open');
         this.dataTable = {
-            headerRow: ['Packs', 'Language', 'Action', 'Total Sites'],
+            headerRow: ['Packs', 'Language', 'Price' , 'Action', 'Total Sites'],
             footerRow: ['', '', '', ''],
             dataRows: []
         };
@@ -50,8 +50,6 @@ export class PacksComponent implements OnInit {
             .subscribe(data => {
                 this.wholeArray = data;
                 this.dataTable.dataRows = data;
-
-                console.log('this packs Data', this.dataTable.dataRows)
                 const that = this;
                 setTimeout(function () {
                     that.dataTableConfig();

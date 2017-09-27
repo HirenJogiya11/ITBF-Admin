@@ -36,9 +36,9 @@ export class UploaduserComponent implements OnInit {
 
     onFormSubmit(userForm: NgForm) {
 
-        console.log('user detail', userForm);
+        //console.log('user detail', userForm);
         this.modal.push(userForm.value);
-        console.log('modal', this.modal);
+        //console.log('modal', this.modal);
 
     }
     // deleteData(i)
@@ -78,8 +78,8 @@ export class UploaduserComponent implements OnInit {
         let position = this.modal.indexOf(index);
         let i = this.modal[position];
 
-        console.log('index', position);
-        console.log('data', i);
+      //  console.log('index', position);
+      //  console.log('data', i);
         const copy = Object.assign({}, i);
         this.dialogService.addDialog(UsermodalComponent, { index: position,
             data:(copy)}, {backdropColor: 'rgba(0, 0, 0, 0.5)'})

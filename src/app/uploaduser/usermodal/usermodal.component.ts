@@ -33,7 +33,7 @@ export class UsermodalComponent extends DialogComponent<Model, any> implements A
     onFormSubmit(userForm: NgForm) {
         if (userForm.valid) {
             this.result = {userForm: userForm.value, index: this.index};
-            console.log(this.result);
+          //  console.log(this.result);
             this.close();
         }
         else {

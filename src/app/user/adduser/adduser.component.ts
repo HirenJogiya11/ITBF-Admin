@@ -23,9 +23,10 @@ export class AdduserComponent  extends DialogComponent<Model, any> implements On
     ngOnInit() {
 
         document.getElementsByTagName('body')[0].classList.add('modal-open');
-        if ($('.selectpicker').length !== 0) {
-            $('.selectpicker').selectpicker();
-        }
+        this.initialize();
+        // if ($('.selectpicker').length !== 0) {
+        //     $('.selectpicker').selectpicker();
+        // }
 
 
     }
@@ -42,36 +43,38 @@ export class AdduserComponent  extends DialogComponent<Model, any> implements On
                     };
         this.userAdminservice.AddUserData(user)
             .subscribe(data => {
-                    console.log('save', data);
-                    this.toastrService.success('Language has been Create Successfully');
-                    this.result = data;
+                   // console.log('save', data);
+                    this.toastrService.success('User has been Create Successfully');
+                    this.result = data.user;
                     this.close();
                 },
                 error => {
-                    console.log('error', error);
+                    //console.log('error', error);
                     const err = JSON.parse(error._body);
                     this.toastrService.error(err.error);
                 });
     }
 
-    // initialize() {
-    //     //  Init Bootstrap Select Picker
-    //     if ($('.selectpicker').length) {
-    //         $('.selectpicker').selectpicker();
-    //     }
-    //
-    //     //  Dropdown Toggle
-    //     $('#select_language .dropdown-toggle').click(function (event) {
-    //         event.stopPropagation();
-    //         $('.bootstrap-select').toggleClass('open');
-    //     });
-    //     $('.modal-content').click(function () {
-    //         $('.bootstrap-select').removeClass('open');
-    //     });
-    // }
+
+
+    initialize() {
+        //  Init Bootstrap Select Picker
+        if ($('.selectpicker').length) {
+            $('.selectpicker').selectpicker();
+        }
+
+        //  Dropdown Toggle
+        $('#select_role .dropdown-toggle').click(function (event) {
+            event.stopPropagation();
+            $('.bootstrap-select').toggleClass('open');
+        });
+        $('.modal-content').click(function () {
+            $('.bootstrap-select').removeClass('open');
+        });
+    }
 
     ngAfterViewInit() {
-        //this.initialize();
+
     }
 
 }

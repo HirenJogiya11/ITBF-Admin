@@ -20,12 +20,14 @@
                                 <th>{{ dataTable.headerRow[1] }}</th>
                                 <th>{{ dataTable.headerRow[2] }}</th>
                                 <th>{{ dataTable.headerRow[3] }}</th>
+                                <th>{{ dataTable.headerRow[4] }}</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr *ngFor="let row of dataTable.dataRows">
                                 <td>{{row.name}}</td>
                                 <td>{{row.language}}</td>
+                                <td>{{row.price}}</td>
                                 <td>
                                     <button class="btn btn-simple btn-info btn-icon like" rel="tooltip" title="Add"
                                             data-placement="left" (click)="Newaudio(row)">
@@ -57,12 +59,3 @@
         </div>
     </div>
 </div>
-
-<!--<script type="text/javascript">-->
-    <!--jQuery(document).ready(function(){-->
-        <!--jQuery('.dropdown-toggle').click(function() {-->
-            <!--debugger;-->
-            <!--jQuery('.bootstrap-select').toggleClass('open');-->
-        <!--});-->
-    <!--});-->
-<!--</script>-->

@@ -11,7 +11,7 @@ export class  LanguageService {
 
     }
     AddLanguage(languageData) {
-        console.log('service', languageData);
+       // console.log('service', languageData);
         return this.http.post(url, languageData, {}).map((response: Response) => response.json());
     }
     GetLanguage() {
