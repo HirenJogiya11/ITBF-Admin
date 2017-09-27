@@ -9,7 +9,7 @@
         <div class="card card-login card-hidden">
           <div class="card-content">
             <!--<div [hidden]="!isError" class="text-center">-->
-              <!--<span style="color:red"> Invalid Credentials</span>-->
+            <!--<span style="color:red"> Invalid Credentials</span>-->
             <!--</div>-->
             <div class="input-group">
                                         <span class="input-group-addon">
@@ -54,28 +54,18 @@
               </div>
             </div>
             <div class="input-group">
-                <span class="input-group-addon">
-                                            <i class="material-icons">lock</i>
-                                        </span>
-                <div class="form-group label-floating">
-                <label class="control-label">Change Password</label>
-                <input [(ngModel)]="data.password"  name="changePassword"
-                       type="password" class="form-control">
-              </div>
-                </div>
-              <div class="input-group">
                   <span class="input-group-addon">
                                             <i class="material-icons"></i>
                                         </span>
-                <div class="col-md-offset-2 col-md-8 ">
-                    <div class="btn-group btn-block">
-                        <select required [(ngModel)]="data.role" name="role"  class="selectpicker" data-style="select-with-transition"  title="Role" data-size="7">
-                            <option value="Admin">Admin </option>
-                            <option value="TourOperator">TourOperator</option>
-                            <option value="User">User</option>
-                        </select>
-                    </div>
+              <div class="col-md-offset-2 col-md-8 ">
+                <div class="btn-group btn-block">
+                  <select required [(ngModel)]="data.role" name="role"  class="selectpicker" data-style="select-with-transition"  title="Role" data-size="7">
+                    <option value="Admin">Admin </option>
+                    <option value="TourOperator">TourOperator</option>
+                    <option value="User">User</option>
+                  </select>
                 </div>
+              </div>
             </div>
           </div>
           <div class="footer text-center">

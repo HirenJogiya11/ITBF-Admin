@@ -1,52 +1,77 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {DialogComponent, DialogService} from 'ng2-bootstrap-modal';
-import {NgForm} from '@angular/forms';
+import {UserAdminService} from "../../services/userAdmin.service";
+import {ToastrService} from "toastr-ng2";
+
 declare var $: any;
 export interface Model {
-    data: any;
-    index: number;
+    title: any ;
 }
 @Component({
   selector: 'app-adduser',
   templateUrl: './adduser.component.html',
   styleUrls: ['../user.component.css']
 })
-export class AdduserComponent extends DialogComponent<Model, any> implements AfterViewInit, OnInit {
+export class AdduserComponent  extends DialogComponent<Model, any> implements OnInit , AfterViewInit {
+    data = [];
+    constructor(private dialogservice: DialogService,
+                private userAdminservice: UserAdminService,
+                private toastrService: ToastrService) {
+        super(dialogservice);
+    }
 
-    userForm: any;
-    data: any;
-    index: number;
-    i:number;
     ngOnInit() {
+
+        document.getElementsByTagName('body')[0].classList.add('modal-open');
         if ($('.selectpicker').length !== 0) {
             $('.selectpicker').selectpicker();
         }
-        debugger;
-        //data Mapped
-        this.userForm = this.data;
-        if(this.data.location)
-        {
-            this.data.Country = this.data.location.Country;
-            //delete this.data.location.Country;
-        }
-        this.i = this.index;
+
 
     }
-
-    constructor(dialogService: DialogService) {
-        super(dialogService);
+    onFormSubmit(userdata) {
+        let user = {
+                        firstname: userdata.firstname,
+                        lastname: userdata.lastname,
+                        email: userdata.email,
+                        password: userdata.password,
+                        location: {
+                            Country : userdata.Country,
+                        },
+                        role: userdata.role
+                    };
+        this.userAdminservice.AddUserData(user)
+            .subscribe(data => {
+                    console.log('save', data);
+                    this.toastrService.success('Language has been Create Successfully');
+                    this.result = data;
+                    this.close();
+                },
+                error => {
+                    console.log('error', error);
+                    const err = JSON.parse(error._body);
+                    this.toastrService.error(err.error);
+                });
     }
+
+    // initialize() {
+    //     //  Init Bootstrap Select Picker
+    //     if ($('.selectpicker').length) {
+    //         $('.selectpicker').selectpicker();
+    //     }
+    //
+    //     //  Dropdown Toggle
+    //     $('#select_language .dropdown-toggle').click(function (event) {
+    //         event.stopPropagation();
+    //         $('.bootstrap-select').toggleClass('open');
+    //     });
+    //     $('.modal-content').click(function () {
+    //         $('.bootstrap-select').removeClass('open');
+    //     });
+    // }
 
     ngAfterViewInit() {
-        this.userForm = this.data;
-    }
-
-    onFormSubmit(userForm: NgForm) {
-        if (userForm.valid) {
-            this.result = {userForm: userForm.value, index: this.index};
-            console.log(this.result);
-            this.close();
-        }
+        //this.initialize();
     }
 
 }

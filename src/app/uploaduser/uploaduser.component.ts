@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DialogService} from 'ng2-bootstrap-modal';
 import {NgForm} from '@angular/forms';
 import {UsermodalComponent} from './usermodal/usermodal.component';
-import {DeletemodalComponent} from "../user/deletemodal/deletemodal.component"
+import {DeletemodalComponent} from "./deletemodal/deletemodal.component"
 
 declare interface DataTable {
     headerRow: string[];

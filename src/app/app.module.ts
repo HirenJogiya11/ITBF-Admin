@@ -32,7 +32,7 @@ import {AddpackmodalComponent} from './packs/addpackmodal/addpackmodal.component
 import {NewaudiopackComponent} from './packs/newaudiopack/newaudiopack.component';
 import {TotalaudioComponent} from './packs/totalaudio/totalaudio.component';
 import {DeleteaudioComponent} from './packs/totalaudio/deleteaudio/deleteaudio.component';
-import {DeletemodalComponent} from './user/deletemodal/deletemodal.component';
+import {DeletemodalComponent} from './uploaduser/deletemodal/deletemodal.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 // service
@@ -62,6 +62,8 @@ import { CreatelanguageComponent } from './language/createlanguage/createlanguag
 import { EditlanguageComponent } from './language/editlanguage/editlanguage.component';
 import { DeletelanguageComponent } from './language/deletelanguage/deletelanguage.component';
 import {LanguageService} from "./services/language.service";
+import { EdituserComponent } from './user/edituser/edituser.component';
+import { DeleteuserComponent } from './user/deleteuser/deleteuser.component';
 
 
 @NgModule({
@@ -116,7 +118,9 @@ import {LanguageService} from "./services/language.service";
         CreatelanguageComponent,
         EditlanguageComponent,
         DeletelanguageComponent,
-        EdittotalsiteComponent
+        EdittotalsiteComponent,
+        EdituserComponent,
+        DeleteuserComponent
 
     ],
     providers: [
@@ -150,7 +154,9 @@ import {LanguageService} from "./services/language.service";
         EditlanguageComponent,
         DeletelanguageComponent,
         EditsiteComponent,
-        EdittotalsiteComponent
+        EdittotalsiteComponent,
+        EdituserComponent,
+        DeleteuserComponent
     ]
 })
 export class AppModule {

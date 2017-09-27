@@ -3,9 +3,7 @@ import { XHRBackend } from '@angular/http';
 import 'rxjs/Rx';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-const addintroductionurl: string = 'http://192.168.200.72:4200/addIntroductionData';
-const getintroductionurl: string = 'http://192.168.200.72:4200/getIntroductionData';
-const addCSVFile: string = 'http://192.168.200.72:4200/api/user/bulkUpload';
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class  IntroductionService {
@@ -13,12 +11,12 @@ export class  IntroductionService {
 
     }
     addIntroductionData(introduction: FormData) {
-        return this.http.post(addintroductionurl, introduction, {}).map((response: Response) => response.json());
+        return this.http.post( `${environment.baseURL}${environment.addIntroduction}`, introduction, {}).map((response: Response) => response.json());
     }
     getIntroductionData() {
-        return this.http.get(getintroductionurl, {}).map((response: Response) => response.json());
+        return this.http.get( `${environment.baseURL}${environment.getIntroduction}`, {}).map((response: Response) => response.json());
     }
     addCsvFile(data) {
-        return this.http.post(addCSVFile, data, {}).map((response: Response) => response.json());
+        return this.http.post( `${environment.baseURL}${environment.bulkUpload}`, data, {}).map((response: Response) => response.json());
     }
 }

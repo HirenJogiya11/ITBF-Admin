@@ -38,17 +38,17 @@
                 </tr>
                 </tfoot>
                 <tbody>
-                <tr *ngFor="let row of this.modal; let i of index">
+                <tr *ngFor="let row of dataTable.dataRows; let i of index">
                   <td>{{row.email}}</td>
                   <td>{{row.firstname}}</td>
                   <td>{{row.lastname}}</td>
                   <td>{{row.location ? row.location.Country : ''}}</td>
                   <td>{{row.role}}</td>
                   <td class="text-right">
-                    <button class="btn btn-simple btn-warning btn-icon edit" rel="tooltip" title="Edit" data-placement="left" (click)="Editdata(i)">
+                    <button class="btn btn-simple btn-warning btn-icon edit" rel="tooltip" title="Edit" data-placement="left" (click)="Editdata(row)">
                       <i class="material-icons">edit</i>
                     </button>&nbsp;&nbsp;
-                    <button class="btn btn-simple btn-danger btn-icon remove" rel="tooltip" title="Remove" data-placement="left" (click)="deleteData(i)">
+                    <button class="btn btn-simple btn-danger btn-icon remove" rel="tooltip" title="Remove" data-placement="left" (click)="deleteData(row)">
                       <i class="material-icons">delete</i>
                     </button>
                   </td>

@@ -4,8 +4,7 @@ import { XHRBackend } from '@angular/http';
 import 'rxjs/Rx';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-
-const LOGIN_API: string ='http://192.168.200.72:4200/login';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class  LoginService {
@@ -29,7 +28,7 @@ export class  LoginService {
 
   login(admin:User): Observable<any>{
     return this.http
-      .post(`${LOGIN_API}`, admin)
+      .post(`${environment.baseURL}${environment.login}`, admin)
       .map((response:Response)=>{
       localStorage.setItem('token', JSON.stringify(response.json().token));
       return response.json();
