@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DialogComponent, DialogService} from 'ng2-bootstrap-modal';
-import {ToastrService} from "toastr-ng2";
-import {NgForm} from "@angular/forms";
-import {PackService} from "../../../service/pack.service";
+import {ToastrService} from 'toastr-ng2';
+import {NgForm} from '@angular/forms';
+import {PackService} from '../../../service/pack.service';
+
 
 export interface Model {
     title: string;
@@ -15,7 +16,7 @@ export interface Model {
     templateUrl: './edittotalsite.component.html',
     styleUrls: ['./edittotalsite.component.css']
 })
-export class EdittotalsiteComponent extends DialogComponent<Model, any> implements OnInit {
+export class EdittotalsiteComponent extends DialogComponent<Model, any> implements OnInit, OnDestroy {
 
     data: any;
     packid: any
@@ -38,7 +39,7 @@ export class EdittotalsiteComponent extends DialogComponent<Model, any> implemen
     }
 
     ngOnInit() {
-        console.log('site data', this.data);
+        document.getElementsByTagName('body')[0].classList.add('modal-open');
     }
 
 
@@ -135,17 +136,20 @@ export class EdittotalsiteComponent extends DialogComponent<Model, any> implemen
         this.formdata.append('audioUrl', this.data.audioURL);
         //     console.log(this.formdata);
         this.packservice.editSite(this.formdata).subscribe(data => {
-               // console.log('save', data);
+                console.log('save', data);
                 this.toastrService.success('Successfully Update Your File  ');
                 this.result = data;
                 this.close();
             },
             error => {
-               // console.log('error', error);
+                console.log('error', error);
                 const err = JSON.parse(error._body);
                 this.toastrService.error(err.error);
             });
 
     }
 
+    ngOnDestroy() {
+        document.getElementsByTagName('body')[0].classList.add('modal-open');
+    }
 }

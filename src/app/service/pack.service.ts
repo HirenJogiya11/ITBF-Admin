@@ -67,6 +67,7 @@ export class PackService {
     }
 
     deletesite(packid, siteid) {
+        debugger;
         return this.http.delete(this.DeleteSite + packid + '/' + siteid).map((response: Response) => response.json());
     }
 

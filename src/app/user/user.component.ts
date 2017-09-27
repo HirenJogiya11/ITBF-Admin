@@ -96,7 +96,7 @@ export class UserComponent implements OnInit {
       //  debugger
         this.dialogService.addDialog(DeletemodalComponent, { index: id}, {backdropColor: 'rgba(0, 0, 0, 0.5)'})
             .subscribe((data) => {
-                if(data) {
+                if (data) {
                     this.useradminservice.DeleteUserData(data.index)
                         .subscribe(deletedata => {
                                 this.getUsers();

@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit{
 
                     window.location.href = '/introduction';
                 }
-                else if(response.user.role === 'TourOperator')
+                else if (response.user.role === 'TourOperator')
                 {
                     this.toastrService.success('welcome ' + response.user.role);
                     localStorage.setItem("role",'TourOperator');

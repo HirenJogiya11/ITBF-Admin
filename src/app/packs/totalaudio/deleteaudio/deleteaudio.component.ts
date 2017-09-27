@@ -1,18 +1,20 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DialogComponent, DialogService} from 'ng2-bootstrap-modal';
 import {PackService} from '../../../service/pack.service';
 import {ToastrService} from 'toastr-ng2';
 
 export interface Model {
     title: string ;
-    data: number ;
+    data: any ;
 }
+
 @Component({
     selector: 'app-deleteaudio',
     templateUrl: './deleteaudio.component.html',
     styleUrls: ['./deleteaudio.component.css']
 })
-export class DeleteaudioComponent extends DialogComponent<Model, any> implements OnInit {
+
+export class DeleteaudioComponent extends DialogComponent<Model, any> implements OnInit , OnDestroy {
 
     data: any;
     packid: any;
@@ -28,6 +30,7 @@ export class DeleteaudioComponent extends DialogComponent<Model, any> implements
 
     Delete() {
         this.packservice.deletesite(this.packid, this.data._id)
+
             .subscribe(data => {
                    // console.log('save', data);
                     this.toastrService.success('Delete Your File Successfully');
@@ -41,5 +44,10 @@ export class DeleteaudioComponent extends DialogComponent<Model, any> implements
                 });
 
     }
+
+    ngOnDestroy() {
+            document.getElementsByTagName('body')[0].classList.add('modal-open');
+    }
+
 
 }
