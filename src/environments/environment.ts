@@ -5,7 +5,7 @@
 
 export const environment = {
     production: false,
-    baseURL: 'http://192.168.200.72:4200',
+    baseURL: 'http://34.210.231.178:4200',
     login: '/login',
     language: '/api/language',
     pack: '/api/pack',
