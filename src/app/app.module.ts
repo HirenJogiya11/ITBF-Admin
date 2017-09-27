@@ -12,8 +12,8 @@ import {AuthLayoutComponent} from './layouts/auth/auth-layout.component';
 import {AppRoutes} from './app-routing.module';
 import {NavbarModule} from './shared/navbar/navbar.module';
 import {FooterModule} from './shared/footer/footer.module';
-import {ModalModule} from "ng2-modal";
-import {DashboardComponent} from "./dashboard/dashboard.component";
+import {ModalModule} from 'ng2-modal';
+import {DashboardComponent} from './dashboard/dashboard.component';
 import {ToastrModule} from 'toastr-ng2';
 import {PagenotfoundComponent} from './pagenotfound/pagenotfound.component';
 import {IntroductionComponent} from './introduction/introduction.component';
@@ -42,10 +42,10 @@ import {AdminGuard} from "./services/adminguard.service";
 import {TourGuard} from "./services/tourguard.service";
 import {PackService} from './service/pack.service';
 import {ModalService} from './service/modal.service';
-import {TotalDownloadService} from "./services/totaldownload.service";
+import {TotalDownloadService} from './services/totaldownload.service';
 import { AnalyticUserComponent } from './analytic-user/analytic-user.component';
-import {IntroductionService} from "./services/introduction.service";
-import {UserAdminService} from "./services/userAdmin.service";
+import {IntroductionService} from './services/introduction.service';
+import {UserAdminService} from './services/userAdmin.service';
 import { AdduserComponent } from './user/adduser/adduser.component';
 // import {MyFilterPipe} from "./totaldownload/myfilter.pipe";
 import { SiteComponent } from './site/site.component';
@@ -56,6 +56,14 @@ import { DeletesiteComponent } from './site/deletesite/deletesite.component';
 import { DeletepacksComponent } from './packs/deletepacks/deletepacks.component';
 import { EditsiteComponent } from './site/editsite/editsite.component';
 import {EdittotalsiteComponent} from "./packs/totalaudio/edittotalsite/edittotalsite.component";
+import { BulkuploadComponent } from './bulkupload/bulkupload.component';
+import { LanguageComponent } from './language/language.component';
+import { CreatelanguageComponent } from './language/createlanguage/createlanguage.component';
+import { EditlanguageComponent } from './language/editlanguage/editlanguage.component';
+import { DeletelanguageComponent } from './language/deletelanguage/deletelanguage.component';
+import {LanguageService} from "./services/language.service";
+import { EdituserComponent } from './user/edituser/edituser.component';
+import { DeleteuserComponent } from './user/deleteuser/deleteuser.component';
 
 
 @NgModule({
@@ -105,7 +113,14 @@ import {EdittotalsiteComponent} from "./packs/totalaudio/edittotalsite/edittotal
         EditsiteComponent,
         AnalyticUserComponent,
         AdduserComponent,
-        EdittotalsiteComponent
+        BulkuploadComponent,
+        LanguageComponent,
+        CreatelanguageComponent,
+        EditlanguageComponent,
+        DeletelanguageComponent,
+        EdittotalsiteComponent,
+        EdituserComponent,
+        DeleteuserComponent
 
     ],
     providers: [
@@ -118,7 +133,8 @@ import {EdittotalsiteComponent} from "./packs/totalaudio/edittotalsite/edittotal
         TourGuard,
         IntroductionService,
         UserAdminService,
-        SiteService],
+        SiteService,
+        LanguageService],
     bootstrap: [AppComponent],
     entryComponents: [
         AddpackmodalComponent,
@@ -134,7 +150,13 @@ import {EdittotalsiteComponent} from "./packs/totalaudio/edittotalsite/edittotal
         DeletesiteComponent,
         DeletepacksComponent,
         EditsiteComponent,
-        EdittotalsiteComponent
+        CreatelanguageComponent,
+        EditlanguageComponent,
+        DeletelanguageComponent,
+        EditsiteComponent,
+        EdittotalsiteComponent,
+        EdituserComponent,
+        DeleteuserComponent
     ]
 })
 export class AppModule {

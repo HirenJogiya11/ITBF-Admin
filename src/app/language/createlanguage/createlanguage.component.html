@@ -1,0 +1,50 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" (click)="close()">&times;</button>
+            <h4 class="modal-title">{{title || ''}}</h4>
+        </div>
+        <form class="form-horizontal" #language="ngForm">
+            <div class="modal-body">
+                <div class="card card-login card-hidden">
+                            <div class="card-header card-header-icon" data-background-color="rose">
+                                <i class="material-icons">contacts</i>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">New Language</h4>
+
+                                <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">language</i>
+                                        </span>
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Language Name</label>
+                                        <input required name="languageName"  [(ngModel)]="data.language" type="text"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">language</i>
+                                        </span>
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Display Name</label>
+                                        <input required name="displayName" [(ngModel)]="data.displayName" type="text"  capitalize-first
+                                               class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-rose btn-outline" [disabled]="!language.valid" (click)="onFormSubmit(data)">Submit</button>
+                        </div>
+                        <div class="btn-group">
+                        <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+                        </div>
+                    </div>
+
+        </form>
+    </div>
+</div>

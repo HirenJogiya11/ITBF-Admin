@@ -4,8 +4,7 @@ import {Http , Headers} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import {Injectable} from "@angular/core";
 
-
-const REGISTER: string = 'http://localhost:3000/file/upload';
+const REGISTER: string = 'http://localhost:4200/file/upload';
 const AudioPack: string ='http://localhost:3000/protected/audiopack/';
 @Injectable()
 export class AudiopackService {

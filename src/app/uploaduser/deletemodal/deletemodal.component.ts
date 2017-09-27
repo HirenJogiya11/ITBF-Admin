@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {DialogComponent, DialogService} from 'ng2-bootstrap-modal';
+import {UserAdminService} from "../../services/userAdmin.service";
 export interface Model {
     index: number;
 }
@@ -19,7 +20,7 @@ export class DeletemodalComponent  extends DialogComponent<Model, any> implement
   }
     dataDelete(){
           this.result = {index: this.index};
-          console.log(this.result);
+          //console.log(this.result);
           this.close();
   }
 }

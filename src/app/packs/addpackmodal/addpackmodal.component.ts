@@ -63,7 +63,7 @@ export class AddpackmodalComponent extends DialogComponent<Model, any> implement
     }
 
     languagechange(event) {
-        this.name = event.target.value + 'pack';
+        this.name = event.target.value + ' pack';
     }
 
     OnSubmit(addpack: NgForm) {

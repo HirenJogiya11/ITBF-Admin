@@ -53,7 +53,7 @@
                        type="text" class="form-control">
               </div>
             </div>
-            <div class="input-group" *ngIf="!i">
+            <div class="input-group">
                 <span class="input-group-addon">
                                             <i class="material-icons">lock</i>
                                         </span>
@@ -67,20 +67,23 @@
                   <span class="input-group-addon">
                                             <i class="material-icons"></i>
                                         </span>
-                <div class="col-md-offset-2 col-md-8 ">
-                    <div class="btn-group btn-block">
-                        <select required [(ngModel)]="data.role" name="role"  class="selectpicker" data-style="select-with-transition"  title="Role" data-size="7">
-                            <option value="Admin">Admin </option>
-                            <option value="TourOperator">TourOperator</option>
-                            <option value="User">User</option>
-                        </select>
-                    </div>
-                </div>
+                  <div class="col-md-offset-2 col-md-8">
+                      <div class="dropdown pull-left" id="select_role">
+                          <select class="selectpicker" data-style="select-with-transition"
+                                  required [(ngModel)]="data.role"
+                                  title="Role"
+                                  data-size="7" name="role">
+                              <option value="Admin">Admin</option>
+                              <option value="TourOperator">TourOperator</option>
+                              <option value="User">User</option>
+                          </select>
+                      </div>
+                  </div>
             </div>
           </div>
           <div class="footer text-center">
             <div class="btn-group">
-              <button type="submit" class="btn btn-rose btn-outline" [disabled]="!userForm.valid" (click)="onFormSubmit(userForm)">Add User</button>
+              <button type="submit" class="btn btn-rose btn-outline" [disabled]="!userForm.valid" (click)="onFormSubmit(data)">Add User</button>
             </div>
           </div>
         </div>

@@ -32,7 +32,7 @@ export class DeleteaudioComponent extends DialogComponent<Model, any> implements
         this.packservice.deletesite(this.packid, this.data._id)
 
             .subscribe(data => {
-                    console.log('save', data);
+                 //   console.log('save', data);
                     this.toastrService.success('Delete Your File Successfully');
                     this.result = data.data;
                     this.close();

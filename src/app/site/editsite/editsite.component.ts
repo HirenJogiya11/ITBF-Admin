@@ -68,7 +68,7 @@ export class EditsiteComponent extends DialogComponent<Model, any> implements On
         this.formdata.append('image', this.data.image, this.data.image.name)
         this.Siteservice.editsite(this.formdata , this.data._id)
             .subscribe(data => {
-                    console.log('save', data);
+                   // console.log('save', data);
                     this.toastrService.success( 'Your Site has been Update Successfully' );
                     this.result = data;
                     this.close();

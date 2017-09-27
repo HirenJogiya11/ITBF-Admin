@@ -72,7 +72,7 @@ export class EdittotalsiteComponent extends DialogComponent<Model, any> implemen
     readThis(inputValue: any): void {
         const file: File = inputValue.files[0];
         const myReader: FileReader = new FileReader();
-        console.log(file);
+        //console.log(file);
         myReader.onloadend = (e) => {
             this.result = myReader.result;
             // Base64 data console.log(this.result);
@@ -85,7 +85,7 @@ export class EdittotalsiteComponent extends DialogComponent<Model, any> implemen
     readThis1(inputValue: any): void {
         const file: File = inputValue.files[0];
         const myReader: FileReader = new FileReader();
-        console.log(file);
+      //  console.log(file);
         myReader.onloadend = (e) => {
             this.result1 = myReader.result;
 
@@ -135,13 +135,13 @@ export class EdittotalsiteComponent extends DialogComponent<Model, any> implemen
         this.formdata.append('audioUrl', this.data.audioURL);
         //     console.log(this.formdata);
         this.packservice.editSite(this.formdata).subscribe(data => {
-                console.log('save', data);
+              //  console.log('save', data);
                 this.toastrService.success('Successfully Update Your File  ');
                 this.result = data.data;
                 this.close();
             },
             error => {
-                console.log('error', error);
+              //  console.log('error', error);
                 const err = JSON.parse(error._body);
                 this.toastrService.error(err.error);
             });

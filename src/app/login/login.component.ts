@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit{
     login(admin) {
         this.loginService.login(admin).subscribe(
         response => {
-            console.log(response);
                 if(response.user.role === "Admin")
                 {
                     this.toastrService.success('welcome ' + response.user.role);
@@ -57,9 +56,14 @@ export class LoginComponent implements OnInit{
                 }
                 else if (response.user.role === 'TourOperator')
                 {
+                    if(response.user._id)
+                    {
+                        localStorage.setItem("id", response.user._id);
+                    }
+                    // console.log(response);
                     this.toastrService.success('welcome ' + response.user.role);
                     localStorage.setItem("role",'TourOperator');
-                    window.location.href = '/dashboard';
+                     window.location.href = '/dashboard';
 
                 }
                 else {

@@ -35,7 +35,7 @@ export class IntroductionComponent implements OnInit {
                   //console.log('save', this.playaudio);
               },
               err => {
-                  console.log('Error', err);
+                  //console.log('Error', err);
               });
   }
     onChange($event):void {
@@ -71,7 +71,7 @@ export class IntroductionComponent implements OnInit {
     }
     onChangemp($event):void {
       this.audiodata = $event.target.files[0];
-      console.log(this.audiodata);
+     // console.log(this.audiodata);
         this.audio = this.audiodata.type.toString();
         this.audio = this.audio.slice(0, 5).toString();
        // console.log(this.audio);
