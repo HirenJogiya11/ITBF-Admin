@@ -44,8 +44,8 @@ export class AdduserComponent  extends DialogComponent<Model, any> implements On
         this.userAdminservice.AddUserData(user)
             .subscribe(data => {
                    // console.log('save', data);
-                    this.toastrService.success('Language has been Create Successfully');
-                    this.result = data;
+                    this.toastrService.success('User has been Create Successfully');
+                    this.result = data.user;
                     this.close();
                 },
                 error => {

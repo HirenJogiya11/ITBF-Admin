@@ -35,7 +35,6 @@ export class EditlanguageComponent extends DialogComponent<Model, any> implement
             displayName: formData.displayName
 
         };
-       // debugger;
         this.languageservice.EditLanguage(list, this.data._id)
             .subscribe(data => {
                   //  console.log('save', data);

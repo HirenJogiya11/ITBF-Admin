@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DialogComponent, DialogService} from "ng2-bootstrap-modal";
 import {SiteService} from "../../service/site.service";
 import {ToastrService} from "toastr-ng2";
+import {environment} from "../../../environments/environment";
 
 export interface Model {
     title: string ;
@@ -19,7 +20,7 @@ export class EditsiteComponent extends DialogComponent<Model, any> implements On
     data: any;
     result: any;
     imageName: any;
-    public imagepath: string = 'http://192.168.200.72:4200';
+    public imagepath: string = `${environment.baseURL}`;
     formdata: FormData;
     image: any;
 

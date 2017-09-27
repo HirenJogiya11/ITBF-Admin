@@ -54,7 +54,7 @@ export class EdituserComponent extends DialogComponent<Model, any> implements On
         this.userdatasarvice.EditUserData(user, this.data._id)
             .subscribe(data => {
                    // console.log('save', data);
-                    this.tostarservice.success('Your Site has been Create Successfully');
+                    this.tostarservice.success('Your User has been Create Successfully');
                     this.result = data;
                     this.close();
                 },

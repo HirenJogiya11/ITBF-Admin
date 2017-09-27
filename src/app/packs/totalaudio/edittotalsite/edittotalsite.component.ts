@@ -3,6 +3,7 @@ import {DialogComponent, DialogService} from 'ng2-bootstrap-modal';
 import {ToastrService} from 'toastr-ng2';
 import {NgForm} from '@angular/forms';
 import {PackService} from '../../../service/pack.service';
+import {environment} from "../../../../environments/environment";
 
 
 export interface Model {
@@ -29,7 +30,7 @@ export class EdittotalsiteComponent extends DialogComponent<Model, any> implemen
     res: any;
     final: any;
     button: boolean;
-    public BasePath: string = 'http://192.168.200.72:4200';
+    public BasePath: string = `${environment.baseURL}`;
     formdata: FormData;
 
     constructor(private dialogservice: DialogService,

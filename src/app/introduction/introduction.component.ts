@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ToastrService} from "toastr-ng2";
 import {IntroductionService} from "../services/introduction.service";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-introduction',
@@ -28,8 +29,8 @@ export class IntroductionComponent implements OnInit {
       this.introductionservice.getIntroductionData()
           .subscribe(data => {
 
-                  this.result = 'http://192.168.200.72:4200/' + data[0].image;
-                  this.playaudio = 'http://192.168.200.72:4200/' + data[0].audio;
+                  this.result = `${environment.baseURL}` + '/' +  data[0].image;
+                  this.playaudio = `${environment.baseURL}` + '/' +  data[0].audio;
                   this.button = true;
                   this.final = this.playaudio;
                   //console.log('save', this.playaudio);
@@ -103,7 +104,10 @@ export class IntroductionComponent implements OnInit {
         //  console.log(this.formdata);
           this.introductionservice.addIntroductionData(this.formdata)
               .subscribe(data => {
+
                  // console.log('save', data);
+                      this.result = `${environment.baseURL}` + '/' +  data.image;
+                      this.playaudio = `${environment.baseURL}` + '/' +  data.audio;
               },
                   err => {
                   //    console.log('Error', err);

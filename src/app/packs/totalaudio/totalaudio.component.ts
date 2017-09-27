@@ -6,6 +6,7 @@ import {DeleteaudioComponent} from './deleteaudio/deleteaudio.component';
 import {ModalService} from '../../service/modal.service';
 import _ from 'lodash';
 import {EdittotalsiteComponent} from "./edittotalsite/edittotalsite.component";
+import {environment} from "../../../environments/environment";
 declare var $: any;
 
 export interface Model {
@@ -30,7 +31,7 @@ declare interface DataTable {
 export class TotalaudioComponent extends DialogComponent<Model, any> implements OnInit {
 
     public dataTable: DataTable;
-    public BasePath: string = 'http://192.168.200.72:4200';
+    public BasePath: string = `${environment.baseURL}`;
     data: any;
     packid: any
     sites: any;
