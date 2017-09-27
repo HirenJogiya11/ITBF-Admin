@@ -29,7 +29,7 @@ export class EdittotalsiteComponent extends DialogComponent<Model, any> implemen
     res: any;
     final: any;
     button: boolean;
-    public imagepath: string = 'http://192.168.200.72:4200';
+    public BasePath: string = 'http://192.168.200.72:4200';
     formdata: FormData;
 
     constructor(private dialogservice: DialogService,
@@ -126,7 +126,6 @@ export class EdittotalsiteComponent extends DialogComponent<Model, any> implemen
     }
 
     save(editSiteform: NgForm) {
-        debugger;
         this.formdata = new FormData();
         this.formdata.append('packId', this.packid);
         this.formdata.append('sites_id', this.data._id);
@@ -138,7 +137,7 @@ export class EdittotalsiteComponent extends DialogComponent<Model, any> implemen
         this.packservice.editSite(this.formdata).subscribe(data => {
                 console.log('save', data);
                 this.toastrService.success('Successfully Update Your File  ');
-                this.result = data;
+                this.result = data.data;
                 this.close();
             },
             error => {
@@ -149,7 +148,4 @@ export class EdittotalsiteComponent extends DialogComponent<Model, any> implemen
 
     }
 
-    ngOnDestroy() {
-        document.getElementsByTagName('body')[0].classList.add('modal-open');
-    }
 }

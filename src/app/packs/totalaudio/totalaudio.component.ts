@@ -56,6 +56,7 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
 
     getsite() {
         this.dataTable.dataRows = this.data;
+        console.log('Total Sites'  , this.dataTable.dataRows);
     }
 
     EditTotalSite(site) {
@@ -65,6 +66,7 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
             data: copy,
             packid: this.packid
         }).subscribe((data) => {
+            document.getElementsByTagName('body')[0].classList.add('modal-open');
             console.log('return data', data);
             if (typeof(data) === 'object') {
                 const index = _.findIndex(this.dataTable.dataRows, ['_id', site._id]);
@@ -75,9 +77,11 @@ export class TotalaudioComponent extends DialogComponent<Model, any> implements 
 
     //
     deleteTotalSite(site) {
+
         const copy = Object.assign({}, site);
         this.modalservice.open(DeleteaudioComponent, {title: '', data: copy, packid: this.packid})
             .subscribe((data) => {
+                document.getElementsByTagName('body')[0].classList.add('modal-open');
                 if (data) {
                     const index = _.findIndex(this.dataTable.dataRows, ['_id', site._id]);
                     this.dataTable.dataRows.splice(index, 1);
