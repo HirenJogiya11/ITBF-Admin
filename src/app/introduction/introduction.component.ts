@@ -20,6 +20,7 @@ export class IntroductionComponent implements OnInit {
     imagedata:any = [];
     audiodata:any = [];
     formdata:FormData;
+    saveAudio:string;
   constructor( private toastrService: ToastrService, private introductionservice: IntroductionService) { }
 
   ngOnInit() {
@@ -104,10 +105,12 @@ export class IntroductionComponent implements OnInit {
         //  console.log(this.formdata);
           this.introductionservice.addIntroductionData(this.formdata)
               .subscribe(data => {
-
+                  this.result = '';
+                  this.playaudio = '';
+                    debugger;
                  // console.log('save', data);
                       this.result = `${environment.baseURL}` + '/' +  data.image;
-                      this.playaudio = `${environment.baseURL}` + '/' +  data.audio;
+                      this.saveAudio = `${environment.baseURL}` + '/' +  data.audio;
               },
                   err => {
                   //    console.log('Error', err);

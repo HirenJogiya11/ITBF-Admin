@@ -83,7 +83,6 @@ export class UserComponent implements OnInit{
     }
 
     openModal() {
-        debugger
         this.modalService.open(AdduserComponent, null)
             .subscribe((data) => {
 

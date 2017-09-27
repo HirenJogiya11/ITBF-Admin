@@ -14,7 +14,7 @@ export interface Model {
 @Component({
     selector: 'app-edituser',
     templateUrl: './edituser.component.html',
-    styleUrls: ['./edituser.component.css']
+    styleUrls: ['../user.component.css']
 })
 export class EdituserComponent extends DialogComponent<Model, any> implements OnInit, AfterViewInit {
 
@@ -45,7 +45,7 @@ export class EdituserComponent extends DialogComponent<Model, any> implements On
             firstname: userdata.firstname,
             lastname: userdata.lastname,
             email: userdata.email,
-            password: userdata.password,
+            password: userdata.changePassword,
             location: {
                 Country: userdata.Country,
             },

@@ -49,8 +49,8 @@
                                         </span>
               <div class="form-group label-floating">
                 <label class="control-label">Country</label>
-                <input required [(ngModel)]="data.Country"  name="Country"
-                       type="text" class="form-control">
+                <input autocomplete="off" required [(ngModel)]="data.Country"  name="Country"
+                       type="text" class="form-control" >
               </div>
             </div>
             <div class="input-group">
@@ -59,7 +59,7 @@
                                         </span>
                 <div class="form-group label-floating">
                 <label class="control-label">Change Password</label>
-                <input [(ngModel)]="data.password"  name="changePassword"
+                <input autocomplete="off" [(ngModel)]="data.changePassword"  name="changePassword"
                        type="password" class="form-control">
               </div>
                 </div>

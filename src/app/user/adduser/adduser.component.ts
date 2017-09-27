@@ -21,13 +21,12 @@ export class AdduserComponent  extends DialogComponent<Model, any> implements On
     }
 
     ngOnInit() {
-
+        this.data;
         document.getElementsByTagName('body')[0].classList.add('modal-open');
         this.initialize();
         // if ($('.selectpicker').length !== 0) {
         //     $('.selectpicker').selectpicker();
         // }
-
 
     }
     onFormSubmit(userdata) {
@@ -35,7 +34,7 @@ export class AdduserComponent  extends DialogComponent<Model, any> implements On
                         firstname: userdata.firstname,
                         lastname: userdata.lastname,
                         email: userdata.email,
-                        password: userdata.password,
+                        password: userdata.changePassword,
                         location: {
                             Country : userdata.Country,
                         },
@@ -74,7 +73,6 @@ export class AdduserComponent  extends DialogComponent<Model, any> implements On
     }
 
     ngAfterViewInit() {
-
     }
 
 }

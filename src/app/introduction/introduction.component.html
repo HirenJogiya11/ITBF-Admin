@@ -53,11 +53,20 @@
                                         <!--<source src="../../assets/audio/01%201%20NON%20STOPOK.MP3"  type="audio/mpeg">-->
                                         <!--Your browser does not support the audio element.-->
                                     <!--</audio>-->
+                                    <div *ngIf="this.playaudio">
 
                                     <audio  controls="controls">
-                                        <source src={{final}}  type="audio/mpeg">
+                                        <source src={{this.playaudio}}  type="audio/mpeg">
                                         Your browser does not support the audio element.
                                     </audio>
+                                        </div>
+                                    <div *ngIf="this.saveAudio">
+
+                                        <audio  controls="controls">
+                                            <source src={{this.saveAudio}}  type="audio/mpeg">
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </div>
                                 </div>
 
                                 <div *ngIf="!final" class="form-group">

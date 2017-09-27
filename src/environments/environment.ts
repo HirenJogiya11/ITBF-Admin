@@ -5,7 +5,8 @@
 
 export const environment = {
     production: false,
-    baseURL: 'http://34.210.231.178:4200',
+    // baseURL: 'http://34.210.231.178:4200',
+    baseURL: 'http://lanetteam.com:8451',
     login: '/login',
     language: '/api/language',
     pack: '/api/pack',
