@@ -108,7 +108,7 @@ export class IntroductionComponent implements OnInit {
                   err => {
                   //    console.log('Error', err);
                   });
-          this.getintroduction();
+
         this.toastrService.success('Successfully File Uploaded ');
         this.playaudio = '';
     }
